@@ -1,42 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_dark"
+    android:orientation="vertical"
     tools:context="com.guoziwei.kline.MainActivity">
 
-    <LinearLayout
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"/>
 
-        <FrameLayout
-            android:id="@+id/fl_container1"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"/>
+    <com.guoziwei.kline.view.NoTouchScrollViewpager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-        <FrameLayout
-            android:id="@+id/fl_container2"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="10dp"/>
-
-
-        <FrameLayout
-            android:id="@+id/fl_container3"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="10dp"/>
-
-
-        <FrameLayout
-            android:id="@+id/fl_container4"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="10dp"/>
-
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>

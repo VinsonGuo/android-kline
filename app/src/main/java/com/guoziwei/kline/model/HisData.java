@@ -1,14 +1,8 @@
 package com.guoziwei.kline.model;
 
 /**
- * <a:HisData>
- * <a:Close>45.37</a:Close>
- * <a:High>45.38</a:High>
- * <a:Low>45.35</a:Low>
- * <a:Open>45.35</a:Open>
- * <a:Vol>178</a:Vol>
- * <a:sDate>2017-07-07T06:00:00</a:sDate>
- * </a:HisData>
+ * 图表数据model
+ * 只需要Close High Low Open Vol sDate这几个字段就可以，其他的字段是通过计算得出的
  */
 
 public class HisData {
@@ -21,6 +15,10 @@ public class HisData {
     private int amountVol;
     private double avePrice;
     private double total;
+    private double ma5;
+    private double ma10;
+    private double ma20;
+    private double ma30;
 
     public double getClose() {
         return Close;
@@ -111,6 +109,38 @@ public class HisData {
         this.total = total;
     }
 
+    public double getMa5() {
+        return ma5;
+    }
+
+    public void setMa5(double ma5) {
+        this.ma5 = ma5;
+    }
+
+    public double getMa10() {
+        return ma10;
+    }
+
+    public void setMa10(double ma10) {
+        this.ma10 = ma10;
+    }
+
+    public double getMa20() {
+        return ma20;
+    }
+
+    public void setMa20(double ma20) {
+        this.ma20 = ma20;
+    }
+
+    public double getMa30() {
+        return ma30;
+    }
+
+    public void setMa30(double ma30) {
+        this.ma30 = ma30;
+    }
+
     @Override
     public String toString() {
         return "HisData{" +
@@ -123,6 +153,10 @@ public class HisData {
                 ", amountVol=" + amountVol +
                 ", avePrice=" + avePrice +
                 ", total=" + total +
+                ", ma5=" + ma5 +
+                ", ma10=" + ma10 +
+                ", ma20=" + ma20 +
+                ", ma30=" + ma30 +
                 '}';
     }
 }

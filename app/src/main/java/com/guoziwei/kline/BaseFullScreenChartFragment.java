@@ -50,6 +50,7 @@ public class BaseFullScreenChartFragment extends Fragment {
     public static final int MIN_COUNT_LINE = 100;
     public static final int MAX_COUNT_K = 100;
     public static final int MIN_COUNT_K = 60;
+
     protected AppCombinedChart mChartPrice;
     protected AppCombinedChart mChartVolume;
     protected XAxis xAxisPrice;
@@ -88,6 +89,8 @@ public class BaseFullScreenChartFragment extends Fragment {
     }
 
     protected void initChartPrice() {
+        mChartPrice.setBackgroundColor(getResources().getColor(R.color.chart_background));
+        mChartVolume.setBackgroundColor(getResources().getColor(R.color.chart_background));
         mChartPrice.setScaleEnabled(true);//启用图表缩放事件
         mChartPrice.setDrawBorders(false);//是否绘制边线
         mChartPrice.setBorderWidth(1);//边线宽度，单位dp
@@ -198,12 +201,20 @@ public class BaseFullScreenChartFragment extends Fragment {
 
         ArrayList<CandleEntry> lineCJEntries = new ArrayList<>(MAX_COUNT_K);
         ArrayList<Entry> lineJJEntries = new ArrayList<>(MAX_COUNT_K);
+        ArrayList<Entry> ma5Entries = new ArrayList<>(MAX_COUNT_K);
+        ArrayList<Entry> ma10Entries = new ArrayList<>(MAX_COUNT_K);
+        ArrayList<Entry> ma20Entries = new ArrayList<>(MAX_COUNT_K);
+        ArrayList<Entry> ma30Entries = new ArrayList<>(MAX_COUNT_K);
         ArrayList<Entry> paddingEntries = new ArrayList<>(MAX_COUNT_K);
 
         for (int i = 0; i < mData.size(); i++) {
             HisData hisData = mData.get(i);
             lineCJEntries.add(new CandleEntry(i, (float) hisData.getHigh(), (float) hisData.getLow(), (float) hisData.getOpen(), (float) hisData.getClose()));
             lineJJEntries.add(new Entry(i, (float) hisData.getAvePrice()));
+            ma5Entries.add(new Entry(i, (float) hisData.getMa5()));
+            ma10Entries.add(new Entry(i, (float) hisData.getMa10()));
+            ma20Entries.add(new Entry(i, (float) hisData.getMa20()));
+            ma30Entries.add(new Entry(i, (float) hisData.getMa30()));
         }
 
         if (!mData.isEmpty() && mData.size() < MAX_COUNT_K) {
@@ -214,7 +225,8 @@ public class BaseFullScreenChartFragment extends Fragment {
 
 
         /*注老版本LineData参数可以为空，最新版本会报错，修改进入ChartData加入if判断*/
-        LineData lineData = new LineData(setLine(1, lineJJEntries), setLine(2, paddingEntries));
+        LineData lineData = new LineData(setLine(1, lineJJEntries), setLine(2, paddingEntries), setLine(5, ma5Entries)
+                , setLine(10, ma10Entries), setLine(20, ma20Entries), setLine(30, ma30Entries));
         CandleData candleData = new CandleData(setKLine(0, lineCJEntries));
         CombinedData combinedData = new CombinedData();
         combinedData.setData(lineData);
@@ -264,20 +276,33 @@ public class BaseFullScreenChartFragment extends Fragment {
         combinedChartX.moveViewToX(combinedData.getEntryCount());
     }
 
+    /**
+     *
+     * @param type 0 分时图的线 1 均线 5 ma5 ....
+     */
     @android.support.annotation.NonNull
     private LineDataSet setLine(int type, ArrayList<Entry> lineEntries) {
         LineDataSet lineDataSetMa = new LineDataSet(lineEntries, "ma" + type);
         lineDataSetMa.setDrawValues(false);
         if (type == 0) {
-//            lineDataSetMa.setDrawFilled(true);
             lineDataSetMa.setColor(getResources().getColor(R.color.third_text_color));
             lineDataSetMa.setCircleColor(ContextCompat.getColor(mContext, R.color.third_text_color));
         } else if (type == 1) {
             lineDataSetMa.setColor(getResources().getColor(R.color.ave_color));
-            lineDataSetMa.setCircleColor(ContextCompat.getColor(mContext, R.color.ave_color));
+            lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
+        } else if (type == 5) {
+            lineDataSetMa.setColor(getResources().getColor(R.color.ma5));
+            lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
+        } else if (type == 10) {
+            lineDataSetMa.setColor(getResources().getColor(R.color.ma10));
+            lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
+        } else if (type == 20) {
+            lineDataSetMa.setColor(getResources().getColor(R.color.ma20));
+            lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
+        } else if (type == 30) {
+            lineDataSetMa.setColor(getResources().getColor(R.color.ma30));
             lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
         } else {
-//            lineDataSetMa.setColor(getResources().getColor(R.color.main_color_green));
             lineDataSetMa.setVisible(false);
             lineDataSetMa.setHighlightEnabled(false);
         }
@@ -453,6 +478,9 @@ public class BaseFullScreenChartFragment extends Fragment {
     }
 
 
+    /**
+     * 向图表中添加基准线
+     */
     protected void setLimitLine(double lastClose) {
         LimitLine limitLine = new LimitLine((float) lastClose);
         limitLine.enableDashedLine(5, 10, 0);

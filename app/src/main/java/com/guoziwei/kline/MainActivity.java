@@ -1,6 +1,9 @@
 package com.guoziwei.kline;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -9,12 +12,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fl_container1, FullScreenLineChartFragment.newInstance())
-                .replace(R.id.fl_container2, FullScreenKLineChartFragment.newInstance())
-                .replace(R.id.fl_container3, TimeSharingplanFragment.newInstance())
-                .replace(R.id.fl_container4, CandleStickChartFragment.newInstance())
-                .commitAllowingStateLoss();
+        TabLayout tabLayout = findViewById(R.id.tab);
+        ViewPager viewPager = findViewById(R.id.view_pager);
+        Fragment[] fragments = {TimeSharingplanFragment.newInstance(), CandleStickChartFragment.newInstance(), FullScreenLineChartFragment.newInstance(), FullScreenKLineChartFragment.newInstance()};
+        String[] titles = {"分时图动态版", "k线图简易版", "分时图专业版", "k线图专业版"};
+        viewPager.setOffscreenPageLimit(fragments.length);
+        viewPager.setAdapter(new SimpleFragmentPagerAdapter(getSupportFragmentManager(), fragments, titles));
+        tabLayout.setupWithViewPager(viewPager);
     }
 }
