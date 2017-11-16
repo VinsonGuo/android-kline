@@ -343,7 +343,7 @@ public class BaseFullScreenChartFragment extends Fragment {
         ArrayList<Entry> paddingEntries = new ArrayList<>();
         for (int i = 0; i < mData.size(); i++) {
             HisData t = mData.get(i);
-            barEntries.add(new BarEntry(i, t.getVol()));
+            barEntries.add(new BarEntry(i, t.getVol(), t));
         }
         int maxCount = mChartPrice.getData().getCandleData() == null ? MAX_COUNT_LINE : MAX_COUNT_K;
         if (!mData.isEmpty() && mData.size() < maxCount) {
@@ -353,11 +353,10 @@ public class BaseFullScreenChartFragment extends Fragment {
         }
         BarDataSet barDataSet = new BarDataSet(barEntries, "成交量");
         barDataSet.setDrawValues(false);//是否在线上绘制数值
-        barDataSet.setColor(getResources().getColor(R.color.increasing_color));//设置树状图颜色
         List<Integer> list = new ArrayList<>();
         list.add(getResources().getColor(R.color.increasing_color));
         list.add(getResources().getColor(R.color.decreasing_color));
-        barDataSet.setColors(list);//可以给树状图设置多个颜色，判断条件在BarChartRenderer 类的140行以下修改了判断条件
+        barDataSet.setColors(list);//可以给树状图设置多个颜色，判断条件在BarChartRendererdraw的DataSet方法做了修改
         BarData barData = new BarData(barDataSet);
         LineData lineData = new LineData(setLine(2, paddingEntries));
         CombinedData combinedData = new CombinedData();

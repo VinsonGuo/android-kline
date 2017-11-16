@@ -20,6 +20,7 @@ import com.github.mikephil.charting.utils.MPPointF;
 import com.github.mikephil.charting.utils.Transformer;
 import com.github.mikephil.charting.utils.Utils;
 import com.github.mikephil.charting.utils.ViewPortHandler;
+import com.guoziwei.kline.model.HisData;
 
 import java.util.List;
 
@@ -161,8 +162,31 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
             if (!isSingleColor) {
                 // Set the color for the currently drawn value. If the index
                 // is out of bounds, reuse colors.
-                mRenderPaint.setColor(dataSet.getColor(j / 4));
+//                mRenderPaint.setColor(dataSet.getColor(j / 4));
+
+                   /*这里给出的规则是假如成交量上涨，则为红，下跌则为绿*/
+                int i = j / 4;
+                BarEntry entryForIndex = dataSet.getEntryForIndex(i);
+                Object data = entryForIndex.getData();
+                if (data == null || !(data instanceof HisData)) {
+                    mRenderPaint.setColor(dataSet.getColor(i));
+                } else {
+                    if (((HisData) data).getClose() < ((HisData) data).getOpen()) {
+                        mRenderPaint.setColor(dataSet.getColors().get(1));
+                    } else {
+                        mRenderPaint.setColor(dataSet.getColors().get(0));
+                    }
+
+                    if (((HisData) data).getClose() == 0f && ((HisData) data).getOpen() == 0f) {
+                        if (((HisData) data).getVol() > 0) {
+                            mRenderPaint.setColor(dataSet.getColors().get(0));
+                        } else {
+                            mRenderPaint.setColor(dataSet.getColors().get(1));
+                        }
+                    }
+                }
             }
+
 
             c.drawRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
                     buffer.buffer[j + 3], mRenderPaint);
