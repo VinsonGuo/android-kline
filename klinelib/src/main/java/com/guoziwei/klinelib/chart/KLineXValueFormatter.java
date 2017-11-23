@@ -5,8 +5,6 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.guoziwei.klinelib.model.HisData;
 import com.guoziwei.klinelib.util.DateUtils;
 
-import org.joda.time.DateTime;
-
 import java.util.List;
 
 /**
@@ -23,8 +21,7 @@ public class KLineXValueFormatter implements IAxisValueFormatter {
     @Override
     public String getFormattedValue(float value, AxisBase axis) {
         if (mData != null && value < mData.size() && value >= 0) {
-            DateTime dateTime = new DateTime(mData.get((int) value).getsDate());
-            return DateUtils.formatTime(dateTime.getMillis());
+            return DateUtils.formatTime(mData.get((int) value).getDate());
         }
         return "";
     }

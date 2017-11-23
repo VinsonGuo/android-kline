@@ -73,8 +73,7 @@ public class TimeSharingplanChart extends RelativeLayout {
         @Override
         public String getFormattedValue(float value, AxisBase axis) {
             if (mList != null && value < mList.size()) {
-                DateTime dateTime = new DateTime(mList.get((int) value).getsDate());
-                return DateUtils.formatTime(dateTime.getMillis());
+                return DateUtils.formatTime(mList.get((int) value).getDate());
             }
             return "";
         }
@@ -304,7 +303,6 @@ public class TimeSharingplanChart extends RelativeLayout {
 
     private void setupSettingParameter() {
         mChart.setDrawGridBackground(false);
-        mChart.setBackgroundColor(ContextCompat.getColor(mContext, R.color.chart_background));
         LineChartXMarkerView mvx = new LineChartXMarkerView(mContext, mList);
         mvx.setChartView(mChart);
         mChart.setXMarker(mvx);
@@ -316,7 +314,7 @@ public class TimeSharingplanChart extends RelativeLayout {
         mChart.setAutoScaleMinMaxEnabled(true);
         mChart.setLogEnabled(BuildConfig.DEBUG);
 
-        LineChartYMarkerView mv = new LineChartYMarkerView(mContext, 0.01);
+        LineChartYMarkerView mv = new LineChartYMarkerView(mContext, 2);
         mv.setChartView(mChart);
         mChart.setMarker(mv);
         mChart.setOnChartValueSelectedListener(new InfoViewListener(mContext, 56.86, mList, mInfoView));
@@ -367,7 +365,7 @@ public class TimeSharingplanChart extends RelativeLayout {
         rightAxis.setLabelCount(6, true);
         rightAxis.setDrawAxisLine(false);
 
-        rightAxis.setValueFormatter(new YValueFormatter(0.01));
+        rightAxis.setValueFormatter(new YValueFormatter(2));
         Legend legend = mChart.getLegend();
         legend.setEnabled(false);
 

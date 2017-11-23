@@ -41,15 +41,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by dell on 2017/10/26.
+ * Created by guoziwei on 2017/10/26.
  */
 
 public class BaseFullScreenChartFragment extends Fragment {
 
-    public static final int MAX_COUNT_LINE = 200;
-    public static final int MIN_COUNT_LINE = 100;
-    public static final int MAX_COUNT_K = 100;
-    public static final int MIN_COUNT_K = 60;
+
+    public static final int NORMAL_LINE = 0;
+    /**
+     * 均线
+     */
+    public static final int AVE_LINE = 1;
+    /**
+     * 隐藏的线
+     */
+    public static final int INVISIABLE_LINE = 6;
+
+    public static final int HIGHLIGHT_LINE = 3;
+
+    public static final int MA5 = 5;
+    public static final int MA10 = 10;
+    public static final int MA20 = 20;
+    public static final int MA30 = 30;
+
+    public int MAX_COUNT_LINE = 200;
+    public int MIN_COUNT_LINE = 100;
+    public int MAX_COUNT_K = 100;
+    public int MIN_COUNT_K = 60;
 
     protected AppCombinedChart mChartPrice;
     protected AppCombinedChart mChartVolume;
@@ -89,14 +107,11 @@ public class BaseFullScreenChartFragment extends Fragment {
     }
 
     protected void initChartPrice() {
-        mChartPrice.setBackgroundColor(getResources().getColor(R.color.chart_background));
-        mChartVolume.setBackgroundColor(getResources().getColor(R.color.chart_background));
         mChartPrice.setScaleEnabled(true);//启用图表缩放事件
         mChartPrice.setDrawBorders(false);//是否绘制边线
         mChartPrice.setBorderWidth(1);//边线宽度，单位dp
         mChartPrice.setDragEnabled(true);//启用图表拖拽事件
         mChartPrice.setScaleYEnabled(false);//启用Y轴上的缩放
-//        mChartPrice.setBorderColor(getResources().getColor(R.color.border_color));//边线颜色
         mChartPrice.getDescription().setEnabled(false);//右下角对图表的描述信息
         mChartPrice.setAutoScaleMinMaxEnabled(true);
         LineChartXMarkerView mvx = new LineChartXMarkerView(mContext, mData);
@@ -110,7 +125,6 @@ public class BaseFullScreenChartFragment extends Fragment {
         xAxisPrice.setDrawLabels(false);//是否显示X坐标轴上的刻度，默认是true
         xAxisPrice.setDrawAxisLine(false);//是否绘制坐标轴的线，即含有坐标的那条线，默认是true
         xAxisPrice.setDrawGridLines(false);//是否显示X坐标轴上的刻度竖线，默认是true
-        xAxisPrice.enableGridDashedLine(10f, 10f, 0f);//绘制成虚线，只有在关闭硬件加速的情况下才能使用
 
         //左边y
         axisLeftPrice = mChartPrice.getAxisLeft();
@@ -225,9 +239,9 @@ public class BaseFullScreenChartFragment extends Fragment {
 
 
         /*注老版本LineData参数可以为空，最新版本会报错，修改进入ChartData加入if判断*/
-        LineData lineData = new LineData(setLine(1, lineJJEntries), setLine(2, paddingEntries), setLine(5, ma5Entries)
-                , setLine(10, ma10Entries), setLine(20, ma20Entries), setLine(30, ma30Entries));
-        CandleData candleData = new CandleData(setKLine(0, lineCJEntries));
+        LineData lineData = new LineData(setLine(NORMAL_LINE, lineJJEntries), setLine(AVE_LINE, paddingEntries), setLine(MA5, ma5Entries)
+                , setLine(MA10, ma10Entries), setLine(MA20, ma20Entries), setLine(MA30, ma30Entries));
+        CandleData candleData = new CandleData(setKLine(NORMAL_LINE, lineCJEntries));
         CombinedData combinedData = new CombinedData();
         combinedData.setData(lineData);
         combinedData.setData(candleData);
@@ -259,9 +273,9 @@ public class BaseFullScreenChartFragment extends Fragment {
             }
         }
         ArrayList<ILineDataSet> sets = new ArrayList<>();
-        sets.add(setLine(0, lineCJEntries));
-        sets.add(setLine(1, lineJJEntries));
-        sets.add(setLine(2, paddingEntries));
+        sets.add(setLine(NORMAL_LINE, lineCJEntries));
+        sets.add(setLine(AVE_LINE, lineJJEntries));
+        sets.add(setLine(INVISIABLE_LINE, paddingEntries));
         /*注老版本LineData参数可以为空，最新版本会报错，修改进入ChartData加入if判断*/
         LineData lineData = new LineData(sets);
 
@@ -277,36 +291,35 @@ public class BaseFullScreenChartFragment extends Fragment {
     }
 
     /**
-     *
      * @param type 0 分时图的线 1 均线 5 ma5 ....
      */
     @android.support.annotation.NonNull
     private LineDataSet setLine(int type, ArrayList<Entry> lineEntries) {
         LineDataSet lineDataSetMa = new LineDataSet(lineEntries, "ma" + type);
         lineDataSetMa.setDrawValues(false);
-        if (type == 0) {
+        if (type == NORMAL_LINE) {
             lineDataSetMa.setColor(getResources().getColor(R.color.third_text_color));
             lineDataSetMa.setCircleColor(ContextCompat.getColor(mContext, R.color.third_text_color));
-        } else if (type == 1) {
+        } else if (type == AVE_LINE) {
             lineDataSetMa.setColor(getResources().getColor(R.color.ave_color));
             lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
             lineDataSetMa.setHighlightEnabled(false);
-        }  else if (type == 3) {
+        } else if (type == HIGHLIGHT_LINE) {
             lineDataSetMa.setVisible(false);
             lineDataSetMa.setHighlightEnabled(true);
-        }else if (type == 5) {
+        } else if (type == MA5) {
             lineDataSetMa.setColor(getResources().getColor(R.color.ma5));
             lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
             lineDataSetMa.setHighlightEnabled(false);
-        } else if (type == 10) {
+        } else if (type == MA10) {
             lineDataSetMa.setColor(getResources().getColor(R.color.ma10));
             lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
             lineDataSetMa.setHighlightEnabled(false);
-        } else if (type == 20) {
+        } else if (type == MA20) {
             lineDataSetMa.setColor(getResources().getColor(R.color.ma20));
             lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
             lineDataSetMa.setHighlightEnabled(false);
-        } else if (type == 30) {
+        } else if (type == MA30) {
             lineDataSetMa.setColor(getResources().getColor(R.color.ma30));
             lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
             lineDataSetMa.setHighlightEnabled(false);
@@ -326,7 +339,7 @@ public class BaseFullScreenChartFragment extends Fragment {
 
     @android.support.annotation.NonNull
     private CandleDataSet setKLine(int type, ArrayList<CandleEntry> lineEntries) {
-        CandleDataSet set1 = new CandleDataSet(lineEntries, "ma" + type);
+        CandleDataSet set1 = new CandleDataSet(lineEntries, "KLine" + type);
         set1.setDrawIcons(false);
         set1.setAxisDependency(YAxis.AxisDependency.LEFT);
         set1.setShadowColor(Color.DKGRAY);
@@ -339,7 +352,7 @@ public class BaseFullScreenChartFragment extends Fragment {
         set1.setNeutralColor(ContextCompat.getColor(getContext(), R.color.increasing_color));
         //set1.setHighlightLineWidth(1f);
         set1.setDrawValues(false);
-        if (type != 0) {
+        if (type != NORMAL_LINE) {
             set1.setVisible(false);
         }
         return set1;
@@ -364,9 +377,9 @@ public class BaseFullScreenChartFragment extends Fragment {
         barDataSet.setHighLightAlpha(255);
         barDataSet.setHighLightColor(getResources().getColor(R.color.third_text_color));
         barDataSet.setDrawValues(false);//是否在线上绘制数值
-        barDataSet.setColors(getResources().getColor(R.color.increasing_color), getResources().getColor(R.color.decreasing_color));//可以给树状图设置多个颜色，判断条件在BarChartRenderer 类的140行以下修改了判断条件
+        barDataSet.setColors(getResources().getColor(R.color.increasing_color), getResources().getColor(R.color.decreasing_color));
         BarData barData = new BarData(barDataSet);
-        LineData lineData = new LineData(setLine(3, highlightEntries), setLine(2, paddingEntries));
+        LineData lineData = new LineData(setLine(HIGHLIGHT_LINE, highlightEntries), setLine(INVISIABLE_LINE, paddingEntries));
         CombinedData combinedData = new CombinedData();
         combinedData.setData(lineData);
         combinedData.setData(barData);
@@ -459,6 +472,9 @@ public class BaseFullScreenChartFragment extends Fragment {
         }
     }
 
+    /**
+     * 对齐两个图表
+     */
     protected void setOffset() {
         float lineLeft = mChartPrice.getViewPortHandler().offsetLeft();
         float barLeft = mChartVolume.getViewPortHandler().offsetLeft();
@@ -484,6 +500,16 @@ public class BaseFullScreenChartFragment extends Fragment {
 
     }
 
+
+    public void setLineCount(int max, int min) {
+        MAX_COUNT_LINE = max;
+        MIN_COUNT_LINE = min;
+    }
+
+    public void setKCount(int max, int min) {
+        MAX_COUNT_K = max;
+        MIN_COUNT_K = min;
+    }
 
     /**
      * 向图表中添加基准线

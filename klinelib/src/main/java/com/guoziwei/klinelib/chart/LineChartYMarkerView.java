@@ -20,19 +20,22 @@ import com.guoziwei.klinelib.util.DoubleUtil;
  */
 public class LineChartYMarkerView extends MarkerView {
 
-    private final double mTick;
+    private final int digits;
     private TextView tvContent;
 
-    public LineChartYMarkerView(Context context, double tick) {
+    /**
+     * @param digits 价格的精度
+     */
+    public LineChartYMarkerView(Context context, int digits) {
         super(context, R.layout.view_mp_real_price_marker);
-        mTick = tick;
+        this.digits = digits;
         tvContent = (TextView) findViewById(R.id.tvContent);
     }
 
     @Override
     public void refreshContent(Entry e, Highlight highlight) {
         float value = e.getY();
-        tvContent.setText(DoubleUtil.getStringByTick(value, mTick));
+        tvContent.setText(DoubleUtil.getStringByDigits(value, digits));
         super.refreshContent(e, highlight);
     }
 

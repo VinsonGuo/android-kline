@@ -6,12 +6,12 @@ package com.guoziwei.klinelib.model;
  */
 
 public class HisData {
-    private double Close;
-    private double High;
-    private double Low;
-    private double Open;
-    private int Vol;
-    private String sDate;
+    private double close;
+    private double high;
+    private double low;
+    private double open;
+    private int vol;
+    private long date;
     private int amountVol;
     private double avePrice;
     private double total;
@@ -21,52 +21,45 @@ public class HisData {
     private double ma30;
 
     public double getClose() {
-        return Close;
+        return close;
     }
 
     public void setClose(double close) {
-        Close = close;
+        this.close = close;
     }
 
     public double getHigh() {
-        return High;
+        return high;
     }
 
     public void setHigh(double high) {
-        High = high;
+        this.high = high;
     }
 
     public double getLow() {
-        return Low;
+        return low;
     }
 
     public void setLow(double low) {
-        Low = low;
+        this.low = low;
     }
 
     public double getOpen() {
-        return Open;
+        return open;
     }
 
     public void setOpen(double open) {
-        Open = open;
+        this.open = open;
     }
 
     public int getVol() {
-        return Vol;
+        return vol;
     }
 
     public void setVol(int vol) {
-        Vol = vol;
+        this.vol = vol;
     }
 
-    public String getsDate() {
-        return sDate;
-    }
-
-    public void setsDate(String sDate) {
-        this.sDate = sDate;
-    }
 
     public double getAvePrice() {
         return avePrice;
@@ -76,21 +69,6 @@ public class HisData {
         this.avePrice = avePrice;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        HisData hisData = (HisData) o;
-
-        return sDate != null ? sDate.equals(hisData.sDate) : hisData.sDate == null;
-
-    }
-
-    @Override
-    public int hashCode() {
-        return sDate != null ? sDate.hashCode() : 0;
-    }
 
     public int getAmountVol() {
         return amountVol;
@@ -141,15 +119,39 @@ public class HisData {
         this.ma30 = ma30;
     }
 
+
+    public long getDate() {
+        return date;
+    }
+
+    public void setDate(long date) {
+        this.date = date;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        HisData data = (HisData) o;
+
+        return date == data.date;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (date ^ (date >>> 32));
+    }
+
     @Override
     public String toString() {
         return "HisData{" +
-                "Close=" + Close +
-                ", High=" + High +
-                ", Low=" + Low +
-                ", Open=" + Open +
-                ", Vol=" + Vol +
-                ", sDate='" + sDate + '\'' +
+                "close=" + close +
+                ", high=" + high +
+                ", low=" + low +
+                ", open=" + open +
+                ", vol=" + vol +
+                ", date=" + date +
                 ", amountVol=" + amountVol +
                 ", avePrice=" + avePrice +
                 ", total=" + total +

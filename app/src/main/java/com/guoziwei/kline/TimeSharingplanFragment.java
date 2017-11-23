@@ -59,7 +59,7 @@ public class TimeSharingplanFragment extends Fragment {
 
     protected void initData() {
 
-        final List<HisData> list = DataUtils.parseHisData(Util.getJsonString(getActivity()), mChart.getLastData());
+        final List<HisData> list = DataUtils.calculateHisData(Util.getHisData(getActivity()), mChart.getLastData());
         if (list == null || list.isEmpty()) {
             mChart.setNoDataText("加载失败");
             return;

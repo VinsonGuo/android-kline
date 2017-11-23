@@ -62,7 +62,7 @@ public class KLineChartInfoView extends ChartInfoView {
 
     @Override
     public void setData(double lastClose, HisData data) {
-        mTvTime.setText(DateUtils.formatData(new DateTime(data.getsDate()).getMillis()));
+        mTvTime.setText(DateUtils.formatData(data.getDate()));
         mTvClosePrice.setText(DoubleUtil.formatDecimal(data.getClose()));
         mTvOpenPrice.setText(DoubleUtil.formatDecimal(data.getOpen()));
         mTvHighPrice.setText(DoubleUtil.formatDecimal(data.getHigh()));

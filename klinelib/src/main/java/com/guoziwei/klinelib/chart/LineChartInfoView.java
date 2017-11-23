@@ -61,7 +61,7 @@ public class LineChartInfoView extends ChartInfoView {
 
     @Override
     public void setData(double lastClose, HisData data) {
-        mTvTime.setText(DateUtils.formatData(new DateTime(data.getsDate()).getMillis()));
+        mTvTime.setText(DateUtils.formatData(data.getDate()));
         mTvPrice.setText(DoubleUtil.formatDecimal(data.getClose()));
 //        mTvChangeRate.setText(String.format(Locale.getDefault(), "%.2f%%", (data.getClose()- data.getOpen()) / data.getOpen() * 100));
         mTvChangeRate.setText(String.format(Locale.getDefault(), "%.2f%%", (data.getClose() - lastClose) / lastClose * 100));

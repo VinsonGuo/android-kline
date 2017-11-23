@@ -39,8 +39,7 @@ public class LineChartXMarkerView extends MarkerView {
     public void refreshContent(Entry e, Highlight highlight) {
         int value = (int) e.getX();
         if (mList != null && value < mList.size()) {
-            DateTime dateTime = new DateTime(mList.get(value).getsDate());
-            tvContent.setText(DateUtils.formatTime(dateTime.getMillis()));
+            tvContent.setText(DateUtils.formatTime(mList.get(value).getDate()));
         }
         super.refreshContent(e, highlight);
     }

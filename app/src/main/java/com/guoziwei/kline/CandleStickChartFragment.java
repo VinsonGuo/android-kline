@@ -73,7 +73,7 @@ public class CandleStickChartFragment extends Fragment {
         fl.addView(mChart);
         fl.addView(mInfoView);
 
-        mList = DataUtils.parseHisData(Util.getJsonString(getActivity()), null);
+        mList = DataUtils.calculateHisData(Util.getHisData(getActivity()), null);
         initChart();
         fullData(mList);
 
@@ -81,7 +81,6 @@ public class CandleStickChartFragment extends Fragment {
     }
 
     private void initChart() {
-        mChart.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.chart_background));
         mChart.getDescription().setEnabled(false);
         mChart.setNoDataText(getString(R.string.loading));
         mChart.setNoDataTextColor(ContextCompat.getColor(getActivity(), R.color.third_text_color));
@@ -96,7 +95,7 @@ public class CandleStickChartFragment extends Fragment {
         mMvx.setChartView(mChart);
         mChart.setXMarker(mMvx);
 
-        LineChartYMarkerView mv = new LineChartYMarkerView(getActivity(), 0.01);
+        LineChartYMarkerView mv = new LineChartYMarkerView(getActivity(), 2);
         mv.setChartView(mChart);
         mChart.setMarker(mv);
 
@@ -118,7 +117,7 @@ public class CandleStickChartFragment extends Fragment {
         rightAxis.setGridLineWidth(0.5f);
         rightAxis.setDrawAxisLine(false);
         rightAxis.enableGridDashedLine(5, 5, 0);
-        rightAxis.setValueFormatter(new YValueFormatter(0.01));
+        rightAxis.setValueFormatter(new YValueFormatter(2));
 //        rightAxis.setDrawAxisLine(false);
 
         YAxis leftAxis = mChart.getAxisLeft();

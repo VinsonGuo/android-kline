@@ -35,8 +35,8 @@ public class FullScreenLineChartFragment extends BaseFullScreenChartFragment {
         mChartPrice.setOnChartValueSelectedListener(new InfoViewListener(mContext, 56.01, mData, mKInfo, mChartVolume));
         mChartVolume.setOnChartValueSelectedListener(new InfoViewListener(mContext, 56.01, mData, mLineInfo, mChartPrice));
         mChartPrice.setOnTouchListener(new ChartInfoViewHandler(mChartPrice));
-        axisLeftPrice.setValueFormatter(new YValueFormatter(0.01));
-        mData.addAll(DataUtils.parseHisData(Util.getJsonString(mContext), null));
+        axisLeftPrice.setValueFormatter(new YValueFormatter(2));
+        mData.addAll(DataUtils.calculateHisData(Util.getHisData(mContext), null));
         setLimitLine(56.01);
         initChartPriceData(mChartPrice);
         initChartVolumeData(mChartVolume);

@@ -1,15 +1,7 @@
 package com.guoziwei.klinelib.util;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.guoziwei.klinelib.model.HisData;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,14 +11,12 @@ import java.util.List;
 
 public class DataUtils {
 
-    private static Gson sGson = new Gson();
 
     /**
-     * 解析数据，并计算均线 ma等数值
+     * 计算均线 ma等数值
      */
-    public static List<HisData> parseHisData(String jsonString, HisData lastData) {
-        final List<HisData> list = sGson.fromJson(jsonString, new TypeToken<List<HisData>>() {
-        }.getType());
+    public static List<HisData> calculateHisData(List<HisData> list, HisData lastData) {
+
 
         List<Double> ma5List = calculateMA(5, list);
         List<Double> ma10List = calculateMA(10, list);
@@ -68,23 +58,11 @@ public class DataUtils {
         return list;
     }
 
-//    function calculateMA (dayCount, data) {
-//        var result = []
-//        for (var i = 0, len = data.values.length; i < len; i++) {
-//            if (i < dayCount) {
-//                result.push('-')
-//                continue
-//            }
-//            var sum = 0
-//            for (var j = 0; j < dayCount; j++) {
-//                sum += data.values[i - j][1]
-//            }
-//            result.push(+(sum / dayCount).toFixed(3))
-//        }
-//        return result
-//    }
 
-    // [item.sDate, item.Open, item.Close, item.Low, item.High, item.Vol]
+    /**
+     * 计算ma数据
+     * @param dayCount 例如 5 10 15 30
+     */
     public static List<Double> calculateMA(int dayCount, List<HisData> data) {
         List<Double> result = new ArrayList<>(data.size());
         for (int i = 0, len = data.size(); i < len; i++) {
