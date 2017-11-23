@@ -5,11 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.guoziwei.kline.chart.ChartInfoViewHandler;
-import com.guoziwei.kline.chart.InfoViewListener;
-import com.guoziwei.kline.chart.KLineXValueFormatter;
-import com.guoziwei.kline.chart.YValueFormatter;
-import com.guoziwei.kline.util.DataUtils;
+import com.guoziwei.klinelib.chart.ChartInfoViewHandler;
+import com.guoziwei.klinelib.chart.InfoViewListener;
+import com.guoziwei.klinelib.chart.KLineXValueFormatter;
+import com.guoziwei.klinelib.chart.YValueFormatter;
+import com.guoziwei.klinelib.util.DataUtils;
+
 
 public class FullScreenKLineChartFragment extends BaseFullScreenChartFragment {
 
@@ -35,7 +36,7 @@ public class FullScreenKLineChartFragment extends BaseFullScreenChartFragment {
         mChartVolume.setOnChartValueSelectedListener(new InfoViewListener(mContext, 56.01, mData, mLineInfo, mChartPrice));
         mChartPrice.setOnTouchListener(new ChartInfoViewHandler(mChartPrice));
         axisLeftPrice.setValueFormatter(new YValueFormatter(0.01));
-        mData.addAll(DataUtils.parseHisData(mContext, null));
+        mData.addAll(DataUtils.parseHisData(Util.getJsonString(mContext), null));
         setLimitLine(56.01);
         initChartKData(mChartPrice);
         initChartVolumeData(mChartVolume);

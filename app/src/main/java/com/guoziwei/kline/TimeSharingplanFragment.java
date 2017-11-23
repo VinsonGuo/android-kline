@@ -8,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.guoziwei.kline.chart.TimeSharingplanChart;
-import com.guoziwei.kline.model.HisData;
-import com.guoziwei.kline.util.DataUtils;
+import com.guoziwei.klinelib.chart.TimeSharingplanChart;
+import com.guoziwei.klinelib.model.HisData;
+import com.guoziwei.klinelib.util.DataUtils;
 
 import java.util.List;
 import java.util.Timer;
@@ -59,7 +59,7 @@ public class TimeSharingplanFragment extends Fragment {
 
     protected void initData() {
 
-        final List<HisData> list = DataUtils.parseHisData(getActivity(), mChart.getLastData());
+        final List<HisData> list = DataUtils.parseHisData(Util.getJsonString(getActivity()), mChart.getLastData());
         if (list == null || list.isEmpty()) {
             mChart.setNoDataText("加载失败");
             return;

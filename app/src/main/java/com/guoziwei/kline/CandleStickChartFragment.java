@@ -25,18 +25,18 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.listener.ChartTouchListener;
 import com.github.mikephil.charting.listener.OnChartGestureListener;
 import com.github.mikephil.charting.utils.ViewPortHandler;
-import com.guoziwei.kline.chart.AppCombinedChart;
-import com.guoziwei.kline.chart.ChartInfoView;
-import com.guoziwei.kline.chart.ChartInfoViewHandler;
-import com.guoziwei.kline.chart.InfoViewListener;
-import com.guoziwei.kline.chart.KLineChartInfoView;
-import com.guoziwei.kline.chart.KLineXValueFormatter;
-import com.guoziwei.kline.chart.LineChartXMarkerView;
-import com.guoziwei.kline.chart.LineChartYMarkerView;
-import com.guoziwei.kline.chart.YValueFormatter;
-import com.guoziwei.kline.model.HisData;
-import com.guoziwei.kline.util.DataUtils;
-import com.guoziwei.kline.util.DisplayUtils;
+import com.guoziwei.klinelib.chart.AppCombinedChart;
+import com.guoziwei.klinelib.chart.ChartInfoView;
+import com.guoziwei.klinelib.chart.ChartInfoViewHandler;
+import com.guoziwei.klinelib.chart.InfoViewListener;
+import com.guoziwei.klinelib.chart.KLineChartInfoView;
+import com.guoziwei.klinelib.chart.KLineXValueFormatter;
+import com.guoziwei.klinelib.chart.LineChartXMarkerView;
+import com.guoziwei.klinelib.chart.LineChartYMarkerView;
+import com.guoziwei.klinelib.chart.YValueFormatter;
+import com.guoziwei.klinelib.model.HisData;
+import com.guoziwei.klinelib.util.DataUtils;
+import com.guoziwei.klinelib.util.DisplayUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +73,7 @@ public class CandleStickChartFragment extends Fragment {
         fl.addView(mChart);
         fl.addView(mInfoView);
 
-        mList = DataUtils.parseHisData(getActivity(), null);
+        mList = DataUtils.parseHisData(Util.getJsonString(getActivity()), null);
         initChart();
         fullData(mList);
 

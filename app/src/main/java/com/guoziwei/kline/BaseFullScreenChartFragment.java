@@ -31,11 +31,11 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ICandleDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.Utils;
-import com.guoziwei.kline.chart.AppCombinedChart;
-import com.guoziwei.kline.chart.ChartInfoView;
-import com.guoziwei.kline.chart.CoupleChartGestureListener;
-import com.guoziwei.kline.chart.LineChartXMarkerView;
-import com.guoziwei.kline.model.HisData;
+import com.guoziwei.klinelib.chart.AppCombinedChart;
+import com.guoziwei.klinelib.chart.ChartInfoView;
+import com.guoziwei.klinelib.chart.CoupleChartGestureListener;
+import com.guoziwei.klinelib.chart.LineChartXMarkerView;
+import com.guoziwei.klinelib.model.HisData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -290,18 +290,26 @@ public class BaseFullScreenChartFragment extends Fragment {
         } else if (type == 1) {
             lineDataSetMa.setColor(getResources().getColor(R.color.ave_color));
             lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
-        } else if (type == 5) {
+            lineDataSetMa.setHighlightEnabled(false);
+        }  else if (type == 3) {
+            lineDataSetMa.setVisible(false);
+            lineDataSetMa.setHighlightEnabled(true);
+        }else if (type == 5) {
             lineDataSetMa.setColor(getResources().getColor(R.color.ma5));
             lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
+            lineDataSetMa.setHighlightEnabled(false);
         } else if (type == 10) {
             lineDataSetMa.setColor(getResources().getColor(R.color.ma10));
             lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
+            lineDataSetMa.setHighlightEnabled(false);
         } else if (type == 20) {
             lineDataSetMa.setColor(getResources().getColor(R.color.ma20));
             lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
+            lineDataSetMa.setHighlightEnabled(false);
         } else if (type == 30) {
             lineDataSetMa.setColor(getResources().getColor(R.color.ma30));
             lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
+            lineDataSetMa.setHighlightEnabled(false);
         } else {
             lineDataSetMa.setVisible(false);
             lineDataSetMa.setHighlightEnabled(false);
@@ -338,30 +346,30 @@ public class BaseFullScreenChartFragment extends Fragment {
     }
 
     protected void initChartVolumeData(CombinedChart combinedChartX) {
-
         ArrayList<BarEntry> barEntries = new ArrayList<>();
         ArrayList<Entry> paddingEntries = new ArrayList<>();
+        ArrayList<Entry> highlightEntries = new ArrayList<>();
         for (int i = 0; i < mData.size(); i++) {
             HisData t = mData.get(i);
             barEntries.add(new BarEntry(i, t.getVol(), t));
+            highlightEntries.add(new Entry(i, 0));
         }
         int maxCount = mChartPrice.getData().getCandleData() == null ? MAX_COUNT_LINE : MAX_COUNT_K;
         if (!mData.isEmpty() && mData.size() < maxCount) {
             for (int i = mData.size(); i < maxCount; i++) {
-                paddingEntries.add(new BarEntry(i, 0));
+                paddingEntries.add(new Entry(i, 0));
             }
         }
         BarDataSet barDataSet = new BarDataSet(barEntries, "成交量");
+        barDataSet.setHighLightAlpha(255);
+        barDataSet.setHighLightColor(getResources().getColor(R.color.third_text_color));
         barDataSet.setDrawValues(false);//是否在线上绘制数值
-        List<Integer> list = new ArrayList<>();
-        list.add(getResources().getColor(R.color.increasing_color));
-        list.add(getResources().getColor(R.color.decreasing_color));
-        barDataSet.setColors(list);//可以给树状图设置多个颜色，判断条件在BarChartRendererdraw的DataSet方法做了修改
+        barDataSet.setColors(getResources().getColor(R.color.increasing_color), getResources().getColor(R.color.decreasing_color));//可以给树状图设置多个颜色，判断条件在BarChartRenderer 类的140行以下修改了判断条件
         BarData barData = new BarData(barDataSet);
-        LineData lineData = new LineData(setLine(2, paddingEntries));
+        LineData lineData = new LineData(setLine(3, highlightEntries), setLine(2, paddingEntries));
         CombinedData combinedData = new CombinedData();
-        combinedData.setData(barData);
         combinedData.setData(lineData);
+        combinedData.setData(barData);
         combinedChartX.setData(combinedData);
 
         if (mChartPrice.getData().getCandleData() != null) {
