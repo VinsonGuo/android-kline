@@ -21,6 +21,18 @@ public class HisData {
     private double ma20;
     private double ma30;
 
+    public HisData() {
+    }
+
+    public HisData(double close, double high, double low, double open, int vol, long date) {
+        this.close = close;
+        this.high = high;
+        this.low = low;
+        this.open = open;
+        this.vol = vol;
+        this.date = date;
+    }
+
     public double getClose() {
         return close;
     }

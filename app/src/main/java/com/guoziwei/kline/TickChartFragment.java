@@ -37,7 +37,7 @@ public class TickChartFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mChart = new TickChart(getActivity());
+        mChart = new TickChart(getContext());
         initData();
         return mChart;
     }

@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.guoziwei.klinelib.chart.KLineView;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
