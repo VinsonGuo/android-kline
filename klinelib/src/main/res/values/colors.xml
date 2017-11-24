@@ -1,141 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="main_color">#5daeea</color>
     <color name="main_color_red">#ff3b30</color>
     <color name="main_color_green">#4cd964</color>
-    <color name="link_color">#002f9a</color>
-    <color name="tab_color">#999999</color>
-    <color name="divider_color">@color/color_333333</color>
-    <color name="trader_chart_line_color">#f9d2c9</color>
-    <color name="unselect_button">#9d9fa5</color>
 
-    <color name="shadow">#cc222222</color>
-
-    <color name="background">#f2f2f2</color>
-    <color name="background_dark">#181818</color>
-    <color name="p15_dard">#26000000</color>
-    <color name="line_head">#b9bbc1</color>
-    <color name="line_trader">#ced0d5</color>
-    <color name="line_trader_divider">#ebedf3</color>
-    <color name="white">#FFFFFF</color>
-    <color name="main_text_color">@color/white</color>
-    <color name="second_text_color">#b7b7b7</color>
-    <color name="third_text_color">#be945c</color>
-    <color name="forth_text_color">#333333</color>
-    <color name="radio_color_small">#798595</color>
-
-    <color name="color_20_ffffff">#33ffffff</color>
-    <color name="half_white">#80FFFFFF</color>
-    <color name="mine_title_line">#3e3e3e</color>
-    <color name="color_7ffbad8f">#7ffbad8f</color>
-    <color name="color_f7791f">#f7791f</color>
-    <color name="color_f4f5f8">#f4f5f8</color>
-    <color name="color_dbdce4">#dbdce4</color>
-    <color name="color_ebedf3">#ebedf3</color>
-    <color name="color_15_000000">#26000000</color>
-    <color name="color_40_000000">#66000000</color>
-    <color name="color_50_000000">#80000000</color>
-    <color name="color_5_000000">#0d000000</color>
-    <color name="color_50_ffffff">#80ffffff</color>
-    <color name="color_70_ffffff">#B3ffffff</color>
-    <color name="color_5_ffffff">#0dffffff</color>
-    <color name="color_3b3c4b">#3b3c4b</color>
-    <color name="color_a0a0a8">#a0a0a8</color>
-    <!--错误提示的color-->
-    <color name="color_ff0000">#ff0000</color>
-    <color name="color_f8f8f8">#f8f8f8</color>
-    <color name="color_edeff1">#edeff1</color>
-    <!--login-->
-    <color name="color_444553">#444553</color>
-    <color name="color_aaaaaa">#aaaaaa</color>
-    <!--circle popuwindow bg -->
-    <color name="color_F2787981">#F2787981</color>
-    <color name="color_F2787981_50p">#787981</color>
-    <color name="color_FF787981">#ff787981</color>
-    <color name="color_FFAA00">#ffaa00</color>
-    <color name="color_2095D4">#2095d4</color>
-    <color name="color_f2f2f5">#f2f2f5</color>
-
-    <color name="color_333333">#333333</color>
-    <color name="color_f67a5b">#f67a5b</color>
-    <color name="color_77333333">#77333333</color>
-    <color name="color_99333333">#99333333</color>
-    <color name="color_93949f">#93949f</color>
-    <color name="color_2e303a">#632e303a</color>
-    <color name="color_ced1da">#ced1da</color>
-    <color name="color_e3e6ef">#e3e6ef</color>
-
-    <color name="background_color">#e5e6ec</color>
-    <color name="color_e5e6ec">#e5e6ec</color>
-    <color name="progress_color_deficit">#f67a5b</color>
-    <color name="progress_color_profit">#33dcaa</color>
-    <color name="color_efefef">#efefef</color>
-    <color name="color_f7f7fa">#f7f7fa</color>
-    <color name="color_f77a1f">#f77a1f</color>
-    <color name="color_f59149">#f59149</color>
-    <color name="color_f56262">#f56262</color>
-    <color name="color_fef1e2">#fef1e2</color>
-    <color name="color_dddddd">#dddddd</color>
-    <color name="color_e61f19">#e61f19</color>
-    <color name="color_00b876">#00b876</color>
-    <color name="color_fef1e2_transparent">#00fef1e2</color>
-
-    <color name="color_bebebe">#bebebe</color>
-    <color name="color_f0f2f3">#f0f2f3</color>
-    <color name="color_737375">#737375</color>
-    <color name="color_225437">#225437</color>
-    <color name="color_00b395">#00b395</color>
-    <color name="color_e6e6e6">#e6e6e6</color>
-    <color name="color_2000b395">#3300b395</color>
-    <color name="color_20f56262">#33f56262</color>
-    <color name="color_bbbbbb">#bbbbbb</color>
-    <color name="color_fff7f2">#fff7f2</color>
-    <color name="color_0dc800">#0dc800</color>
-    <color name="color_666666">#666666</color>
-    <color name="color_f3f3f3">#f3f3f3</color>
-    <color name="color_ff6200">#ff6200</color>
-    <color name="color_ebecf2">#ebecf2</color>
-    <color name="color_0083f2">#0083f2</color>
-    <color name="color_fef9df">#fef9df</color>
-    <color name="color_ff8500">#ff8500</color>
-    <color name="color_0fa1e0">#0fa1e0</color>
-    <color name="color_ffded4">#ffded4</color>
-    <color name="color_fff9f2">#fff9f2</color>
-    <color name="color_e4e5ea">#e4e5ea</color>
-    <color name="color_b599ff">#b599ff</color>
-    <color name="color_f4f4f4">#f4f4f4</color>
-    <color name="color_d8d8de">#d8d8de</color>
-    <color name="color_5_333333">#0D333333</color>
-    <color name="color_484954">#484954</color>
-    <color name="color_f9f9f9">#f9f9f9</color>
-    <color name="color_eeeeee">#eeeeee</color>
-    <color name="color_e5e5e5">#e5e5e5</color>
-    <color name="color_cccccc">#cccccc</color>
-    <color name="color_ebeced">#ebeced</color>
-    <color name="color_c5c5c5">#c5c5c5</color>
-    <color name="color_78797a">#78797a</color>
-    <color name="transparent">#00ffffff</color>
-    <color name="color_ced0d5">#ced0d5</color>
-    <color name="grainsboro">#DCDCDC</color>
-    <color name="black">#000000</color>
-    <color name="grey">#c0c0c0</color>
-    <color name="color_dedede">#dedede</color>
-    <color name="color_54fcfc">#54fcfc</color>
-    <color name="color_800000">#800000</color>
-    <color name="color_f2f2f2">#f2f2f2</color>
-    <color name="color_f5f9ff">#f5f9ff</color>
-    <color name="color_ffc600">#ffc600</color>
-    <color name="color_ff7200">#ff7200</color>
-    <color name="black_20">#33000000</color>
-    <color name="black_30">#4d000000</color>
-    <color name="black_35">#59000000</color>
-    <color name="chart_background">#0d0d0d</color>
-    <color name="color_0d0d0d">#0d0d0d</color>
-    <color name="color_111111">#111111</color>
-    <color name="color_d1d1d1">#d1d1d1</color>
 
 
     <!--图表-->
+
+    <color name="marker_color">#be945c</color>
+    <color name="marker_text_color">#333333</color>
+    <color name="chart_grid_color">#333333</color>
 
     <color name="ma5">#823E66</color>
     <color name="ma10">#B99C7A</color>
@@ -144,5 +18,11 @@
 
     <color name="increasing_color">@color/main_color_red</color>
     <color name="decreasing_color">@color/main_color_green</color>
-    <color name="ave_color">@color/color_bbbbbb</color>
+    <color name="normal_line_color">#be945c</color>
+    <color name="ave_color">#bbbbbb</color>
+    <color name="axis_color">#ffffff</color>
+    <color name="chart_info_color">#88000000</color>
+    <color name="chart_no_data_color">#be945c</color>
+    <color name="highlight_color">#be945c</color>
+    <color name="limit_color">#adadad</color>
 </resources>

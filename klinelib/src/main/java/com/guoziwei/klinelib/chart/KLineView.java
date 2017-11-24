@@ -1,16 +1,14 @@
-package com.guoziwei.kline;
+package com.guoziwei.klinelib.chart;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
-import com.github.mikephil.charting.charts.CombinedChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LimitLine;
@@ -31,20 +29,19 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ICandleDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.Utils;
-import com.guoziwei.klinelib.chart.AppCombinedChart;
-import com.guoziwei.klinelib.chart.ChartInfoView;
-import com.guoziwei.klinelib.chart.CoupleChartGestureListener;
-import com.guoziwei.klinelib.chart.LineChartXMarkerView;
+import com.guoziwei.klinelib.R;
 import com.guoziwei.klinelib.model.HisData;
+import com.guoziwei.klinelib.util.DataUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
+ * 专业版K线图
  * Created by guoziwei on 2017/10/26.
  */
-
-public class BaseFullScreenChartFragment extends Fragment {
+public class KLineView extends LinearLayout {
 
 
     public static final int NORMAL_LINE = 0;
@@ -81,30 +78,51 @@ public class BaseFullScreenChartFragment extends Fragment {
     protected ChartInfoView mLineInfo;
     protected ChartInfoView mKInfo;
     protected Context mContext;
-    private int textColor;
+    private int mAxisColor;
+    private int mTransparentColor;
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mContext = context;
+    /**
+     * 上一次的最新价
+     */
+    private double mLastPrice;
+
+    /**
+     * 昨收价
+     */
+    private double mLastClose;
+
+    /**
+     * 报价的精度
+     */
+    private int mDigits = 2;
+
+    public KLineView(Context context) {
+        this(context, null);
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_full_screen_line_chart, container, false);
-        mChartPrice = (AppCombinedChart) v.findViewById(R.id.line_chart);
-        mChartVolume = (AppCombinedChart) v.findViewById(R.id.bar_chart);
-        mLineInfo = (ChartInfoView) v.findViewById(R.id.line_info);
-        mKInfo = (ChartInfoView) v.findViewById(R.id.k_info);
-        textColor = ContextCompat.getColor(mContext, R.color.main_text_color);
-        mChartVolume.setNoDataText(getString(R.string.loading));
-        mChartPrice.setNoDataText(getString(R.string.loading));
+    public KLineView(Context context, @Nullable AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
+
+    public KLineView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        mContext = context;
+        LayoutInflater.from(context).inflate(R.layout.view_kline, this);
+        mChartPrice = (AppCombinedChart) findViewById(R.id.line_chart);
+        mChartVolume = (AppCombinedChart) findViewById(R.id.bar_chart);
+        mLineInfo = (ChartInfoView) findViewById(R.id.line_info);
+        mKInfo = (ChartInfoView) findViewById(R.id.k_info);
+        mLineInfo.setChart(mChartPrice, mChartVolume);
+        mKInfo.setChart(mChartPrice, mChartVolume);
+        mAxisColor = ContextCompat.getColor(mContext, R.color.axis_color);
+        mTransparentColor = getResources().getColor(android.R.color.transparent);
+        mChartVolume.setNoDataText(context.getString(R.string.loading));
+        mChartPrice.setNoDataText(context.getString(R.string.loading));
         initChartPrice();
         initChartVolume();
         initChartListener();
-
-        return v;
     }
+
 
     protected void initChartPrice() {
         mChartPrice.setScaleEnabled(true);//启用图表缩放事件
@@ -134,7 +152,8 @@ public class BaseFullScreenChartFragment extends Fragment {
         /*轴不显示 避免和border冲突*/
         axisLeftPrice.setDrawAxisLine(false);//是否绘制坐标轴的线，即含有坐标的那条线，默认是true
         axisLeftPrice.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART); //参数是INSIDE_CHART(Y轴坐标在内部) 或 OUTSIDE_CHART(在外部（默认是这个）)
-        axisLeftPrice.setTextColor(textColor);
+        axisLeftPrice.setTextColor(mAxisColor);
+        axisLeftPrice.setValueFormatter(new YValueFormatter(mDigits));
 
 
         //右边y
@@ -143,7 +162,7 @@ public class BaseFullScreenChartFragment extends Fragment {
         axisRightPrice.setDrawLabels(false);//参考上面
         axisRightPrice.setDrawGridLines(false);//参考上面
         axisRightPrice.setDrawAxisLine(false);//参考上面
-        axisRightPrice.setTextColor(textColor);
+        axisRightPrice.setTextColor(mAxisColor);
         axisRightPrice.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART); //参数是INSIDE_CHART(Y轴坐标在内部) 或 OUTSIDE_CHART(在外部（默认是这个）)
 
     }
@@ -157,7 +176,7 @@ public class BaseFullScreenChartFragment extends Fragment {
         mChartVolume.setScaleYEnabled(false);//启用Y轴上的缩放
 //        mChartVolume.setBorderColor(getResources().getColor(R.color.border_color));//边线颜色
         mChartVolume.getDescription().setEnabled(false);//右下角对图表的描述信息
-//        mChartVolume.setAutoScaleMinMaxEnabled(true);
+        mChartVolume.setAutoScaleMinMaxEnabled(true);
         Legend lineChartLegend = mChartVolume.getLegend();
         lineChartLegend.setEnabled(false);//是否绘制 Legend 图例
 
@@ -166,11 +185,12 @@ public class BaseFullScreenChartFragment extends Fragment {
         xAxisVolume.setDrawLabels(true);
         xAxisVolume.setDrawAxisLine(false);
         xAxisVolume.setDrawGridLines(false);
-        xAxisVolume.setTextColor(textColor);
+        xAxisVolume.setTextColor(mAxisColor);
         xAxisVolume.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxisVolume.setLabelCount(5, true);
         xAxisVolume.setAvoidFirstLastClipping(true);
 
+        xAxisVolume.setValueFormatter(new KLineXValueFormatter(mData));
 
         //左边y
         axisLeftVolume = mChartVolume.getAxisLeft();
@@ -179,18 +199,21 @@ public class BaseFullScreenChartFragment extends Fragment {
         /*轴不显示 避免和border冲突*/
         axisLeftVolume.setLabelCount(3, true);
         axisLeftVolume.setDrawAxisLine(false);//参考上面
-        axisLeftVolume.setTextColor(textColor);
+        axisLeftVolume.setTextColor(mAxisColor);
         axisLeftVolume.setAxisMinimum(0);
         axisLeftVolume.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
         axisLeftVolume.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
+                String s;
                 if (value > 10000) {
-                    return (int) (value / 10000) + "万";
+                    s = (int) (value / 10000) + "万";
                 } else if (value > 1000) {
-                    return (int) (value / 1000) + "千";
+                    s = (int) (value / 1000) + "千";
+                } else {
+                    s = (int) value + "";
                 }
-                return (int) value + "";
+                return String.format(Locale.getDefault(), "%1$5s", s);
             }
         });
 
@@ -209,9 +232,15 @@ public class BaseFullScreenChartFragment extends Fragment {
         mChartPrice.setOnChartGestureListener(new CoupleChartGestureListener(mChartPrice, mChartVolume));
 //        // 将交易量控件的滑动事件传递给K线控件
         mChartVolume.setOnChartGestureListener(new CoupleChartGestureListener(mChartVolume, mChartPrice));
+        mChartPrice.setOnChartValueSelectedListener(new InfoViewListener(mContext, mLastClose, mData, mKInfo, mChartVolume));
+        mChartVolume.setOnChartValueSelectedListener(new InfoViewListener(mContext, mLastClose, mData, mKInfo, mChartPrice));
+        mChartPrice.setOnTouchListener(new ChartInfoViewHandler(mChartPrice));
+        mChartVolume.setOnTouchListener(new ChartInfoViewHandler(mChartVolume));
     }
 
-    protected void initChartKData(AppCombinedChart combinedChartX) {
+    public void initChartKData(List<HisData> hisDatas) {
+        mData.clear();
+        mData.addAll(DataUtils.calculateHisData(hisDatas));
 
         ArrayList<CandleEntry> lineCJEntries = new ArrayList<>(MAX_COUNT_K);
         ArrayList<Entry> lineJJEntries = new ArrayList<>(MAX_COUNT_K);
@@ -237,27 +266,30 @@ public class BaseFullScreenChartFragment extends Fragment {
             }
         }
 
-
-        /*注老版本LineData参数可以为空，最新版本会报错，修改进入ChartData加入if判断*/
-        LineData lineData = new LineData(setLine(NORMAL_LINE, lineJJEntries), setLine(AVE_LINE, paddingEntries), setLine(MA5, ma5Entries)
-                , setLine(MA10, ma10Entries), setLine(MA20, ma20Entries), setLine(MA30, ma30Entries));
+        LineData lineData = new LineData(
+                setLine(AVE_LINE, lineJJEntries),
+                setLine(INVISIABLE_LINE, paddingEntries),
+                setLine(MA5, ma5Entries),
+                setLine(MA10, ma10Entries),
+                setLine(MA20, ma20Entries),
+                setLine(MA30, ma30Entries));
         CandleData candleData = new CandleData(setKLine(NORMAL_LINE, lineCJEntries));
         CombinedData combinedData = new CombinedData();
         combinedData.setData(lineData);
         combinedData.setData(candleData);
-        combinedChartX.setData(combinedData);
+        mChartPrice.setData(combinedData);
 
-        combinedChartX.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
-        combinedChartX.notifyDataSetChanged();
-        combinedChartX.invalidate();
-        combinedChartX.moveViewToX(combinedData.getEntryCount());
+        mChartPrice.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
+        mChartPrice.notifyDataSetChanged();
+        mChartPrice.invalidate();
+        mChartPrice.moveViewToX(combinedData.getEntryCount());
+        initChartVolumeData();
     }
 
-    protected void initChartPriceData(AppCombinedChart combinedChartX) {
+    public void initChartPriceData(List<HisData> hisDatas) {
 
-        if (mData == null || mData.isEmpty()) {
-            return;
-        }
+        mData.clear();
+        mData.addAll(DataUtils.calculateHisData(hisDatas));
 
         ArrayList<Entry> lineCJEntries = new ArrayList<>(MAX_COUNT_LINE);
         ArrayList<Entry> lineJJEntries = new ArrayList<>(MAX_COUNT_LINE);
@@ -281,47 +313,48 @@ public class BaseFullScreenChartFragment extends Fragment {
 
         CombinedData combinedData = new CombinedData();
         combinedData.setData(lineData);
-        combinedChartX.setData(combinedData);
+        mChartPrice.setData(combinedData);
 
-        combinedChartX.setVisibleXRange(MAX_COUNT_LINE, MIN_COUNT_LINE);
+        mChartPrice.setVisibleXRange(MAX_COUNT_LINE, MIN_COUNT_LINE);
 
-        combinedChartX.notifyDataSetChanged();
-        combinedChartX.invalidate();
-        combinedChartX.moveViewToX(combinedData.getEntryCount());
+        mChartPrice.notifyDataSetChanged();
+        mChartPrice.invalidate();
+        mChartPrice.moveViewToX(combinedData.getEntryCount());
+        initChartVolumeData();
     }
 
     /**
      * @param type 0 分时图的线 1 均线 5 ma5 ....
      */
     @android.support.annotation.NonNull
-    private LineDataSet setLine(int type, ArrayList<Entry> lineEntries) {
+    public LineDataSet setLine(int type, ArrayList<Entry> lineEntries) {
         LineDataSet lineDataSetMa = new LineDataSet(lineEntries, "ma" + type);
         lineDataSetMa.setDrawValues(false);
         if (type == NORMAL_LINE) {
-            lineDataSetMa.setColor(getResources().getColor(R.color.third_text_color));
-            lineDataSetMa.setCircleColor(ContextCompat.getColor(mContext, R.color.third_text_color));
+            lineDataSetMa.setColor(getResources().getColor(R.color.normal_line_color));
+            lineDataSetMa.setCircleColor(ContextCompat.getColor(mContext, R.color.normal_line_color));
         } else if (type == AVE_LINE) {
             lineDataSetMa.setColor(getResources().getColor(R.color.ave_color));
-            lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
+            lineDataSetMa.setCircleColor(mTransparentColor);
             lineDataSetMa.setHighlightEnabled(false);
         } else if (type == HIGHLIGHT_LINE) {
             lineDataSetMa.setVisible(false);
             lineDataSetMa.setHighlightEnabled(true);
         } else if (type == MA5) {
             lineDataSetMa.setColor(getResources().getColor(R.color.ma5));
-            lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
+            lineDataSetMa.setCircleColor(mTransparentColor);
             lineDataSetMa.setHighlightEnabled(false);
         } else if (type == MA10) {
             lineDataSetMa.setColor(getResources().getColor(R.color.ma10));
-            lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
+            lineDataSetMa.setCircleColor(mTransparentColor);
             lineDataSetMa.setHighlightEnabled(false);
         } else if (type == MA20) {
             lineDataSetMa.setColor(getResources().getColor(R.color.ma20));
-            lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
+            lineDataSetMa.setCircleColor(mTransparentColor);
             lineDataSetMa.setHighlightEnabled(false);
         } else if (type == MA30) {
             lineDataSetMa.setColor(getResources().getColor(R.color.ma30));
-            lineDataSetMa.setCircleColor(getResources().getColor(R.color.transparent));
+            lineDataSetMa.setCircleColor(mTransparentColor);
             lineDataSetMa.setHighlightEnabled(false);
         } else {
             lineDataSetMa.setVisible(false);
@@ -338,7 +371,7 @@ public class BaseFullScreenChartFragment extends Fragment {
     }
 
     @android.support.annotation.NonNull
-    private CandleDataSet setKLine(int type, ArrayList<CandleEntry> lineEntries) {
+    public CandleDataSet setKLine(int type, ArrayList<CandleEntry> lineEntries) {
         CandleDataSet set1 = new CandleDataSet(lineEntries, "KLine" + type);
         set1.setDrawIcons(false);
         set1.setAxisDependency(YAxis.AxisDependency.LEFT);
@@ -358,7 +391,7 @@ public class BaseFullScreenChartFragment extends Fragment {
         return set1;
     }
 
-    protected void initChartVolumeData(CombinedChart combinedChartX) {
+    private void initChartVolumeData() {
         ArrayList<BarEntry> barEntries = new ArrayList<>();
         ArrayList<Entry> paddingEntries = new ArrayList<>();
         ArrayList<Entry> highlightEntries = new ArrayList<>();
@@ -375,7 +408,7 @@ public class BaseFullScreenChartFragment extends Fragment {
         }
         BarDataSet barDataSet = new BarDataSet(barEntries, "成交量");
         barDataSet.setHighLightAlpha(255);
-        barDataSet.setHighLightColor(getResources().getColor(R.color.third_text_color));
+        barDataSet.setHighLightColor(getResources().getColor(R.color.highlight_color));
         barDataSet.setDrawValues(false);//是否在线上绘制数值
         barDataSet.setColors(getResources().getColor(R.color.increasing_color), getResources().getColor(R.color.decreasing_color));
         BarData barData = new BarData(barDataSet);
@@ -383,21 +416,25 @@ public class BaseFullScreenChartFragment extends Fragment {
         CombinedData combinedData = new CombinedData();
         combinedData.setData(lineData);
         combinedData.setData(barData);
-        combinedChartX.setData(combinedData);
+        mChartVolume.setData(combinedData);
 
         if (mChartPrice.getData().getCandleData() != null) {
-            combinedChartX.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
+            mChartVolume.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
         } else {
-            combinedChartX.setVisibleXRange(MAX_COUNT_LINE, MIN_COUNT_LINE);
+            mChartVolume.setVisibleXRange(MAX_COUNT_LINE, MIN_COUNT_LINE);
         }
         setOffset();
-        combinedChartX.notifyDataSetChanged();
-        combinedChartX.invalidate();
-        combinedChartX.moveViewToX(combinedData.getEntryCount());
+        mChartVolume.notifyDataSetChanged();
+        mChartVolume.invalidate();
+        mChartVolume.moveViewToX(combinedData.getEntryCount());
     }
 
-    protected void refreshData(float price) {
+    public void refreshData(float price) {
         try {
+            if (price <= 0 || price == mLastPrice) {
+                return;
+            }
+            mLastPrice = price;
             CombinedData data = mChartPrice.getData();
             if (data == null) return;
             LineData lineData = data.getLineData();
@@ -413,69 +450,75 @@ public class BaseFullScreenChartFragment extends Fragment {
         }
     }
 
-    protected void addLineData(List<HisData> hisDatas) {
+
+    public void addKData(HisData hisData) {
         try {
+            hisData = DataUtils.calculateHisData(hisData, mData);
+            LineData priceData = mChartPrice.getData().getLineData();
+            ILineDataSet aveSet = priceData.getDataSetByIndex(0);
+            ILineDataSet ma5Set = priceData.getDataSetByIndex(2);
+            ILineDataSet ma10Set = priceData.getDataSetByIndex(3);
+            ILineDataSet ma20Set = priceData.getDataSetByIndex(4);
+            ILineDataSet ma30Set = priceData.getDataSetByIndex(5);
+            CandleData kData = mChartPrice.getData().getCandleData();
+            ICandleDataSet kSet = kData.getDataSetByIndex(0);
+            IBarDataSet volSet = mChartVolume.getData().getBarData().getDataSetByIndex(0);
+            if (mData.contains(hisData)) {
+                int index = mData.indexOf(hisData);
+                kSet.removeEntry(index);
+                aveSet.removeEntry(index);
+                volSet.removeEntry(index);
+                mData.remove(index);
+            }
+            mData.add(hisData);
+            kSet.addEntry(new CandleEntry(kSet.getEntryCount(), (float) hisData.getHigh(), (float) hisData.getLow(), (float) hisData.getOpen(), (float) hisData.getClose()));
+            aveSet.addEntry(new Entry(aveSet.getEntryCount(), (float) hisData.getAvePrice()));
+            volSet.addEntry(new BarEntry(volSet.getEntryCount(), hisData.getVol()));
+            ma5Set.addEntry(new BarEntry(ma5Set.getEntryCount(), (float) hisData.getMa5()));
+            ma10Set.addEntry(new BarEntry(ma10Set.getEntryCount(), (float) hisData.getMa10()));
+            ma20Set.addEntry(new BarEntry(ma20Set.getEntryCount(), (float) hisData.getMa20()));
+            ma30Set.addEntry(new BarEntry(ma30Set.getEntryCount(), (float) hisData.getMa30()));
+            mChartPrice.notifyDataSetChanged();
+            mChartPrice.invalidate();
+            mChartVolume.notifyDataSetChanged();
+            mChartVolume.invalidate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addLineData(HisData hisData) {
+        try {
+            hisData = DataUtils.calculateHisData(hisData, mData);
             LineData priceData = mChartPrice.getData().getLineData();
             ILineDataSet priceSet = priceData.getDataSetByIndex(0);
             ILineDataSet aveSet = priceData.getDataSetByIndex(1);
             IBarDataSet volSet = mChartVolume.getData().getBarData().getDataSetByIndex(0);
-            for (int i = 0; i < hisDatas.size(); i++) {
-                HisData hisData = hisDatas.get(i);
-                if (mData.contains(hisData)) {
-                    int index = mData.indexOf(hisData);
-                    priceSet.removeEntry(index);
-                    aveSet.removeEntry(index);
-                    volSet.removeEntry(index);
-                    mData.remove(index);
-                }
-                mData.add(hisData);
-                priceSet.addEntry(new Entry(priceSet.getEntryCount(), (float) hisData.getClose()));
-                aveSet.addEntry(new Entry(aveSet.getEntryCount(), (float) hisData.getAvePrice()));
-                volSet.addEntry(new BarEntry(volSet.getEntryCount(), hisData.getVol()));
-                mChartPrice.notifyDataSetChanged();
-                mChartPrice.invalidate();
-                mChartVolume.notifyDataSetChanged();
-                mChartVolume.invalidate();
+            if (mData.contains(hisData)) {
+                int index = mData.indexOf(hisData);
+                priceSet.removeEntry(index);
+                aveSet.removeEntry(index);
+                volSet.removeEntry(index);
+                mData.remove(index);
             }
+            mData.add(hisData);
+            priceSet.addEntry(new Entry(priceSet.getEntryCount(), (float) hisData.getClose()));
+            aveSet.addEntry(new Entry(aveSet.getEntryCount(), (float) hisData.getAvePrice()));
+            volSet.addEntry(new BarEntry(volSet.getEntryCount(), hisData.getVol()));
+            mChartPrice.notifyDataSetChanged();
+            mChartPrice.invalidate();
+            mChartVolume.notifyDataSetChanged();
+            mChartVolume.invalidate();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    protected void addKData(List<HisData> hisDatas) {
-        try {
-            LineData priceData = mChartPrice.getData().getLineData();
-            ILineDataSet aveSet = priceData.getDataSetByIndex(0);
-            CandleData kData = mChartPrice.getData().getCandleData();
-            ICandleDataSet kSet = kData.getDataSetByIndex(0);
-            IBarDataSet volSet = mChartVolume.getData().getBarData().getDataSetByIndex(0);
-            for (int i = 0; i < hisDatas.size(); i++) {
-                HisData hisData = hisDatas.get(i);
-                if (mData.contains(hisData)) {
-                    int index = mData.indexOf(hisData);
-                    kSet.removeEntry(index);
-                    aveSet.removeEntry(index);
-                    volSet.removeEntry(index);
-                    mData.remove(index);
-                }
-                mData.add(hisData);
-                kSet.addEntry(new CandleEntry(kSet.getEntryCount(), (float) hisData.getHigh(), (float) hisData.getLow(), (float) hisData.getOpen(), (float) hisData.getClose()));
-                aveSet.addEntry(new Entry(aveSet.getEntryCount(), (float) hisData.getAvePrice()));
-                volSet.addEntry(new BarEntry(volSet.getEntryCount(), hisData.getVol()));
-                mChartPrice.notifyDataSetChanged();
-                mChartPrice.invalidate();
-                mChartVolume.notifyDataSetChanged();
-                mChartVolume.invalidate();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * 对齐两个图表
      */
-    protected void setOffset() {
+    private void setOffset() {
         float lineLeft = mChartPrice.getViewPortHandler().offsetLeft();
         float barLeft = mChartVolume.getViewPortHandler().offsetLeft();
         float lineRight = mChartPrice.getViewPortHandler().offsetRight();
@@ -501,11 +544,17 @@ public class BaseFullScreenChartFragment extends Fragment {
     }
 
 
+    /**
+     * 设置分时图元素的数量
+     */
     public void setLineCount(int max, int min) {
         MAX_COUNT_LINE = max;
         MIN_COUNT_LINE = min;
     }
 
+    /**
+     * 设置K线图元素的数量
+     */
     public void setKCount(int max, int min) {
         MAX_COUNT_K = max;
         MIN_COUNT_K = min;
@@ -514,9 +563,26 @@ public class BaseFullScreenChartFragment extends Fragment {
     /**
      * 向图表中添加基准线
      */
-    protected void setLimitLine(double lastClose) {
+    public void setLimitLine(double lastClose) {
         LimitLine limitLine = new LimitLine((float) lastClose);
         limitLine.enableDashedLine(5, 10, 0);
+        limitLine.setLineColor(getResources().getColor(R.color.limit_color));
         axisLeftPrice.addLimitLine(limitLine);
     }
+
+    public void setLimitLine() {
+        setLimitLine(mLastClose);
+    }
+
+    public void setLastClose(double lastClose) {
+        mLastClose = lastClose;
+        mChartPrice.setOnChartValueSelectedListener(new InfoViewListener(mContext, mLastClose, mData, mKInfo, mChartVolume));
+        mChartVolume.setOnChartValueSelectedListener(new InfoViewListener(mContext, mLastClose, mData, mKInfo, mChartPrice));
+    }
+
+
+    public void setDigits(int digits) {
+        mDigits = digits;
+    }
+
 }

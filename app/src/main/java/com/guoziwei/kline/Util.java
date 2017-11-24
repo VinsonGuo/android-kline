@@ -15,13 +15,12 @@ import java.io.Writer;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 /**
- * Created by dell on 2017/11/23.
+ * 数据解析的示例，数据来自于R.raw.his_data的json
+ * Created by guoziwei on 2017/11/23.
  */
 
 public class Util {

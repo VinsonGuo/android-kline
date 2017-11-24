@@ -14,8 +14,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         TabLayout tabLayout = findViewById(R.id.tab);
         ViewPager viewPager = findViewById(R.id.view_pager);
-        Fragment[] fragments = {TimeSharingplanFragment.newInstance(), CandleStickChartFragment.newInstance(), FullScreenLineChartFragment.newInstance(), FullScreenKLineChartFragment.newInstance()};
-        String[] titles = {"分时图动态版", "k线图简易版", "分时图专业版", "k线图专业版"};
+        Fragment[] fragments = {TickChartFragment.newInstance(), CandleStickChartFragment.newInstance(), KLineChartFragment.newInstance(1), KLineChartFragment.newInstance(0)};
+        String[] titles = {"闪电图", "k线图简易版", "分时图专业版", "k线图专业版"};
         viewPager.setOffscreenPageLimit(fragments.length);
         viewPager.setAdapter(new SimpleFragmentPagerAdapter(getSupportFragmentManager(), fragments, titles));
         tabLayout.setupWithViewPager(viewPager);

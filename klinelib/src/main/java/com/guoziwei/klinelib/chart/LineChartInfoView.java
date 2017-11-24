@@ -6,18 +6,16 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.TextView;
 
-import com.github.mikephil.charting.charts.Chart;
 import com.guoziwei.klinelib.R;
 import com.guoziwei.klinelib.model.HisData;
 import com.guoziwei.klinelib.util.DateUtils;
 import com.guoziwei.klinelib.util.DoubleUtil;
 
-import org.joda.time.DateTime;
-
 import java.util.Locale;
 
 /**
- * Created by dell on 2017/9/25.
+ * 分时图点击的信息
+ * Created by guoziwei on 2017/9/25.
  */
 
 public class LineChartInfoView extends ChartInfoView {
@@ -26,16 +24,6 @@ public class LineChartInfoView extends ChartInfoView {
     private TextView mTvChangeRate;
     private TextView mTvVol;
     private TextView mTvTime;
-    private Chart mLineChart;
-    private Runnable mRunnable = new Runnable() {
-        @Override
-        public void run() {
-            setVisibility(GONE);
-            if (mLineChart != null) {
-                mLineChart.highlightValue(null);
-            }
-        }
-    };
 
     public LineChartInfoView(Context context) {
         this(context, null);
@@ -52,11 +40,6 @@ public class LineChartInfoView extends ChartInfoView {
         mTvPrice = (TextView) findViewById(R.id.tv_price);
         mTvChangeRate = (TextView) findViewById(R.id.tv_change_rate);
         mTvVol = (TextView) findViewById(R.id.tv_vol);
-    }
-
-    @Override
-    public void setChart(Chart chart) {
-        mLineChart = chart;
     }
 
     @Override

@@ -14,8 +14,6 @@ import com.guoziwei.klinelib.R;
 import com.guoziwei.klinelib.model.HisData;
 import com.guoziwei.klinelib.util.DateUtils;
 
-import org.joda.time.DateTime;
-
 import java.util.List;
 
 /**

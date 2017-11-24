@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-
+    <color name="main_text_color">#ffffff</color>
+    <color name="chart_background">#222222</color>
 </resources>

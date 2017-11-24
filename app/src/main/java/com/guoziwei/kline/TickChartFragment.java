@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.guoziwei.klinelib.chart.TimeSharingplanChart;
+import com.guoziwei.klinelib.chart.TickChart;
 import com.guoziwei.klinelib.model.HisData;
 import com.guoziwei.klinelib.util.DataUtils;
 
@@ -20,24 +20,24 @@ import java.util.TimerTask;
 /**
  * 分时图Fragment
  */
-public class TimeSharingplanFragment extends Fragment {
+public class TickChartFragment extends Fragment {
 
 
-    private TimeSharingplanChart mChart;
+    private TickChart mChart;
 
-    public TimeSharingplanFragment() {
+    public TickChartFragment() {
         // Required empty public constructor
     }
 
-    public static TimeSharingplanFragment newInstance() {
-        TimeSharingplanFragment fragment = new TimeSharingplanFragment();
+    public static TickChartFragment newInstance() {
+        TickChartFragment fragment = new TickChartFragment();
         return fragment;
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mChart = new TimeSharingplanChart(getActivity());
+        mChart = new TickChart(getActivity());
         initData();
         refreshData();
         return mChart;

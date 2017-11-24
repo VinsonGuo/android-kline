@@ -13,10 +13,10 @@
         android:singleLine="true"
         android:layout_gravity="center"
         android:paddingLeft="4dp"
-        android:background="@color/third_text_color"
+        android:background="@color/marker_color"
         android:paddingRight="4dp"
         tools:text="aaaaaaa"
-        android:textColor="@color/color_333333"
+        android:textColor="@color/marker_text_color"
         android:textSize="10sp"
         />
 

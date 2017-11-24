@@ -52,6 +52,7 @@ public class CandleStickChartFragment extends Fragment {
     private ChartInfoView mInfoView;
     private LineChartXMarkerView mMvx;
     private List<HisData> mList = new ArrayList<>();
+    private double mLastClose;
 
     public CandleStickChartFragment() {
         // Required empty public constructor
@@ -83,7 +84,7 @@ public class CandleStickChartFragment extends Fragment {
     private void initChart() {
         mChart.getDescription().setEnabled(false);
         mChart.setNoDataText(getString(R.string.loading));
-        mChart.setNoDataTextColor(ContextCompat.getColor(getActivity(), R.color.third_text_color));
+        mChart.setNoDataTextColor(ContextCompat.getColor(getActivity(), R.color.chart_no_data_color));
 
         mChart.setScaleYEnabled(false);
 
@@ -100,7 +101,7 @@ public class CandleStickChartFragment extends Fragment {
         mChart.setMarker(mv);
 
         int whiteColor = ContextCompat.getColor(getActivity(), R.color.main_text_color);
-        int dividerColor = ContextCompat.getColor(getActivity(), R.color.divider_color);
+        int gridColor = ContextCompat.getColor(getActivity(), R.color.chart_grid_color);
         XAxis xAxis = mChart.getXAxis();
         xAxis.setTextColor(whiteColor);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -113,7 +114,7 @@ public class CandleStickChartFragment extends Fragment {
         rightAxis.setTextColor(whiteColor);
         rightAxis.setLabelCount(6, true);
         rightAxis.setDrawGridLines(true);
-        rightAxis.setGridColor(dividerColor);
+        rightAxis.setGridColor(gridColor);
         rightAxis.setGridLineWidth(0.5f);
         rightAxis.setDrawAxisLine(false);
         rightAxis.enableGridDashedLine(5, 5, 0);
@@ -128,7 +129,7 @@ public class CandleStickChartFragment extends Fragment {
 
 
         mChart.getLegend().setEnabled(false);
-        mChart.setOnChartValueSelectedListener(new InfoViewListener(getActivity(), 56.01, mList, mInfoView));
+        mChart.setOnChartValueSelectedListener(new InfoViewListener(getActivity(), mLastClose, mList, mInfoView));
         mChart.setOnTouchListener(new ChartInfoViewHandler(mChart));
         mChart.setOnChartGestureListener(new OnChartGestureListener() {
             @Override
@@ -208,7 +209,7 @@ public class CandleStickChartFragment extends Fragment {
 
         // 均线
         LineDataSet lineDataSet = new LineDataSet(aveList, "均线");
-        lineDataSet.setCircleColor(ContextCompat.getColor(getActivity(), R.color.transparent));
+        lineDataSet.setCircleColor(ContextCompat.getColor(getActivity(), android.R.color.transparent));
         lineDataSet.setColor(ContextCompat.getColor(getActivity(), R.color.ave_color));
         lineDataSet.setLineWidth(1f);
         lineDataSet.setDrawCircleHole(false);
@@ -227,4 +228,7 @@ public class CandleStickChartFragment extends Fragment {
         mChart.moveViewToX(mChart.getCandleData().getEntryCount());
     }
 
+    public void setLastClose(double lastClose) {
+        mLastClose = lastClose;
+    }
 }

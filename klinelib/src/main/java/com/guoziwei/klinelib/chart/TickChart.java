@@ -26,16 +26,14 @@ import com.guoziwei.klinelib.R;
 import com.guoziwei.klinelib.model.HisData;
 import com.guoziwei.klinelib.util.DateUtils;
 
-import org.joda.time.DateTime;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 分时图
+ * 闪电图
  * Created by guoziwei on 2017/5/13.
  */
-public class TimeSharingplanChart extends RelativeLayout {
+public class TickChart extends RelativeLayout {
 
     /**
      * 实线
@@ -58,10 +56,10 @@ public class TimeSharingplanChart extends RelativeLayout {
     private List<HisData> mList = new ArrayList<>();
     private AppLineChart mChart;
     private Context mContext;
-    private int mLineColor = getResources().getColor(R.color.third_text_color);
-    private int transparentColor = getResources().getColor(R.color.transparent);
-    private int candleGridColor = getResources().getColor(R.color.color_333333);
-    private int mTextColor = getResources().getColor(R.color.second_text_color);
+    private int mLineColor = getResources().getColor(R.color.normal_line_color);
+    private int transparentColor = getResources().getColor(android.R.color.transparent);
+    private int candleGridColor = getResources().getColor(R.color.chart_grid_color);
+    private int mTextColor = getResources().getColor(R.color.axis_color);
 
     /**
      * 上一次的价格
@@ -83,12 +81,12 @@ public class TimeSharingplanChart extends RelativeLayout {
      */
     private LineChartInfoView mInfoView;
 
-    public TimeSharingplanChart(Context context) {
+    public TickChart(Context context) {
         super(context);
         init(context);
     }
 
-    public TimeSharingplanChart(Context context, AttributeSet attrs) {
+    public TickChart(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
@@ -162,14 +160,12 @@ public class TimeSharingplanChart extends RelativeLayout {
 
     /**
      * 刷新最后一个
-     *
-     * @param bid 价格
      */
-    public void refreshEntry(float bid) {
-        if (bid <= 0 || bid == mLastPrice) {
+    public void refreshEntry(float price) {
+        if (price <= 0 || price == mLastPrice) {
             return;
         }
-        mLastPrice = bid;
+        mLastPrice = price;
         LineData data = mChart.getData();
 
         if (data != null) {
@@ -180,7 +176,7 @@ public class TimeSharingplanChart extends RelativeLayout {
             }
 
             data.removeEntry(setSell.getEntryCount(), DATA_SET_PRICE);
-            Entry entry = new Entry(setSell.getEntryCount(), bid);
+            Entry entry = new Entry(setSell.getEntryCount(), price);
             data.addEntry(entry, DATA_SET_PRICE);
 
             ILineDataSet paddingSet = data.getDataSetByIndex(DATA_SET_PADDING);
@@ -192,10 +188,10 @@ public class TimeSharingplanChart extends RelativeLayout {
             int count = paddingSet.getEntryCount();
             paddingSet.clear();
             for (int i = 0; i < count; i++) {
-                paddingSet.addEntry(new Entry(setSell.getEntryCount() + i, bid));
+                paddingSet.addEntry(new Entry(setSell.getEntryCount() + i, price));
             }
 
-            Highlight chartHighlighter = new Highlight(setSell.getEntryCount() + paddingSet.getEntryCount(), bid, DATA_SET_PADDING);
+            Highlight chartHighlighter = new Highlight(setSell.getEntryCount() + paddingSet.getEntryCount(), price, DATA_SET_PADDING);
             mChart.highlightValue(chartHighlighter);
 
             data.notifyDataChanged();
@@ -307,7 +303,7 @@ public class TimeSharingplanChart extends RelativeLayout {
         mvx.setChartView(mChart);
         mChart.setXMarker(mvx);
         mChart.setNoDataText(getContext().getString(R.string.loading));
-        mChart.setNoDataTextColor(ContextCompat.getColor(mContext, R.color.third_text_color));
+        mChart.setNoDataTextColor(ContextCompat.getColor(mContext, R.color.chart_no_data_color));
         mChart.getDescription().setEnabled(false);
         mChart.setPinchZoom(false);
         mChart.setScaleYEnabled(false);

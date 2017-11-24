@@ -58,9 +58,37 @@ public class DataUtils {
         return list;
     }
 
+    public static List<HisData> calculateHisData(List<HisData> list) {
+        return calculateHisData(list, null);
+    }
+
+    /**
+     * 根据以前的数据，增量计算新数据的指标
+     */
+    public static HisData calculateHisData(HisData newData, List<HisData> hisDatas) {
+        // 这里是计算均线的公式
+        HisData lastData = hisDatas.get(hisDatas.size() - 1);
+        int amountVol = lastData.getAmountVol();
+        // 将ma设置在model中
+        newData.setMa5(calculateLastMA(5, hisDatas));
+        newData.setMa10(calculateLastMA(10, hisDatas));
+        newData.setMa20(calculateLastMA(20, hisDatas));
+        newData.setMa30(calculateLastMA(30, hisDatas));
+
+        amountVol += newData.getVol();
+        newData.setAmountVol(amountVol);
+
+        double total = newData.getVol() * newData.getClose() + lastData.getTotal();
+        newData.setTotal(total);
+        double avePrice = total / amountVol;
+        newData.setAvePrice(avePrice);
+
+        return newData;
+    }
 
     /**
      * 计算ma数据
+     *
      * @param dayCount 例如 5 10 15 30
      */
     public static List<Double> calculateMA(int dayCount, List<HisData> data) {
@@ -78,4 +106,21 @@ public class DataUtils {
         }
         return result;
     }
+
+    public static double calculateLastMA(int dayCount, List<HisData> data) {
+        double result = Double.NaN;
+        for (int i = 0, len = data.size(); i < len; i++) {
+            if (i < dayCount) {
+                result = Double.NaN;
+                continue;
+            }
+            double sum = 0;
+            for (int j = 0; j < dayCount; j++) {
+                sum += data.get(i - j).getOpen();
+            }
+            result = (+(sum / dayCount));
+        }
+        return result;
+    }
+
 }

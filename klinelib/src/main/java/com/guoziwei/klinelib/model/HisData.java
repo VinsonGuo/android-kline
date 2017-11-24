@@ -15,6 +15,7 @@ public class HisData {
     private int amountVol;
     private double avePrice;
     private double total;
+    private double maSum;
     private double ma5;
     private double ma10;
     private double ma20;
@@ -143,6 +144,14 @@ public class HisData {
         return (int) (date ^ (date >>> 32));
     }
 
+    public double getMaSum() {
+        return maSum;
+    }
+
+    public void setMaSum(double maSum) {
+        this.maSum = maSum;
+    }
+
     @Override
     public String toString() {
         return "HisData{" +
@@ -155,6 +164,7 @@ public class HisData {
                 ", amountVol=" + amountVol +
                 ", avePrice=" + avePrice +
                 ", total=" + total +
+                ", maSum=" + maSum +
                 ", ma5=" + ma5 +
                 ", ma10=" + ma10 +
                 ", ma20=" + ma20 +
