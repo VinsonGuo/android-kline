@@ -61,10 +61,10 @@ public class KLineView extends LinearLayout {
     public static final int MA20 = 20;
     public static final int MA30 = 30;
 
-    public int MAX_COUNT_LINE = 200;
-    public int MIN_COUNT_LINE = 100;
-    public int MAX_COUNT_K = 100;
-    public int MIN_COUNT_K = 60;
+    public int MAX_COUNT_LINE = 300;
+    public int MIN_COUNT_LINE = 50;
+    public int MAX_COUNT_K = 200;
+    public int MIN_COUNT_K = 30;
 
     protected AppCombinedChart mChartPrice;
     protected AppCombinedChart mChartVolume;
@@ -423,12 +423,16 @@ public class KLineView extends LinearLayout {
         } else {
             mChartVolume.setVisibleXRange(MAX_COUNT_LINE, MIN_COUNT_LINE);
         }
+
         setOffset();
         mChartVolume.notifyDataSetChanged();
         mChartVolume.invalidate();
         mChartVolume.moveViewToX(combinedData.getEntryCount());
     }
 
+    /**
+     * 刷新最后的一个价格
+     */
     public void refreshData(float price) {
         try {
             if (price <= 0 || price == mLastPrice) {
@@ -438,10 +442,22 @@ public class KLineView extends LinearLayout {
             CombinedData data = mChartPrice.getData();
             if (data == null) return;
             LineData lineData = data.getLineData();
-            if (lineData == null) return;
-            ILineDataSet set = lineData.getDataSetByIndex(0);
-            if (set.removeLast()) {
-                set.addEntry(new Entry(set.getEntryCount(), price));
+            if (lineData != null) {
+                ILineDataSet set = lineData.getDataSetByIndex(0);
+                if (set.removeLast()) {
+                    set.addEntry(new Entry(set.getEntryCount(), price));
+                }
+            }
+            CandleData candleData = data.getCandleData();
+            if (candleData != null) {
+                ICandleDataSet set = candleData.getDataSetByIndex(0);
+                if (set.removeLast()) {
+                    HisData hisData = mData.get(mData.size() - 1);
+                    hisData.setClose(price);
+                    hisData.setHigh(Math.max(hisData.getHigh(), price));
+                    hisData.setLow(Math.min(hisData.getLow(), price));
+                    set.addEntry(new CandleEntry(set.getEntryCount(), (float) hisData.getHigh(), (float) hisData.getLow(), (float) hisData.getOpen(), (float) price));
+                }
             }
             mChartPrice.notifyDataSetChanged();
             mChartPrice.invalidate();
@@ -454,13 +470,14 @@ public class KLineView extends LinearLayout {
     public void addKData(HisData hisData) {
         try {
             hisData = DataUtils.calculateHisData(hisData, mData);
-            LineData priceData = mChartPrice.getData().getLineData();
+            CombinedData combinedData = mChartPrice.getData();
+            LineData priceData = combinedData.getLineData();
             ILineDataSet aveSet = priceData.getDataSetByIndex(0);
             ILineDataSet ma5Set = priceData.getDataSetByIndex(2);
             ILineDataSet ma10Set = priceData.getDataSetByIndex(3);
             ILineDataSet ma20Set = priceData.getDataSetByIndex(4);
             ILineDataSet ma30Set = priceData.getDataSetByIndex(5);
-            CandleData kData = mChartPrice.getData().getCandleData();
+            CandleData kData = combinedData.getCandleData();
             ICandleDataSet kSet = kData.getDataSetByIndex(0);
             IBarDataSet volSet = mChartVolume.getData().getBarData().getDataSetByIndex(0);
             if (mData.contains(hisData)) {
@@ -478,6 +495,13 @@ public class KLineView extends LinearLayout {
             ma10Set.addEntry(new BarEntry(ma10Set.getEntryCount(), (float) hisData.getMa10()));
             ma20Set.addEntry(new BarEntry(ma20Set.getEntryCount(), (float) hisData.getMa20()));
             ma30Set.addEntry(new BarEntry(ma30Set.getEntryCount(), (float) hisData.getMa30()));
+
+
+            mChartPrice.getXAxis().setAxisMinimum(-0.5f);
+            mChartPrice.getXAxis().setAxisMaximum(mData.size() - 0.5f);
+            mChartVolume.getXAxis().setAxisMinimum(-0.5f);
+            mChartVolume.getXAxis().setAxisMaximum(mData.size() - 0.5f);
+
             mChartPrice.notifyDataSetChanged();
             mChartPrice.invalidate();
             mChartVolume.notifyDataSetChanged();
@@ -490,7 +514,8 @@ public class KLineView extends LinearLayout {
     public void addLineData(HisData hisData) {
         try {
             hisData = DataUtils.calculateHisData(hisData, mData);
-            LineData priceData = mChartPrice.getData().getLineData();
+            CombinedData combinedData = mChartPrice.getData();
+            LineData priceData = combinedData.getLineData();
             ILineDataSet priceSet = priceData.getDataSetByIndex(0);
             ILineDataSet aveSet = priceData.getDataSetByIndex(1);
             IBarDataSet volSet = mChartVolume.getData().getBarData().getDataSetByIndex(0);
@@ -505,6 +530,12 @@ public class KLineView extends LinearLayout {
             priceSet.addEntry(new Entry(priceSet.getEntryCount(), (float) hisData.getClose()));
             aveSet.addEntry(new Entry(aveSet.getEntryCount(), (float) hisData.getAvePrice()));
             volSet.addEntry(new BarEntry(volSet.getEntryCount(), hisData.getVol()));
+
+            mChartPrice.getXAxis().setAxisMinimum(-0.5f);
+            mChartPrice.getXAxis().setAxisMaximum(mData.size() - 0.5f);
+            mChartVolume.getXAxis().setAxisMinimum(-0.5f);
+            mChartVolume.getXAxis().setAxisMaximum(mData.size() - 0.5f);
+
             mChartPrice.notifyDataSetChanged();
             mChartPrice.invalidate();
             mChartVolume.notifyDataSetChanged();

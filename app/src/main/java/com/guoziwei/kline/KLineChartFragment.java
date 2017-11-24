@@ -65,25 +65,34 @@ public class KLineChartFragment extends Fragment {
                 mKLineView.post(new Runnable() {
                     @Override
                     public void run() {
-                        /*模拟K线数据开始*/
                         int index = (int) (Math.random() * 100);
                         HisData data = hisData.get(index);
                         HisData lastData = hisData.get(hisData.size() - 1);
                         HisData newData = new HisData();
                         newData.setVol(data.getVol());
                         newData.setClose(data.getClose());
-                        newData.setHigh(data.getHigh());
-                        newData.setLow(data.getLow());
+                        newData.setHigh(Math.max(data.getHigh(), lastData.getClose()));
+                        newData.setLow(Math.min(data.getLow(), lastData.getClose()));
                         newData.setOpen(lastData.getClose());
                         newData.setDate(System.currentTimeMillis());
                         hisData.add(newData);
-                        /*模拟K线数据结束*/
                         if (mType == 0) {
-//                            mKLineView.initChartKData(hisData);
                             mKLineView.addKData(newData);
                         } else {
                             mKLineView.addLineData(newData);
                         }
+                    }
+                });
+            }
+        }, 5000, 5000);
+
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                mKLineView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mKLineView.refreshData((float) (56.8 + 0.1 * Math.random()));
                     }
                 });
             }

@@ -24,6 +24,7 @@ import com.github.mikephil.charting.listener.OnChartGestureListener;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.guoziwei.klinelib.R;
 import com.guoziwei.klinelib.model.HisData;
+import com.guoziwei.klinelib.util.DataUtils;
 import com.guoziwei.klinelib.util.DateUtils;
 
 import java.util.ArrayList;
@@ -161,7 +162,7 @@ public class TickChart extends RelativeLayout {
     /**
      * 刷新最后一个
      */
-    public void refreshEntry(float price) {
+    public void refreshData(float price) {
         if (price <= 0 || price == mLastPrice) {
             return;
         }
@@ -207,6 +208,7 @@ public class TickChart extends RelativeLayout {
      * 增加一个entry
      */
     public void addEntry(HisData hisData) {
+        hisData = DataUtils.calculateHisData(hisData, mList);
         LineData data = mChart.getData();
 
         if (data != null) {

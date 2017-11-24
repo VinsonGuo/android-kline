@@ -39,22 +39,7 @@ public class TickChartFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mChart = new TickChart(getActivity());
         initData();
-        refreshData();
         return mChart;
-    }
-
-    private void refreshData() {
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                mChart.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        mChart.refreshEntry((float) (56.8 + 0.1 * Math.random()));
-                    }
-                });
-            }
-        }, 1000, 1000);
     }
 
     protected void initData() {
@@ -65,16 +50,43 @@ public class TickChartFragment extends Fragment {
             return;
         }
         mChart.addEntries(list);
+
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                mChart.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mChart.refreshData((float) (56.8 + 0.1 * Math.random()));
+                    }
+                });
+            }
+        }, 1000, 1000);
+
+
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                mChart.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        int index = (int) (Math.random() * 100);
+                        HisData data = list.get(index);
+                        HisData lastData = list.get(list.size() - 1);
+                        HisData newData = new HisData();
+                        newData.setVol(data.getVol());
+                        newData.setClose(data.getClose());
+                        newData.setHigh(data.getHigh());
+                        newData.setLow(data.getLow());
+                        newData.setOpen(lastData.getClose());
+                        newData.setDate(System.currentTimeMillis());
+                        list.add(newData);
+                        mChart.addEntry(newData);
+                    }
+                });
+            }
+        }, 5000, 5000);
     }
 
-
-
-   /* @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(PriceRefreshEvent event) {
-        if (TextUtils.equals(event.getSymbol(), mSymbol)) {
-            Quote quote = StaticStore.getQuote(mSymbol, mIsDemo);
-            mChart.refreshEntry((float) quote.getLastPrice());
-        }
-    }*/
 
 }
