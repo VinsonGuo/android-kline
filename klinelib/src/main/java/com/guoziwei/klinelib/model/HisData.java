@@ -1,8 +1,7 @@
 package com.guoziwei.klinelib.model;
 
 /**
- * 图表数据model
- * 只需要Close High Low Open Vol sDate这几个字段就可以，其他的字段是通过计算得出的
+ * chart data model
  */
 
 public class HisData {

@@ -35,10 +35,7 @@ public class DoubleUtil {
 
 
     /**
-     * 根据精度得到一个小数的字符串
-     *
-     * @param num    double小数
-     * @param digits 精度
+     * converting a double number to string by digits
      */
     public static String getStringByDigits(double num, int digits) {
        /* if (digits == 0) {
