@@ -1,7 +1,7 @@
 # android-kline
 基于MPAndroidChart的专业K线图
 
-qq交流群 363529464
+qq 361896573
 
 本项目通过继承的方式定制了最新版本的MPAndroidChart，没有修改MPAndroidChart的源代码，所以对已经使用了MPAndroidChart的童鞋不会造成影响。
 
@@ -75,7 +75,7 @@ java  init方法只能调用其中的一个
 ```
 
 自定义悬浮的信息提示：
-集成`ChartInfoView`，然后在init方法前调用`KLineView`的`setChartInfoView`方法。
+继承`ChartInfoView`，然后在init方法前调用`KLineView`的`setChartInfoView`方法。
 此外，还可以通过下面的方法对图表和坐标进行个性化的定制。
 ```
     public AppCombinedChart getChartPrice() 
