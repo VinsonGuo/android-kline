@@ -13,7 +13,7 @@ public class DataUtils {
 
 
     /**
-     * 计算均线 ma等数值
+     * calculate average price and ma data
      */
     public static List<HisData> calculateHisData(List<HisData> list, HisData lastData) {
 

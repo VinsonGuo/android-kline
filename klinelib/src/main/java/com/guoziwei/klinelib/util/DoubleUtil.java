@@ -1,7 +1,5 @@
 package com.guoziwei.klinelib.util;
 
-import android.text.TextUtils;
-
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;

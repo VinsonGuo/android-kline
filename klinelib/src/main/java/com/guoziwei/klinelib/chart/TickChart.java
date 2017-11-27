@@ -1,6 +1,7 @@
 package com.guoziwei.klinelib.chart;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -31,7 +32,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 闪电图
  * Created by guoziwei on 2017/5/13.
  */
 public class TickChart extends RelativeLayout {
@@ -255,7 +255,7 @@ public class TickChart extends RelativeLayout {
             set.setDrawFilled(true);
             set.setColor(mLineColor);
             set.setLineWidth(1f);
-            set.setFillDrawable(ContextCompat.getDrawable(mContext, R.drawable.bg_chart_fade));
+            set.setFillDrawable(new ColorDrawable(transparentColor));
         } else if (type == TYPE_AVE) {
             set.setHighlightEnabled(true);
             set.setColor(ContextCompat.getColor(mContext, R.color.ave_color));

@@ -23,11 +23,11 @@ public class HisData {
     public HisData() {
     }
 
-    public HisData(double close, double high, double low, double open, int vol, long date) {
+    public HisData(double open,double close, double high, double low,  int vol, long date) {
+        this.open = open;
         this.close = close;
         this.high = high;
         this.low = low;
-        this.open = open;
         this.vol = vol;
         this.date = date;
     }

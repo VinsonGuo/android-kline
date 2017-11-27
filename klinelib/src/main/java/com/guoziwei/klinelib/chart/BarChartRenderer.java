@@ -162,7 +162,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                 // is out of bounds, reuse colors.
 //                mRenderPaint.setColor(dataSet.getColor(j / 4));
 
-                   /*这里给出的规则是假如成交量上涨，则为红，下跌则为绿*/
+                   /*red is price increased, green is decreased*/
                 int i = j / 4;
                 BarEntry entryForIndex = dataSet.getEntryForIndex(i);
                 Object data = entryForIndex.getData();
@@ -545,7 +545,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
 
 //            c.drawRect(mBarRect, mHighlightPaint);
              /*重写高亮*/
-             mHighlightPaint.setStrokeWidth(Utils.convertDpToPixel(1f));
+            mHighlightPaint.setStrokeWidth(Utils.convertDpToPixel(1f));
             c.drawLine(mBarRect.centerX(), mViewPortHandler.getContentRect().bottom, mBarRect.centerX(), 0, mHighlightPaint);
         }
     }

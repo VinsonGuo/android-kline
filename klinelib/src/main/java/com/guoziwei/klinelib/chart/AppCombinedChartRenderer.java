@@ -142,8 +142,6 @@ public class AppCombinedChartRenderer extends DataRenderer {
     /**
      * Returns the sub-renderer object at the specified index.
      *
-     * @param index
-     * @return
      */
     public DataRenderer getSubRenderer(int index) {
         if (index >= mRenderers.size() || index < 0)
@@ -155,7 +153,6 @@ public class AppCombinedChartRenderer extends DataRenderer {
     /**
      * Returns all sub-renderers.
      *
-     * @return
      */
     public List<DataRenderer> getSubRenderers() {
         return mRenderers;

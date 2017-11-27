@@ -51,7 +51,7 @@ public class KLineChartFragment extends Fragment {
 
     protected void initData() {
         final List<HisData> hisData = Util.getHisData(getContext());
-        mKLineView.setLastClose(56.01);
+        mKLineView.setLastClose(56.81);
         if (mType == 0) {
             mKLineView.initChartKData(hisData);
         } else {
