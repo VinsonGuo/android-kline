@@ -1,11 +1,15 @@
 # android-kline
-基于MPAndroidChart的专业K线图
+**基于MPAndroidChart的专业K线图**
 
-qq 361896573
+_qq 361896573_ 欢迎大家和我一起维护这个项目
 
-本项目通过继承的方式定制了最新版本的MPAndroidChart，没有修改MPAndroidChart的源代码，所以对已经使用了MPAndroidChart的童鞋不会造成影响。
+本项目通过继承的方式定制了最新版本的**MPAndroidChart**，没有修改MPAndroidChart的源代码，所以对已经使用了MPAndroidChart的童鞋不会造成影响。
 
-丰富的定制化接口，支持图表的个性化定制。
+- 丰富的个性化接口，支持图表个性化定制。
+- 解决了多图表手势同步的问题
+- 解决多图表**highlight**联动的问题
+- 使用简单，两行代码就可以实现专业K线效果
+
 
 # Demo
 
@@ -14,7 +18,7 @@ qq 361896573
 
 # 使用方式
 
-在项目build.gradle中添加依赖：
+在项目**build.gradle**中添加依赖：
 
 ```
  allprojects {
@@ -28,7 +32,7 @@ qq 361896573
    }
 ```
 
-xml
+**xml**
 
 ```xml
     <com.guoziwei.klinelib.chart.KLineView
@@ -37,7 +41,7 @@ xml
         android:layout_height="match_parent"/>
 ```
 
-java  init方法只能调用其中的一个
+**java**  init方法只能调用其中的一个
 ```
         KLineView kLineView = (KLineView) findViewById(R.id.kline);
         // 分时图
@@ -46,13 +50,15 @@ java  init方法只能调用其中的一个
         kLineView.initChartKData(list);
 ```
 
-注意：这里需要接收一个HisData的List，HisData需要如下的几个数据，其他的指标会根据公式计算出来
+**注意：** 这里需要接收一个**HisData**的List，HisData需要如下的几个数据（**开盘、收盘、最高、最低、买卖量、时间**），其他的指标会根据公式计算出来
+
+在本项目中，时间戳**date**相当于唯一的id，如果重复的话无法将这个data添加到图表中
 
 ```
-  public HisData(double open,double close, double high, double low,  int vol, long date)
+  public HisData(double open, double close, double high, double low,  int vol, long date)
 ```
 
-个性化：在你的项目中重新设置这些颜色的值
+**个性化**：在你的项目中重新设置这些颜色的值
 ```
    <color name="marker_color">#be945c</color>
     <color name="marker_text_color">#333333</color>
@@ -75,8 +81,11 @@ java  init方法只能调用其中的一个
 ```
 
 自定义悬浮的信息提示：
+
 继承`ChartInfoView`，然后在init方法前调用`KLineView`的`setChartInfoView`方法。
+
 此外，还可以通过下面的方法对图表和坐标进行个性化的定制。
+
 ```
     public AppCombinedChart getChartPrice() 
 
@@ -94,5 +103,7 @@ java  init方法只能调用其中的一个
 
     public YAxis getAxisLeftVolume() 
 ```
+
+这几个会获取到MPAndroidChart库的对象，可以根据MPAndroidChart的文档对其进行配置。
 
 如果还有更复杂的需求，可以选择继承KLineView。
