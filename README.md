@@ -1,7 +1,8 @@
 # android-kline
 **基于MPAndroidChart的专业K线图**
 
-_qq 361896573_ 欢迎大家和我一起维护这个项目
+_email/qq gzw19931217@qq.com_ 本人已离职，有工作机会的小伙伴请联系我😀
+欢迎大家和我一起维护这个项目
 
 本项目通过继承的方式定制了最新版本的**MPAndroidChart**，没有修改MPAndroidChart的源代码，所以对已经使用了MPAndroidChart的童鞋不会造成影响。
 
