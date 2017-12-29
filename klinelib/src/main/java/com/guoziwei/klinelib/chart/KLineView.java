@@ -172,6 +172,8 @@ public class KLineView extends LinearLayout {
         mChartVolume.setScaleYEnabled(false);
         mChartVolume.getDescription().setEnabled(false);
         mChartVolume.setAutoScaleMinMaxEnabled(true);
+        mChartVolume.setDragDecelerationEnabled(false);
+        mChartVolume.setHighlightPerDragEnabled(false);
         Legend lineChartLegend = mChartVolume.getLegend();
         lineChartLegend.setEnabled(false);
 
@@ -313,14 +315,17 @@ public class KLineView extends LinearLayout {
         initChartVolumeData();
     }
 
-    private BarDataSet setBar(ArrayList<BarEntry> barEntries) {
+    private BarDataSet setBar(ArrayList<BarEntry> barEntries, int type) {
         BarDataSet barDataSet = new BarDataSet(barEntries, "vol");
-        barDataSet.setHighLightAlpha(255);
+        barDataSet.setHighLightAlpha(120);
         barDataSet.setHighLightColor(getResources().getColor(R.color.highlight_color));
         barDataSet.setDrawValues(false);
+        barDataSet.setVisible(type != INVISIABLE_LINE);
+        barDataSet.setHighlightEnabled(type != INVISIABLE_LINE);
         barDataSet.setColors(getResources().getColor(R.color.increasing_color), getResources().getColor(R.color.decreasing_color));
         return barDataSet;
     }
+
 
     @android.support.annotation.NonNull
     private LineDataSet setLine(int type, ArrayList<Entry> lineEntries) {
@@ -389,7 +394,7 @@ public class KLineView extends LinearLayout {
         ArrayList<BarEntry> paddingEntries = new ArrayList<>();
         for (int i = 0; i < mData.size(); i++) {
             HisData t = mData.get(i);
-            barEntries.add(new BarEntry(i, t.getVol(), t));
+            barEntries.add(new BarEntry(i, (float) t.getVol(), t));
         }
         int maxCount = mChartPrice.getData().getCandleData() == null ? MAX_COUNT_LINE : MAX_COUNT_K;
         if (!mData.isEmpty() && mData.size() < maxCount) {
@@ -398,7 +403,8 @@ public class KLineView extends LinearLayout {
             }
         }
 
-        BarData barData = new BarData(setBar(barEntries), setBar(paddingEntries));
+        BarData barData = new BarData(setBar(barEntries, NORMAL_LINE), setBar(paddingEntries, INVISIABLE_LINE));
+        barData.setBarWidth(0.75f);
         CombinedData combinedData = new CombinedData();
         combinedData.setData(barData);
         mChartVolume.setData(combinedData);

@@ -33,7 +33,6 @@ public class CoupleChartGestureListener implements OnChartGestureListener {
     @Override
     public void onChartGestureEnd(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
         syncCharts();
-        srcChart.setDragEnabled(true);
     }
 
     @Override
