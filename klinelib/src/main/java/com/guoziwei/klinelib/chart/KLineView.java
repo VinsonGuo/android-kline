@@ -140,6 +140,7 @@ public class KLineView extends LinearLayout {
         xAxisPrice.setDrawLabels(false);
         xAxisPrice.setDrawAxisLine(false);
         xAxisPrice.setDrawGridLines(false);
+        xAxisPrice.setAxisMinimum(-0.5f);
 
 
         axisLeftPrice = mChartPrice.getAxisLeft();
@@ -186,6 +187,7 @@ public class KLineView extends LinearLayout {
         xAxisVolume.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxisVolume.setLabelCount(5, true);
         xAxisVolume.setAvoidFirstLastClipping(true);
+        xAxisVolume.setAxisMinimum(-0.5f);
 
         xAxisVolume.setValueFormatter(new KLineXValueFormatter(mData));
 
@@ -512,11 +514,6 @@ public class KLineView extends LinearLayout {
         priceSet.addEntry(new Entry(priceSet.getEntryCount(), (float) hisData.getClose()));
         aveSet.addEntry(new Entry(aveSet.getEntryCount(), (float) hisData.getAvePrice()));
         volSet.addEntry(new BarEntry(volSet.getEntryCount(), hisData.getVol()));
-
-        mChartPrice.getXAxis().setAxisMinimum(-0.5f);
-        mChartPrice.getXAxis().setAxisMaximum(mData.size() - 0.5f);
-        mChartVolume.getXAxis().setAxisMinimum(-0.5f);
-        mChartVolume.getXAxis().setAxisMaximum(mData.size() - 0.5f);
 
         mChartPrice.notifyDataSetChanged();
         mChartPrice.invalidate();
