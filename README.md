@@ -29,7 +29,7 @@ _email/qq gzw19931217@qq.com_
         }
    }
    dependencies {
-        compile com.github.gzw19931217:android-kline:0.1.2'
+        compile com.github.gzw19931217:android-kline:0.1.3'
    }
 ```
 
