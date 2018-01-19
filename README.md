@@ -2,7 +2,7 @@
 **基于MPAndroidChart的专业K线图**
 
 _email/qq gzw19931217@qq.com_ 
-欢迎大家和我一起维护这个项目
+承接android各类图表需求，有需要的可以联系我
 
 本项目通过继承的方式定制了最新版本的**MPAndroidChart**，没有修改MPAndroidChart的源代码，所以对已经使用了MPAndroidChart的童鞋不会造成影响。
 
