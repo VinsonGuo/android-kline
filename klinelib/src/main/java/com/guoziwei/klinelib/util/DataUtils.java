@@ -1,6 +1,8 @@
 package com.guoziwei.klinelib.util;
 
 import com.guoziwei.klinelib.model.HisData;
+import com.guoziwei.klinelib.model.KDJ;
+import com.guoziwei.klinelib.model.MACD;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,14 @@ public class DataUtils {
         List<Double> ma10List = calculateMA(10, list);
         List<Double> ma20List = calculateMA(20, list);
         List<Double> ma30List = calculateMA(30, list);
+        MACD macd = new MACD(list);
+        List<Double> bar = macd.getBAR();
+        List<Double> dea = macd.getDEA();
+        List<Double> dif = macd.getDIF();
+        KDJ kdj = new KDJ(list);
+        ArrayList<Double> d = kdj.getD();
+        ArrayList<Double> k = kdj.getK();
+        ArrayList<Double> j = kdj.getJ();
 
         // 这里是计算均线的公式
         int amountVol = 0;
@@ -35,6 +45,14 @@ public class DataUtils {
             hisData.setMa10(ma10List.get(i));
             hisData.setMa20(ma20List.get(i));
             hisData.setMa30(ma30List.get(i));
+
+            hisData.setMacd(bar.get(i));
+            hisData.setDea(dea.get(i));
+            hisData.setDif(dif.get(i));
+
+            hisData.setD(d.get(i));
+            hisData.setK(k.get(i));
+            hisData.setJ(j.get(i));
 
             amountVol += hisData.getVol();
             hisData.setAmountVol(amountVol);
@@ -122,5 +140,6 @@ public class DataUtils {
         }
         return result;
     }
+
 
 }

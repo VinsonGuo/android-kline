@@ -169,14 +169,23 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                 if (data == null || !(data instanceof HisData)) {
                     mRenderPaint.setColor(dataSet.getColor(i));
                 } else {
-                    if (((HisData) data).getClose() < ((HisData) data).getOpen()) {
-                        mRenderPaint.setColor(dataSet.getColors().get(1));
-                    } else {
-                        mRenderPaint.setColor(dataSet.getColors().get(0));
-                    }
+                    HisData hisData = (HisData) data;
+                    if (hisData.getBarType() == HisData.TYPE_BAR_VOL) {
+                        if (hisData.getClose() < hisData.getOpen()) {
+                            mRenderPaint.setColor(dataSet.getColors().get(1));
+                        } else {
+                            mRenderPaint.setColor(dataSet.getColors().get(0));
+                        }
 
-                    if (((HisData) data).getClose() == 0f && ((HisData) data).getOpen() == 0f) {
-                        if (((HisData) data).getVol() > 0) {
+                        if (hisData.getClose() == 0f && hisData.getOpen() == 0f) {
+                            if (hisData.getVol() > 0) {
+                                mRenderPaint.setColor(dataSet.getColors().get(0));
+                            } else {
+                                mRenderPaint.setColor(dataSet.getColors().get(1));
+                            }
+                        }
+                    } else if (hisData.getBarType() == HisData.TYPE_BAR_MACD) {
+                        if (hisData.getMacd() > 0) {
                             mRenderPaint.setColor(dataSet.getColors().get(0));
                         } else {
                             mRenderPaint.setColor(dataSet.getColors().get(1));
@@ -545,7 +554,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
 
 //            c.drawRect(mBarRect, mHighlightPaint);
              /*重写高亮*/
-             mHighlightPaint.setStrokeWidth(Utils.convertDpToPixel(1f));
+            mHighlightPaint.setStrokeWidth(Utils.convertDpToPixel(1f));
             c.drawLine(mBarRect.centerX(), mViewPortHandler.getContentRect().bottom, mBarRect.centerX(), 0, mHighlightPaint);
         }
     }

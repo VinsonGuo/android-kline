@@ -27,7 +27,7 @@ public class InfoViewListener implements OnChartValueSelectedListener {
     /**
      * 需要highlight联动的chart
      */
-    private Chart mOtherChart;
+    private Chart[] mOtherChart;
 
     public InfoViewListener(Context context, double lastClose, List<HisData> list, ChartInfoView infoView) {
         mWidth = DisplayUtils.getWidthHeight(context)[0];
@@ -36,7 +36,7 @@ public class InfoViewListener implements OnChartValueSelectedListener {
         mInfoView = infoView;
     }
 
-    public InfoViewListener(Context context, double lastClose, List<HisData> list, ChartInfoView infoView, Chart otherChart) {
+    public InfoViewListener(Context context, double lastClose, List<HisData> list, ChartInfoView infoView, Chart... otherChart) {
         mWidth = DisplayUtils.getWidthHeight(context)[0];
         mLastClose = lastClose;
         mList = list;
@@ -59,7 +59,9 @@ public class InfoViewListener implements OnChartValueSelectedListener {
         }
         mInfoView.setLayoutParams(lp);
         if (mOtherChart != null) {
-            mOtherChart.highlightValues(new Highlight[]{h});
+            for (int i = 0; i < mOtherChart.length; i++) {
+                mOtherChart[i].highlightValues(new Highlight[]{new Highlight(h.getX(), Float.NaN, 0)});
+            }
         }
     }
 
@@ -67,7 +69,9 @@ public class InfoViewListener implements OnChartValueSelectedListener {
     public void onNothingSelected() {
         mInfoView.setVisibility(View.GONE);
         if (mOtherChart != null) {
-            mOtherChart.highlightValues(null);
+            for (int i = 0; i < mOtherChart.length; i++) {
+                mOtherChart[i].highlightValues(null);
+            }
         }
     }
 }
