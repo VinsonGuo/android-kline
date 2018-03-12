@@ -7,9 +7,6 @@ package com.guoziwei.klinelib.model;
 
 public class HisData {
 
-    public static final int TYPE_BAR_VOL = 1;
-    public static final int TYPE_BAR_MACD = 2;
-
     private double close;
     private double high;
     private double low;
@@ -32,8 +29,6 @@ public class HisData {
     private double k;
     private double d;
     private double j;
-
-    private int barType = TYPE_BAR_VOL;
 
     public double getDif() {
         return dif;
@@ -254,11 +249,4 @@ public class HisData {
                 '}';
     }
 
-    public int getBarType() {
-        return barType;
-    }
-
-    public void setBarType(int barType) {
-        this.barType = barType;
-    }
 }

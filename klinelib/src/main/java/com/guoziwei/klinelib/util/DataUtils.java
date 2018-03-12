@@ -126,6 +126,7 @@ public class DataUtils {
     }
 
     public static double calculateLastMA(int dayCount, List<HisData> data) {
+        dayCount--;
         double result = Double.NaN;
         for (int i = 0, len = data.size(); i < len; i++) {
             if (i < dayCount) {

@@ -1,41 +1,74 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="-20dp"
+            android:layout_weight="3">
+
+            <com.guoziwei.klinelib.chart.AppCombinedChart
+                android:id="@+id/line_chart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.guoziwei.klinelib.chart.LineChartInfoView
+                android:id="@+id/line_info"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <com.guoziwei.klinelib.chart.KLineChartInfoView
+                android:id="@+id/k_info"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+        </FrameLayout>
+
 
         <com.guoziwei.klinelib.chart.AppCombinedChart
-            android:id="@+id/line_chart"
+            android:id="@+id/bar_chart"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-        <com.guoziwei.klinelib.chart.LineChartInfoView
-            android:id="@+id/line_info"
-            android:layout_width="120dp"
+        <com.guoziwei.klinelib.chart.AppCombinedChart
+            android:id="@+id/macd_chart"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_index"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/cb_vol"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"/>
+            android:text="成交量" />
 
-        <com.guoziwei.klinelib.chart.KLineChartInfoView
-            android:id="@+id/k_info"
-            android:layout_width="120dp"
+        <RadioButton
+            android:id="@+id/cb_macd"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"/>
-    </FrameLayout>
+            android:text="MACD" />
 
-
-    <com.guoziwei.klinelib.chart.AppCombinedChart
-        android:id="@+id/bar_chart"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-    <com.guoziwei.klinelib.chart.AppCombinedChart
-        android:id="@+id/macd_chart"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        <RadioButton
+            android:id="@+id/cb_kdj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KDJ" />
+    </RadioGroup>
 </LinearLayout>
