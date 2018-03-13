@@ -8,57 +8,52 @@ public class MACD {
 
     private List<Double> DEAs;
     private List<Double> DIFs;
-    private List<Double> BARs;
+    private List<Double> MACDs;
 
-    private List<Double> EMA12;
-    private List<Double> EMA26;
-    private EMAEntity mEMAEntity9;
-    private EMAEntity mEMAEntity12;
-    private EMAEntity mEMAEntity26;
+    /**
+     * 得到MACD数据
+     *
+     * @param kLineBeen
+     */
+    public MACD(List<HisData> kLineBeen) {
+        DEAs = new ArrayList<>();
+        DIFs = new ArrayList<>();
+        MACDs = new ArrayList<>();
 
-    public MACD(List<HisData> OHLCData) {
-        if (OHLCData != null && OHLCData.size() > 0) {
-            mEMAEntity9 = new EMAEntity(OHLCData, 9);
-            mEMAEntity12 = new EMAEntity(OHLCData, 12);
-            mEMAEntity26 = new EMAEntity(OHLCData, 26);
-            EMA12 = mEMAEntity12.getnEMA();
-            EMA26 = mEMAEntity26.getnEMA();
-        }
+        List<Double> dEAs = new ArrayList<>();
+        List<Double> dIFs = new ArrayList<>();
+        List<Double> mACDs = new ArrayList<>();
 
-        DEAs = new ArrayList<Double>();
-        DIFs = new ArrayList<Double>();
-        BARs = new ArrayList<Double>();
-
-
-        List<Double> dEAs = new ArrayList<Double>();
-        List<Double> dIFs = new ArrayList<Double>();
-        List<Double> mACDs = new ArrayList<Double>();
-        List<Double> mBARs = new ArrayList<Double>();
-
-        double dIF = 0.0;
-        double dEA = 0.0;
-        double mBAR = 0.0;
-        if (OHLCData != null && OHLCData.size() > 0) {
-
-            for (int i = OHLCData.size() - 1; i >= 0; i--) {
-                dIF = EMA12.get(OHLCData.size() - i - 1) - EMA26.get(OHLCData.size() - i - 1);
-                if (i == OHLCData.size() - 1) {
-                    dEA = 0 + dIF * (2 / 10);
-                    mBAR = 0.0;
+        double eMA12 = 0.0f;
+        double eMA26 = 0.0f;
+        double close = 0f;
+        double dIF = 0.0f;
+        double dEA = 0.0f;
+        double mACD = 0.0f;
+        if (kLineBeen != null && kLineBeen.size() > 0) {
+            for (int i = 0; i < kLineBeen.size(); i++) {
+                close = kLineBeen.get(i).getClose();
+                if (i == 0) {
+                    eMA12 = close;
+                    eMA26 = close;
                 } else {
-                    dEA = dEA * 0.8 + dIF * 0.2;
-                    mBAR = 2 * (dIF - dEA);
+                    eMA12 = eMA12 * 11 / 13 + close * 2 / 13;
+                    eMA26 = eMA26 * 25 / 27 + close * 2 / 27;
                 }
+                dIF = eMA12 - eMA26;
+                dEA = dEA * 8 / 10 + dIF * 2 / 10;
+                mACD = dIF - dEA;
                 dEAs.add(dEA);
                 dIFs.add(dIF);
-                mBARs.add(mBAR);
+                mACDs.add(mACD);
             }
 
-            for (int i = dEAs.size() - 1; i >= 0; i--) {
+            for (int i = 0; i < dEAs.size(); i++) {
                 DEAs.add(dEAs.get(i));
                 DIFs.add(dIFs.get(i));
-                BARs.add(mBARs.get(i));
+                MACDs.add(mACDs.get(i));
             }
+
         }
 
     }
@@ -71,8 +66,8 @@ public class MACD {
         return DIFs;
     }
 
-    public List<Double> getBAR() {
-        return BARs;
+    public List<Double> getMACD() {
+        return MACDs;
     }
 
 }

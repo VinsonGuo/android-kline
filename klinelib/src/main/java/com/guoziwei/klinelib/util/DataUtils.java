@@ -25,7 +25,7 @@ public class DataUtils {
         List<Double> ma20List = calculateMA(20, list);
         List<Double> ma30List = calculateMA(30, list);
         MACD macd = new MACD(list);
-        List<Double> bar = macd.getBAR();
+        List<Double> bar = macd.getMACD();
         List<Double> dea = macd.getDEA();
         List<Double> dif = macd.getDIF();
         KDJ kdj = new KDJ(list);
@@ -101,6 +101,21 @@ public class DataUtils {
         double avePrice = total / amountVol;
         newData.setAvePrice(avePrice);
 
+        MACD macd = new MACD(hisDatas);
+        List<Double> bar = macd.getMACD();
+        newData.setMacd(bar.get(bar.size() - 1));
+        List<Double> dea = macd.getDEA();
+        newData.setDea(dea.get(dea.size() - 1));
+        List<Double> dif = macd.getDIF();
+        newData.setDif(dif.get(dif.size() - 1));
+        KDJ kdj = new KDJ(hisDatas);
+        ArrayList<Double> d = kdj.getD();
+        newData.setD(d.get(d.size() - 1));
+        ArrayList<Double> k = kdj.getK();
+        newData.setK(k.get(k.size() - 1));
+        ArrayList<Double> j = kdj.getJ();
+        newData.setJ(j.get(j.size() - 1));
+
         return newData;
     }
 
@@ -110,6 +125,7 @@ public class DataUtils {
      * @param dayCount 例如 5 10 15 30
      */
     public static List<Double> calculateMA(int dayCount, List<HisData> data) {
+        dayCount--;
         List<Double> result = new ArrayList<>(data.size());
         for (int i = 0, len = data.size(); i < len; i++) {
             if (i < dayCount) {

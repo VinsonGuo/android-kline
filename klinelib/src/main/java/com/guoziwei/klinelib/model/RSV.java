@@ -1,7 +1,5 @@
 package com.guoziwei.klinelib.model;
 
-import com.guoziwei.klinelib.model.HisData;
-
 import java.util.ArrayList;
 import java.util.List;
 

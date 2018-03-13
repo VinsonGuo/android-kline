@@ -1,10 +1,5 @@
 package com.guoziwei.klinelib.model;
 
-/**
- * Created by zhangliang on 16/11/5.
- * QQ:1179980507
- */
-
 import java.util.ArrayList;
 import java.util.List;
 
