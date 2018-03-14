@@ -52,11 +52,7 @@ public class KLineChartFragment extends Fragment {
     protected void initData() {
         final List<HisData> hisData = Util.getHisData(getContext());
         mKLineView.setLastClose(56.81);
-        if (mType == 0) {
-            mKLineView.initChartKData(hisData);
-        } else {
-            mKLineView.initChartPriceData(hisData);
-        }
+        mKLineView.initData(hisData);
         mKLineView.setLimitLine();
 
         new Timer().schedule(new TimerTask() {
@@ -76,11 +72,7 @@ public class KLineChartFragment extends Fragment {
                         newData.setOpen(lastData.getClose());
                         newData.setDate(System.currentTimeMillis());
                         hisData.add(newData);
-                        if (mType == 0) {
-                            mKLineView.addKData(newData);
-                        } else {
-                            mKLineView.addLineData(newData);
-                        }
+                        mKLineView.addData(newData);
                     }
                 });
             }

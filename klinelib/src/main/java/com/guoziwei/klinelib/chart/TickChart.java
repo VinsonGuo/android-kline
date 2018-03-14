@@ -34,6 +34,7 @@ import java.util.List;
 /**
  * Created by guoziwei on 2017/5/13.
  */
+@Deprecated
 public class TickChart extends RelativeLayout {
 
     public static final int TYPE_FULL = 0;
@@ -344,7 +345,7 @@ public class TickChart extends RelativeLayout {
         rightAxis.setLabelCount(6, true);
         rightAxis.setDrawAxisLine(false);
 
-        rightAxis.setValueFormatter(new YValueFormatter(2));
+//        rightAxis.setValueFormatter(new YValueFormatter(2));
         Legend legend = mChart.getLegend();
         legend.setEnabled(false);
 

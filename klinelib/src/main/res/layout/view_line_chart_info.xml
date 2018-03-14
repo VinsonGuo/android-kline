@@ -2,8 +2,8 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@color/chart_info_color">
 
@@ -23,10 +23,8 @@
         android:padding="4dp"
         android:orientation="horizontal">
         <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="60dp"
             android:text="@string/price"
-            android:gravity="center"
             android:textSize="12sp"
             android:textColor="@color/axis_color"
             android:layout_height="wrap_content"/>
@@ -46,10 +44,8 @@
         android:padding="4dp"
         android:orientation="horizontal">
         <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="60dp"
             android:text="@string/change_rate"
-            android:gravity="center"
             android:textSize="12sp"
             android:textColor="@color/axis_color"
             android:layout_height="wrap_content"/>
@@ -69,10 +65,8 @@
         android:padding="4dp"
         android:orientation="horizontal">
         <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="60dp"
             android:text="@string/volume"
-            android:gravity="center"
             android:textSize="12sp"
             android:textColor="@color/axis_color"
             android:layout_height="wrap_content"/>

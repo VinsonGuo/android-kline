@@ -37,6 +37,7 @@ import com.guoziwei.klinelib.model.HisData;
 import com.guoziwei.klinelib.util.DataUtils;
 import com.guoziwei.klinelib.util.DateUtils;
 import com.guoziwei.klinelib.util.DisplayUtils;
+import com.guoziwei.klinelib.util.DoubleUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +47,7 @@ import java.util.Locale;
  * kline
  * Created by guoziwei on 2017/10/26.
  */
-public class KLineView extends LinearLayout {
+public class KLineView extends BaseView {
 
 
     public static final int NORMAL_LINE = 0;
@@ -69,8 +70,6 @@ public class KLineView extends LinearLayout {
     public static final int D = 32;
     public static final int J = 33;
 
-    public int MAX_COUNT_LINE = 300;
-    public int MIN_COUNT_LINE = 50;
     public int MAX_COUNT_K = 300;
     public int MIN_COUNT_K = 30;
 
@@ -78,12 +77,9 @@ public class KLineView extends LinearLayout {
     protected AppCombinedChart mChartVolume;
     protected AppCombinedChart mChartMacd;
     protected AppCombinedChart mChartKdj;
-    protected List<HisData> mData = new ArrayList<>(300);
 
     protected ChartInfoView mChartInfoView;
     protected Context mContext;
-    private int mAxisColor;
-    private int mTransparentColor;
 
     /**
      * last price
@@ -99,8 +95,6 @@ public class KLineView extends LinearLayout {
      * the digits of the symbol
      */
     private int mDigits = 2;
-    private int mDecreasingColor;
-    private int mIncreasingColor;
 
     public KLineView(Context context) {
         this(context, null);
@@ -140,11 +134,7 @@ public class KLineView extends LinearLayout {
         });
         ((RadioButton) rgIndex.getChildAt(0)).setChecked(true);
         mChartInfoView.setChart(mChartPrice, mChartVolume, mChartMacd, mChartKdj);
-      
-        mAxisColor = ContextCompat.getColor(mContext, R.color.axis_color);
-        mTransparentColor = getResources().getColor(android.R.color.transparent);
-        mDecreasingColor = ContextCompat.getColor(getContext(), R.color.decreasing_color);
-        mIncreasingColor = ContextCompat.getColor(getContext(), R.color.increasing_color);
+
         mChartPrice.setNoDataText(context.getString(R.string.loading));
         initChartPrice();
         initBottomChart(mChartVolume);
@@ -185,7 +175,12 @@ public class KLineView extends LinearLayout {
         axisLeftPrice.setDrawAxisLine(false);
         axisLeftPrice.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
         axisLeftPrice.setTextColor(mAxisColor);
-        axisLeftPrice.setValueFormatter(new YValueFormatter(mDigits));
+        axisLeftPrice.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                return DoubleUtil.getStringByDigits(value, mDigits);
+            }
+        });
 
         int[] colorArray = {mDecreasingColor, mDecreasingColor, mAxisColor, mIncreasingColor, mIncreasingColor};
         Transformer leftYTransformer = mChartPrice.getRendererLeftYAxis().getTransformer();
@@ -204,7 +199,7 @@ public class KLineView extends LinearLayout {
         axisRightPrice.setDrawAxisLine(false);
         axisRightPrice.setTextColor(mAxisColor);
         axisRightPrice.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
-      
+
         axisRightPrice.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
@@ -232,82 +227,6 @@ public class KLineView extends LinearLayout {
     }
 
 
-    protected void initBottomChart(AppCombinedChart chart) {
-        chart.setScaleEnabled(true);
-        chart.setDrawBorders(false);
-        chart.setBorderWidth(1);
-        chart.setDragEnabled(true);
-        chart.setScaleYEnabled(false);
-        chart.getDescription().setEnabled(false);
-        chart.setAutoScaleMinMaxEnabled(true);
-        chart.setDragDecelerationEnabled(false);
-        chart.setHighlightPerDragEnabled(false);
-        Legend lineChartLegend = chart.getLegend();
-        lineChartLegend.setEnabled(false);
-
-
-        XAxis xAxisVolume = chart.getXAxis();
-        xAxisVolume.setDrawLabels(true);
-        xAxisVolume.setDrawAxisLine(false);
-        xAxisVolume.setDrawGridLines(false);
-        xAxisVolume.setTextColor(mAxisColor);
-        xAxisVolume.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxisVolume.setLabelCount(5, true);
-        xAxisVolume.setAvoidFirstLastClipping(true);
-        xAxisVolume.setAxisMinimum(-0.5f);
-
-        xAxisVolume.setValueFormatter(new IAxisValueFormatter() {
-            @Override
-            public String getFormattedValue(float value, AxisBase axis) {
-                if (value < 0) {
-                    value = 0;
-                }
-                if (mData != null && value < mData.size() && value >= 0) {
-                    return DateUtils.formatTime(mData.get((int) value).getDate());
-                }
-                return "";
-            }
-        });
-
-        YAxis axisLeftVolume = chart.getAxisLeft();
-        axisLeftVolume.setDrawLabels(true);
-        axisLeftVolume.setDrawGridLines(false);
-        axisLeftVolume.setLabelCount(3, true);
-        axisLeftVolume.setDrawAxisLine(false);
-        axisLeftVolume.setTextColor(mAxisColor);
-        axisLeftVolume.setSpaceTop(0);
-        axisLeftVolume.setSpaceBottom(0);
-        axisLeftVolume.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
-        /*axisLeftVolume.setValueFormatter(new IAxisValueFormatter() {
-            @Override
-            public String getFormattedValue(float value, AxisBase axis) {
-                String s;
-                if (value > 10000) {
-                    s = (int) (value / 10000) + "w";
-                } else if (value > 1000) {
-                    s = (int) (value / 1000) + "k";
-                } else {
-                    s = (int) value + "";
-                }
-                return String.format(Locale.getDefault(), "%1$5s", s);
-            }
-        });
-*/
-        Transformer leftYTransformer = chart.getRendererLeftYAxis().getTransformer();
-        ColorContentYAxisRenderer leftColorContentYAxisRenderer = new ColorContentYAxisRenderer(chart.getViewPortHandler(), chart.getAxisLeft(), leftYTransformer);
-        leftColorContentYAxisRenderer.setLabelInContent(true);
-        leftColorContentYAxisRenderer.setUseDefaultLabelXOffset(false);
-        chart.setRendererLeftYAxis(leftColorContentYAxisRenderer);
-
-        //右边y
-        YAxis axisRightVolume = chart.getAxisRight();
-        axisRightVolume.setDrawLabels(false);
-        axisRightVolume.setDrawGridLines(false);
-        axisRightVolume.setDrawAxisLine(false);
-
-    }
-
-
     private void initChartListener() {
         mChartPrice.setOnChartGestureListener(new CoupleChartGestureListener(mChartPrice, mChartVolume, mChartMacd, mChartKdj));
         mChartVolume.setOnChartGestureListener(new CoupleChartGestureListener(mChartVolume, mChartPrice, mChartMacd, mChartKdj));
@@ -324,7 +243,7 @@ public class KLineView extends LinearLayout {
         mChartKdj.setOnTouchListener(new ChartInfoViewHandler(mChartKdj));
     }
 
-    public void initChartKData(List<HisData> hisDatas) {
+    public void initData(List<HisData> hisDatas) {
         mData.clear();
         mData.addAll(DataUtils.calculateHisData(hisDatas));
 
@@ -376,54 +295,22 @@ public class KLineView extends LinearLayout {
 
         mChartPrice.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
         mChartPrice.notifyDataSetChanged();
-        mChartPrice.invalidate();
         mChartPrice.moveViewToX(combinedData.getEntryCount());
         initChartVolumeData();
         initChartMacdData();
         initChartKdjData();
+
+
+        mChartPrice.getXAxis().setAxisMaximum(combinedData.getXMax() + 1.5f);
+        mChartVolume.getXAxis().setAxisMaximum(mChartVolume.getData().getXMax() + 1.5f);
+        mChartMacd.getXAxis().setAxisMaximum(mChartMacd.getData().getXMax() + 1.5f);
+        mChartKdj.getXAxis().setAxisMaximum(mChartKdj.getData().getXMax() + 1.5f);
 
         mChartVolume.zoom(3, 0, mData.size() / 2, 0);
         mChartPrice.zoom(3, 0, mData.size() / 2, 0);
         mChartMacd.zoom(3, 0, mData.size() / 2, 0);
         mChartKdj.zoom(3, 0, mData.size() / 2, 0);
     }
-
-    public void initChartPriceData(List<HisData> hisDatas) {
-
-        mData.clear();
-        mData.addAll(DataUtils.calculateHisData(hisDatas));
-
-        ArrayList<Entry> lineCJEntries = new ArrayList<>(MAX_COUNT_LINE);
-        ArrayList<Entry> lineJJEntries = new ArrayList<>(MAX_COUNT_LINE);
-        ArrayList<Entry> paddingEntries = new ArrayList<>(MAX_COUNT_LINE);
-
-        for (int i = 0; i < mData.size(); i++) {
-            lineCJEntries.add(new Entry(i, (float) mData.get(i).getClose()));
-            lineJJEntries.add(new Entry(i, (float) mData.get(i).getAvePrice()));
-        }
-        if (!mData.isEmpty() && mData.size() < MAX_COUNT_LINE) {
-            for (int i = mData.size(); i < MAX_COUNT_LINE; i++) {
-                paddingEntries.add(new Entry(i, (float) mData.get(mData.size() - 1).getClose()));
-            }
-        }
-        ArrayList<ILineDataSet> sets = new ArrayList<>();
-        sets.add(setLine(NORMAL_LINE, lineCJEntries));
-        sets.add(setLine(AVE_LINE, lineJJEntries));
-        sets.add(setLine(INVISIABLE_LINE, paddingEntries));
-        LineData lineData = new LineData(sets);
-
-        CombinedData combinedData = new CombinedData();
-        combinedData.setData(lineData);
-        mChartPrice.setData(combinedData);
-
-        mChartPrice.setVisibleXRange(MAX_COUNT_LINE, MIN_COUNT_LINE);
-
-        mChartPrice.notifyDataSetChanged();
-        mChartPrice.invalidate();
-        mChartPrice.moveViewToX(combinedData.getEntryCount());
-        initChartVolumeData();
-    }
-
 
 
     private BarDataSet setBar(ArrayList<BarEntry> barEntries, int type) {
@@ -516,7 +403,7 @@ public class KLineView extends LinearLayout {
             HisData t = mData.get(i);
             barEntries.add(new BarEntry(i, (float) t.getVol(), t));
         }
-        int maxCount = mChartPrice.getData().getCandleData() == null ? MAX_COUNT_LINE : MAX_COUNT_K;
+        int maxCount = MAX_COUNT_K;
         if (!mData.isEmpty() && mData.size() < maxCount) {
             for (int i = mData.size(); i < maxCount; i++) {
                 paddingEntries.add(new BarEntry(i, 0));
@@ -529,15 +416,9 @@ public class KLineView extends LinearLayout {
         combinedData.setData(barData);
         mChartVolume.setData(combinedData);
 
-        if (mChartPrice.getData().getCandleData() != null) {
-            mChartVolume.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
-        } else {
-            mChartVolume.setVisibleXRange(MAX_COUNT_LINE, MIN_COUNT_LINE);
-        }
+        mChartVolume.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
 
-//        setOffset();
         mChartVolume.notifyDataSetChanged();
-        mChartVolume.invalidate();
         mChartVolume.moveViewToX(combinedData.getEntryCount());
 
     }
@@ -553,7 +434,7 @@ public class KLineView extends LinearLayout {
             difEntries.add(new Entry(i, (float) t.getDif()));
             deaEntries.add(new Entry(i, (float) t.getDea()));
         }
-        int maxCount = mChartPrice.getData().getCandleData() == null ? MAX_COUNT_LINE : MAX_COUNT_K;
+        int maxCount = MAX_COUNT_K;
         if (!mData.isEmpty() && mData.size() < maxCount) {
             for (int i = mData.size(); i < maxCount; i++) {
                 paddingEntries.add(new BarEntry(i, 0));
@@ -568,31 +449,25 @@ public class KLineView extends LinearLayout {
         combinedData.setData(lineData);
         mChartMacd.setData(combinedData);
 
-        if (mChartPrice.getData().getCandleData() != null) {
-            mChartMacd.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
-        } else {
-            mChartMacd.setVisibleXRange(MAX_COUNT_LINE, MIN_COUNT_LINE);
-        }
+        mChartMacd.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
 
-//        setOffset();
         mChartMacd.notifyDataSetChanged();
-        mChartMacd.invalidate();
         mChartMacd.moveViewToX(combinedData.getEntryCount());
     }
 
     private void initChartKdjData() {
-        ArrayList<Entry> kEntries = new ArrayList<>(MAX_COUNT_LINE);
-        ArrayList<Entry> dEntries = new ArrayList<>(MAX_COUNT_LINE);
-        ArrayList<Entry> jEntries = new ArrayList<>(MAX_COUNT_LINE);
-        ArrayList<Entry> paddingEntries = new ArrayList<>(MAX_COUNT_LINE);
+        ArrayList<Entry> kEntries = new ArrayList<>(MAX_COUNT_K);
+        ArrayList<Entry> dEntries = new ArrayList<>(MAX_COUNT_K);
+        ArrayList<Entry> jEntries = new ArrayList<>(MAX_COUNT_K);
+        ArrayList<Entry> paddingEntries = new ArrayList<>(MAX_COUNT_K);
 
         for (int i = 0; i < mData.size(); i++) {
             kEntries.add(new Entry(i, (float) mData.get(i).getK()));
             dEntries.add(new Entry(i, (float) mData.get(i).getD()));
             jEntries.add(new Entry(i, (float) mData.get(i).getJ()));
         }
-        if (!mData.isEmpty() && mData.size() < MAX_COUNT_LINE) {
-            for (int i = mData.size(); i < MAX_COUNT_LINE; i++) {
+        if (!mData.isEmpty() && mData.size() < MAX_COUNT_K) {
+            for (int i = mData.size(); i < MAX_COUNT_K; i++) {
                 paddingEntries.add(new Entry(i, (float) mData.get(mData.size() - 1).getK()));
             }
         }
@@ -607,14 +482,9 @@ public class KLineView extends LinearLayout {
         combinedData.setData(lineData);
         mChartKdj.setData(combinedData);
 
-        if (mChartPrice.getData().getCandleData() != null) {
-            mChartMacd.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
-        } else {
-            mChartMacd.setVisibleXRange(MAX_COUNT_LINE, MIN_COUNT_LINE);
-        }
+        mChartMacd.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
 
         mChartKdj.notifyDataSetChanged();
-        mChartKdj.invalidate();
         mChartKdj.moveViewToX(combinedData.getEntryCount());
     }
 
@@ -652,7 +522,7 @@ public class KLineView extends LinearLayout {
     }
 
 
-    public void addKData(HisData hisData) {
+    public void addData(HisData hisData) {
         hisData = DataUtils.calculateHisData(hisData, mData);
         CombinedData combinedData = mChartPrice.getData();
         LineData priceData = combinedData.getLineData();
@@ -684,8 +554,6 @@ public class KLineView extends LinearLayout {
             mData.remove(index);
         }
         mData.add(hisData);
-//        mData = DataUtils.calculateHisData(mData);
-//        hisData = getLastData();
         klineSet.addEntry(new CandleEntry(klineSet.getEntryCount(), (float) hisData.getHigh(), (float) hisData.getLow(), (float) hisData.getOpen(), (float) hisData.getClose()));
         volSet.addEntry(new BarEntry(volSet.getEntryCount(), hisData.getVol(), hisData));
 
@@ -719,44 +587,16 @@ public class KLineView extends LinearLayout {
         mChartKdj.invalidate();
     }
 
-    public void addLineData(HisData hisData) {
-        hisData = DataUtils.calculateHisData(hisData, mData);
-        CombinedData combinedData = mChartPrice.getData();
-        LineData priceData = combinedData.getLineData();
-        ILineDataSet priceSet = priceData.getDataSetByIndex(0);
-        ILineDataSet aveSet = priceData.getDataSetByIndex(1);
-        IBarDataSet volSet = mChartVolume.getData().getBarData().getDataSetByIndex(0);
-        if (mData.contains(hisData)) {
-            int index = mData.indexOf(hisData);
-            priceSet.removeEntry(index);
-            aveSet.removeEntry(index);
-            volSet.removeEntry(index);
-            mData.remove(index);
-        }
-        mData.add(hisData);
-        priceSet.addEntry(new Entry(priceSet.getEntryCount(), (float) hisData.getClose()));
-        aveSet.addEntry(new Entry(aveSet.getEntryCount(), (float) hisData.getAvePrice()));
-        volSet.addEntry(new BarEntry(volSet.getEntryCount(), hisData.getVol()));
-
-
-        mChartPrice.getXAxis().setAxisMaximum(combinedData.getXMax() + 1.5f);
-        mChartVolume.getXAxis().setAxisMaximum(mChartVolume.getData().getXMax() + 1.5f);
-
-        mChartPrice.notifyDataSetChanged();
-        mChartPrice.invalidate();
-        mChartVolume.notifyDataSetChanged();
-        mChartVolume.invalidate();
-    }
-
 
     /**
      * align two chart
      */
     private void setOffset() {
-        mChartPrice.setViewPortOffsets(0, 0, 5, DisplayUtils.dip2px(mContext, 20));
-        mChartVolume.setViewPortOffsets(0, 0, 5, DisplayUtils.dip2px(mContext, 20));
-        mChartMacd.setViewPortOffsets(0, 0, 5, DisplayUtils.dip2px(mContext, 20));
-        mChartKdj.setViewPortOffsets(0, 0, 5, DisplayUtils.dip2px(mContext, 20));
+        int bottom = DisplayUtils.dip2px(mContext, 20);
+        mChartPrice.setViewPortOffsets(0, 0, 0, bottom);
+        mChartVolume.setViewPortOffsets(0, 0, 5, bottom);
+        mChartMacd.setViewPortOffsets(0, 0, 5, bottom);
+        mChartKdj.setViewPortOffsets(0, 0, 5, bottom);
         /*float lineLeft = mChartPrice.getViewPortHandler().offsetLeft();
         float barLeft = mChartVolume.getViewPortHandler().offsetLeft();
         float lineRight = mChartPrice.getViewPortHandler().offsetRight();
@@ -781,17 +621,9 @@ public class KLineView extends LinearLayout {
 
 
     /**
-     * set the count of line chart
-     */
-    public void setLineCount(int max, int min) {
-        MAX_COUNT_LINE = max;
-        MIN_COUNT_LINE = min;
-    }
-
-    /**
      * set the count of k chart
      */
-    public void setKCount(int max, int min) {
+    public void setCount(int max, int min) {
         MAX_COUNT_K = max;
         MIN_COUNT_K = min;
     }
@@ -819,17 +651,6 @@ public class KLineView extends LinearLayout {
 
     }
 
-
-    public void setDigits(int digits) {
-        mDigits = digits;
-    }
-
-    public HisData getLastData() {
-        if (mData != null && !mData.isEmpty()) {
-            return mData.get(mData.size() - 1);
-        }
-        return null;
-    }
 
 
 }
