@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.WindowManager;
 
 /**
- * Created by hou on 2015/8/7.
+ * Created by guoziwei
  */
 public class DisplayUtils {
 

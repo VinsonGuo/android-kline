@@ -15,7 +15,7 @@ public class DataUtils {
 
 
     /**
-     * 计算均线 ma等数值
+     * calculate average price and ma data
      */
     public static List<HisData> calculateHisData(List<HisData> list, HisData lastData) {
 
@@ -33,14 +33,13 @@ public class DataUtils {
         ArrayList<Double> k = kdj.getK();
         ArrayList<Double> j = kdj.getJ();
 
-        // 这里是计算均线的公式
         int amountVol = 0;
         if (lastData != null) {
             amountVol = lastData.getAmountVol();
         }
         for (int i = 0; i < list.size(); i++) {
             HisData hisData = list.get(i);
-            // 将ma设置在model中
+
             hisData.setMa5(ma5List.get(i));
             hisData.setMa10(ma10List.get(i));
             hisData.setMa20(ma20List.get(i));
@@ -81,13 +80,13 @@ public class DataUtils {
     }
 
     /**
-     * 根据以前的数据，增量计算新数据的指标
+     * according to the history data list, calculate a new data
      */
     public static HisData calculateHisData(HisData newData, List<HisData> hisDatas) {
-        // 这里是计算均线的公式
+
         HisData lastData = hisDatas.get(hisDatas.size() - 1);
         int amountVol = lastData.getAmountVol();
-        // 将ma设置在model中
+
         newData.setMa5(calculateLastMA(5, hisDatas));
         newData.setMa10(calculateLastMA(10, hisDatas));
         newData.setMa20(calculateLastMA(20, hisDatas));
@@ -120,9 +119,8 @@ public class DataUtils {
     }
 
     /**
-     * 计算ma数据
-     *
-     * @param dayCount 例如 5 10 15 30
+     * calculate MA value, return a double list
+     * @param dayCount for example: 5, 10, 20, 30
      */
     public static List<Double> calculateMA(int dayCount, List<HisData> data) {
         dayCount--;
@@ -141,6 +139,9 @@ public class DataUtils {
         return result;
     }
 
+    /**
+     * calculate last MA value, return a double value
+     */
     public static double calculateLastMA(int dayCount, List<HisData> data) {
         dayCount--;
         double result = Double.NaN;

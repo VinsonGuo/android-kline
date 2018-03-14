@@ -23,9 +23,6 @@ public class LineChartYMarkerView extends MarkerView {
     private final int digits;
     private TextView tvContent;
 
-    /**
-     * @param digits 价格的精度
-     */
     public LineChartYMarkerView(Context context, int digits) {
         super(context, R.layout.view_mp_real_price_marker);
         this.digits = digits;

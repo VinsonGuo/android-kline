@@ -46,7 +46,7 @@ public class AppCombinedChart extends CombinedChart {
         try {
             super.setData(data);
         }catch (ClassCastException e) {
-            // 忽略父类的类型转换错误
+            // ignore
         }
         ((AppCombinedChartRenderer) mRenderer).createRenderers();
         mRenderer.initBuffers();

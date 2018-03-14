@@ -25,7 +25,7 @@ public class InfoViewListener implements OnChartValueSelectedListener {
     private ChartInfoView mInfoView;
     private int mWidth;
     /**
-     * 需要highlight联动的chart
+     * if otherChart not empty, highlight will disappear after 3 second
      */
     private Chart[] mOtherChart;
 

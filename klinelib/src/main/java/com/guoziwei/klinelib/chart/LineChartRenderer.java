@@ -294,9 +294,6 @@ public class LineChartRenderer extends LineRadarRenderer {
 
     /**
      * Draws a normal line.
-     *
-     * @param c
-     * @param dataSet
      */
     protected void drawLinear(Canvas c, ILineDataSet dataSet) {
 

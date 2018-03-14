@@ -1,6 +1,7 @@
 package com.guoziwei.klinelib.chart;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -31,22 +32,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 闪电图
  * Created by guoziwei on 2017/5/13.
  */
 public class TickChart extends RelativeLayout {
 
-    /**
-     * 实线
-     */
     public static final int TYPE_FULL = 0;
-    /**
-     * 虚线
-     */
+
     public static final int TYPE_DASHED = 1;
-    /**
-     * 均线
-     */
+
     public static final int TYPE_AVE = 2;
 
     public static final int FULL_SCREEN_SHOW_COUNT = 160;
@@ -62,9 +55,6 @@ public class TickChart extends RelativeLayout {
     private int candleGridColor = getResources().getColor(R.color.chart_grid_color);
     private int mTextColor = getResources().getColor(R.color.axis_color);
 
-    /**
-     * 上一次的价格
-     */
     private float mLastPrice;
 
 
@@ -77,9 +67,7 @@ public class TickChart extends RelativeLayout {
             return "";
         }
     };
-    /**
-     * 具体信息的View
-     */
+
     private LineChartInfoView mInfoView;
 
     public TickChart(Context context) {
@@ -133,9 +121,9 @@ public class TickChart extends RelativeLayout {
         }
 
         int size;
-        if (mList.size() < FULL_SCREEN_SHOW_COUNT - PADDING_COUNT) {//小于最大的个数，补充个数与最大的相同
+        if (mList.size() < FULL_SCREEN_SHOW_COUNT - PADDING_COUNT) {
             size = FULL_SCREEN_SHOW_COUNT;
-        } else { // 大于最大个数，向后面添加20个
+        } else {
             size = mList.size() + PADDING_COUNT;
         }
 
@@ -159,9 +147,6 @@ public class TickChart extends RelativeLayout {
     }
 
 
-    /**
-     * 刷新最后一个
-     */
     public void refreshData(float price) {
         if (price <= 0 || price == mLastPrice) {
             return;
@@ -204,9 +189,6 @@ public class TickChart extends RelativeLayout {
     }
 
 
-    /**
-     * 增加一个entry
-     */
     public void addEntry(HisData hisData) {
         hisData = DataUtils.calculateHisData(hisData, mList);
         LineData data = mChart.getData();
@@ -234,7 +216,6 @@ public class TickChart extends RelativeLayout {
             data.addEntry(new Entry(setSell.getEntryCount(), price), DATA_SET_PRICE);
             data.addEntry(new Entry(setSell.getEntryCount(), (float) hisData.getAvePrice()), DATA_SET_AVE);
 
-            // 给padding添加entry
             ILineDataSet paddingSet = data.getDataSetByIndex(DATA_SET_PADDING);
             if (paddingSet == null) {
                 paddingSet = createSet(TYPE_DASHED);
@@ -242,7 +223,7 @@ public class TickChart extends RelativeLayout {
             }
 
             int count = paddingSet.getEntryCount();
-            // 如果count大于规定的值，将count减少1，从而让实线向前走
+
             if (count > PADDING_COUNT && index < 0) {
                 count--;
             }
@@ -274,7 +255,7 @@ public class TickChart extends RelativeLayout {
             set.setDrawFilled(true);
             set.setColor(mLineColor);
             set.setLineWidth(1f);
-            set.setFillDrawable(ContextCompat.getDrawable(mContext, R.drawable.bg_chart_fade));
+            set.setFillDrawable(new ColorDrawable(transparentColor));
         } else if (type == TYPE_AVE) {
             set.setHighlightEnabled(true);
             set.setColor(ContextCompat.getColor(mContext, R.color.ave_color));
@@ -391,9 +372,6 @@ public class TickChart extends RelativeLayout {
     }
 
 
-    /**
-     * 获取最后一个数据
-     */
     public HisData getLastData() {
         try {
             return mList.get(mList.size() - 1);
