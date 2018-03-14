@@ -496,7 +496,7 @@ public class KLineView extends LinearLayout {
         set1.setIncreasingColor(mIncreasingColor);
         set1.setIncreasingPaintStyle(Paint.Style.FILL);
         set1.setNeutralColor(ContextCompat.getColor(getContext(), R.color.increasing_color));
-        set1.setDrawValues(false);
+        set1.setDrawValues(true);
         set1.setHighlightEnabled(true);
         if (type != NORMAL_LINE) {
             set1.setVisible(false);

@@ -3,7 +3,6 @@ package com.guoziwei.klinelib.chart;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
 
 import com.github.mikephil.charting.animation.ChartAnimator;
 import com.github.mikephil.charting.data.CandleData;
@@ -14,7 +13,6 @@ import com.github.mikephil.charting.interfaces.datasets.ICandleDataSet;
 import com.github.mikephil.charting.renderer.LineScatterCandleRadarRenderer;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.github.mikephil.charting.utils.MPPointD;
-import com.github.mikephil.charting.utils.MPPointF;
 import com.github.mikephil.charting.utils.Transformer;
 import com.github.mikephil.charting.utils.Utils;
 import com.github.mikephil.charting.utils.ViewPortHandler;
@@ -253,7 +251,7 @@ public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
         }
     }
 
-    @Override
+    /*@Override
     public void drawValues(Canvas c) {
 
         // if values are drawn
@@ -325,8 +323,137 @@ public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
 
                 MPPointF.recycleInstance(iconsOffset);
             }
+
+
         }
+
+
+    }*/
+
+    @Override
+    public void drawValues(Canvas c) {
+
+        List<ICandleDataSet> dataSets = mChart.getCandleData().getDataSets();
+
+        for (int i = 0; i < dataSets.size(); i++) {
+
+            ICandleDataSet dataSet = dataSets.get(i);
+
+            if (!dataSet.isDrawValuesEnabled() || dataSet.getEntryCount() == 0)
+                continue;
+
+            // apply the text-styling defined by the DataSet
+            applyValueTextStyle(dataSet);
+
+            Transformer trans = mChart.getTransformer(dataSet.getAxisDependency());
+
+            int minx = (int) Math.max(dataSet.getXMin(), 0);
+            int maxx = (int) Math.min(dataSet.getXMax(), dataSet.getEntryCount() - 1);
+
+            float[] positions = trans.generateTransformedValuesCandle(
+                    dataSet, mAnimator.getPhaseX(), mAnimator.getPhaseY(), minx, maxx);
+
+
+            //计算最大值和最小值
+            float maxValue = 0, minValue = 0;
+            int maxIndex = 0, minIndex = 0;
+            CandleEntry maxEntry = null;
+            boolean firstInit = true;
+            for (int j = 0; j < positions.length; j += 2) {
+
+                float x = positions[j];
+                float y = positions[j + 1];
+
+                if (!mViewPortHandler.isInBoundsRight(x))
+                    break;
+
+                if (!mViewPortHandler.isInBoundsLeft(x) || !mViewPortHandler.isInBoundsY(y))
+                    continue;
+
+                CandleEntry entry = dataSet.getEntryForIndex(j / 2 + minx);
+
+                if (firstInit) {
+                    maxValue = entry.getHigh();
+                    minValue = entry.getLow();
+                    firstInit = false;
+                    maxEntry = entry;
+                } else {
+                    if (entry.getHigh() > maxValue) {
+                        maxValue = entry.getHigh();
+                        maxIndex = j;
+                        maxEntry = entry;
+                    }
+
+                    if (entry.getLow() < minValue) {
+                        minValue = entry.getLow();
+                        minIndex = j;
+                    }
+
+                }
+            }
+
+            //绘制最大值和最小值
+            float x = positions[minIndex];
+            if (maxIndex > minIndex) {
+                //画右边
+                String highString = "← " + Float.toString(minValue);
+
+                //计算显示位置
+                //计算文本宽度
+                int highStringWidth = Utils.calcTextWidth(mValuePaint, highString);
+
+                float[] tPosition = new float[2];
+                tPosition[1] = minValue;
+                trans.pointValuesToPixel(tPosition);
+                mValuePaint.setColor(dataSet.getValueTextColor(minIndex / 2));
+                c.drawText(highString, x + highStringWidth / 2, tPosition[1], mValuePaint);
+            } else {
+                //画左边
+                String highString = Float.toString(minValue) + " →";
+
+                //计算显示位置
+                int highStringWidth = Utils.calcTextWidth(mValuePaint, highString);
+                float[] tPosition = new float[2];
+                tPosition[1] = minValue;
+                trans.pointValuesToPixel(tPosition);
+                mValuePaint.setColor(dataSet.getValueTextColor(minIndex / 2));
+                c.drawText(highString, x - highStringWidth / 2, tPosition[1], mValuePaint);
+            }
+
+            if (maxIndex > minIndex) {
+                //画左边
+                String highString = Float.toString(maxValue) + " →";
+
+                int highStringWidth = Utils.calcTextWidth(mValuePaint, highString);
+
+                float[] tPosition = new float[2];
+                tPosition[0] = maxEntry == null ? 0f : maxEntry.getX();
+                tPosition[1] = maxEntry == null ? 0f : maxEntry.getHigh();
+                trans.pointValuesToPixel(tPosition);
+
+                mValuePaint.setColor(dataSet.getValueTextColor(maxIndex / 2));
+                c.drawText(highString, tPosition[0] - highStringWidth / 2, tPosition[1], mValuePaint);
+            } else {
+                //画右边
+                String highString = "← " + Float.toString(maxValue);
+
+                //计算显示位置
+                int highStringWidth = Utils.calcTextWidth(mValuePaint, highString);
+
+                float[] tPosition = new float[2];
+                tPosition[0] = maxEntry == null ? 0f : maxEntry.getX();
+                tPosition[1] = maxEntry == null ? 0f : maxEntry.getHigh();
+                trans.pointValuesToPixel(tPosition);
+
+                mValuePaint.setColor(dataSet.getValueTextColor(maxIndex / 2));
+                c.drawText(highString, tPosition[0] + highStringWidth / 2, tPosition[1], mValuePaint);
+
+            }
+
+        }
+//        }
     }
+
 
     @Override
     public void drawExtras(Canvas c) {
