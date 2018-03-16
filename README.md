@@ -14,7 +14,7 @@
 
 ![demo](art/new_chart.gif)
 
-demo如下，也可以[点击这里下载](art/app-debug.apk)
+也可以[点击这里下载](https://github.com/gzw19931217/android-kline/raw/master/art/app-debug.apk)
 
 # What's new
 
