@@ -167,16 +167,21 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                 BarEntry entryForIndex = dataSet.getEntryForIndex(i);
                 Object data = entryForIndex.getData();
                 if (data == null || !(data instanceof HisData)) {
-                    mRenderPaint.setColor(dataSet.getColor(i));
+                    if (entryForIndex.getY() > 0) {
+                        mRenderPaint.setColor(dataSet.getColors().get(0));
+                    } else {
+                        mRenderPaint.setColor(dataSet.getColors().get(1));
+                    }
                 } else {
-                    if (((HisData) data).getClose() < ((HisData) data).getOpen()) {
+                    HisData hisData = (HisData) data;
+                    if (hisData.getClose() < hisData.getOpen()) {
                         mRenderPaint.setColor(dataSet.getColors().get(1));
                     } else {
                         mRenderPaint.setColor(dataSet.getColors().get(0));
                     }
 
-                    if (((HisData) data).getClose() == 0f && ((HisData) data).getOpen() == 0f) {
-                        if (((HisData) data).getVol() > 0) {
+                    if (hisData.getClose() == 0f && hisData.getOpen() == 0f) {
+                        if (hisData.getVol() > 0) {
                             mRenderPaint.setColor(dataSet.getColors().get(0));
                         } else {
                             mRenderPaint.setColor(dataSet.getColors().get(1));

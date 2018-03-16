@@ -1,0 +1,1502 @@
+[
+{
+time: "2017-08-02",
+price_o: "10526.00",
+price_c: "10469.34",
+price_h: "10557.47",
+price_l: "10461.95",
+volume: "248511557",
+volume_price: "3051亿",
+zf_bfb: "0.91%"
+},
+{
+time: "2017-08-03",
+price_o: "10454.01",
+price_c: "10436.17",
+price_h: "10507.23",
+price_l: "10403.59",
+volume: "225245507",
+volume_price: "2785亿",
+zf_bfb: "0.99%"
+},
+{
+time: "2017-08-04",
+price_o: "10426.53",
+price_c: "10361.23",
+price_h: "10450.69",
+price_l: "10360.83",
+volume: "237545789",
+volume_price: "2813亿",
+zf_bfb: "0.86%"
+},
+{
+time: "2017-08-07",
+price_o: "10353.15",
+price_c: "10451.08",
+price_h: "10451.08",
+price_l: "10347.50",
+volume: "193394148",
+volume_price: "2276亿",
+zf_bfb: "1%"
+},
+{
+time: "2017-08-08",
+price_o: "10448.87",
+price_c: "10496.25",
+price_h: "10516.61",
+price_l: "10437.85",
+volume: "229036920",
+volume_price: "2712亿",
+zf_bfb: "0.75%"
+},
+{
+time: "2017-08-09",
+price_o: "10487.77",
+price_c: "10544.59",
+price_h: "10548.06",
+price_l: "10455.27",
+volume: "213365852",
+volume_price: "2594亿",
+zf_bfb: "0.88%"
+},
+{
+time: "2017-08-10",
+price_o: "10525.15",
+price_c: "10480.64",
+price_h: "10582.16",
+price_l: "10417.09",
+volume: "218998236",
+volume_price: "2721亿",
+zf_bfb: "1.57%"
+},
+{
+time: "2017-08-11",
+price_o: "10407.33",
+price_c: "10291.35",
+price_h: "10459.91",
+price_l: "10281.63",
+volume: "223544896",
+volume_price: "2690亿",
+zf_bfb: "1.7%"
+},
+{
+time: "2017-08-14",
+price_o: "10308.97",
+price_c: "10519.80",
+price_h: "10519.80",
+price_l: "10308.97",
+volume: "202644516",
+volume_price: "2630亿",
+zf_bfb: "2.05%"
+},
+{
+time: "2017-08-15",
+price_o: "10527.54",
+price_c: "10559.78",
+price_h: "10559.78",
+price_l: "10502.52",
+volume: "190212431",
+volume_price: "2505亿",
+zf_bfb: "0.54%"
+},
+{
+time: "2017-08-16",
+price_o: "10550.42",
+price_c: "10600.78",
+price_h: "10625.34",
+price_l: "10504.07",
+volume: "217140490",
+volume_price: "2902亿",
+zf_bfb: "1.15%"
+},
+{
+time: "2017-08-17",
+price_o: "10601.65",
+price_c: "10653.73",
+price_h: "10658.16",
+price_l: "10583.40",
+volume: "223729091",
+volume_price: "2969亿",
+zf_bfb: "0.71%"
+},
+{
+time: "2017-08-18",
+price_o: "10586.35",
+price_c: "10614.08",
+price_h: "10636.15",
+price_l: "10563.26",
+volume: "198035364",
+volume_price: "2614亿",
+zf_bfb: "0.68%"
+},
+{
+time: "2017-08-21",
+price_o: "10624.81",
+price_c: "10689.77",
+price_h: "10689.77",
+price_l: "10624.81",
+volume: "186806502",
+volume_price: "2458亿",
+zf_bfb: "0.61%"
+},
+{
+time: "2017-08-22",
+price_o: "10689.65",
+price_c: "10653.98",
+price_h: "10699.05",
+price_l: "10631.25",
+volume: "191573985",
+volume_price: "2617亿",
+zf_bfb: "0.63%"
+},
+{
+time: "2017-08-23",
+price_o: "10642.22",
+price_c: "10619.34",
+price_h: "10662.83",
+price_l: "10583.18",
+volume: "171019085",
+volume_price: "2265亿",
+zf_bfb: "0.75%"
+},
+{
+time: "2017-08-24",
+price_o: "10617.74",
+price_c: "10552.96",
+price_h: "10627.34",
+price_l: "10537.78",
+volume: "162216660",
+volume_price: "2214亿",
+zf_bfb: "0.84%"
+},
+{
+time: "2017-08-25",
+price_o: "10556.54",
+price_c: "10659.01",
+price_h: "10671.71",
+price_l: "10556.54",
+volume: "174584891",
+volume_price: "2390亿",
+zf_bfb: "1.09%"
+},
+{
+time: "2017-08-28",
+price_o: "10678.35",
+price_c: "10809.74",
+price_h: "10866.36",
+price_l: "10678.35",
+volume: "233005683",
+volume_price: "3355亿",
+zf_bfb: "1.76%"
+},
+{
+time: "2017-08-29",
+price_o: "10796.54",
+price_c: "10762.37",
+price_h: "10818.22",
+price_l: "10742.13",
+volume: "209014712",
+volume_price: "2963亿",
+zf_bfb: "0.7%"
+},
+{
+time: "2017-08-30",
+price_o: "10762.24",
+price_c: "10813.93",
+price_h: "10825.89",
+price_l: "10762.24",
+volume: "205631844",
+volume_price: "2816亿",
+zf_bfb: "0.59%"
+},
+{
+time: "2017-08-31",
+price_o: "10823.31",
+price_c: "10816.64",
+price_h: "10837.39",
+price_l: "10759.79",
+volume: "193759153",
+volume_price: "2767亿",
+zf_bfb: "0.72%"
+},
+{
+time: "2017-09-01",
+price_o: "10822.49",
+price_c: "10880.56",
+price_h: "10880.56",
+price_l: "10807.78",
+volume: "236753577",
+volume_price: "3271亿",
+zf_bfb: "0.67%"
+},
+{
+time: "2017-09-04",
+price_o: "10882.13",
+price_c: "10962.85",
+price_h: "10969.57",
+price_l: "10859.36",
+volume: "253945574",
+volume_price: "3500亿",
+zf_bfb: "1.01%"
+},
+{
+time: "2017-09-05",
+price_o: "10958.20",
+price_c: "10986.95",
+price_h: "10995.53",
+price_l: "10928.86",
+volume: "226193446",
+volume_price: "3170亿",
+zf_bfb: "0.61%"
+},
+{
+time: "2017-09-06",
+price_o: "10959.31",
+price_c: "11024.59",
+price_h: "11036.89",
+price_l: "10939.26",
+volume: "236870139",
+volume_price: "3391亿",
+zf_bfb: "0.89%"
+},
+{
+time: "2017-09-07",
+price_o: "11030.60",
+price_c: "10969.13",
+price_h: "11059.47",
+price_l: "10966.54",
+volume: "251504934",
+volume_price: "3646亿",
+zf_bfb: "0.84%"
+},
+{
+time: "2017-09-08",
+price_o: "10961.70",
+price_c: "10970.77",
+price_h: "11011.11",
+price_l: "10911.82",
+volume: "219333801",
+volume_price: "3180亿",
+zf_bfb: "0.91%"
+},
+{
+time: "2017-09-11",
+price_o: "10979.72",
+price_c: "11053.73",
+price_h: "11053.73",
+price_l: "10963.62",
+volume: "228236918",
+volume_price: "3329亿",
+zf_bfb: "0.82%"
+},
+{
+time: "2017-09-12",
+price_o: "11063.85",
+price_c: "11043.61",
+price_h: "11131.95",
+price_l: "11019.87",
+volume: "297519757",
+volume_price: "4320亿",
+zf_bfb: "1.01%"
+},
+{
+time: "2017-09-13",
+price_o: "11040.10",
+price_c: "11091.49",
+price_h: "11091.49",
+price_l: "11015.74",
+volume: "217492360",
+volume_price: "3089亿",
+zf_bfb: "0.69%"
+},
+{
+time: "2017-09-14",
+price_o: "11091.98",
+price_c: "11070.49",
+price_h: "11124.54",
+price_l: "11033.82",
+volume: "237594678",
+volume_price: "3296亿",
+zf_bfb: "0.82%"
+},
+{
+time: "2017-09-15",
+price_o: "11058.10",
+price_c: "11063.10",
+price_h: "11105.03",
+price_l: "11022.25",
+volume: "227737866",
+volume_price: "3126亿",
+zf_bfb: "0.75%"
+},
+{
+time: "2017-09-18",
+price_o: "11062.43",
+price_c: "11153.53",
+price_h: "11154.75",
+price_l: "11062.43",
+volume: "206122109",
+volume_price: "2883亿",
+zf_bfb: "0.83%"
+},
+{
+time: "2017-09-19",
+price_o: "11160.42",
+price_c: "11083.90",
+price_h: "11181.18",
+price_l: "11055.24",
+volume: "213063880",
+volume_price: "3030亿",
+zf_bfb: "1.13%"
+},
+{
+time: "2017-09-20",
+price_o: "11083.85",
+price_c: "11191.13",
+price_h: "11191.13",
+price_l: "11083.21",
+volume: "220593841",
+volume_price: "3158亿",
+zf_bfb: "0.97%"
+},
+{
+time: "2017-09-21",
+price_o: "11187.88",
+price_c: "11098.34",
+price_h: "11199.19",
+price_l: "11098.34",
+volume: "221588626",
+volume_price: "3207亿",
+zf_bfb: "0.9%"
+},
+{
+time: "2017-09-22",
+price_o: "11067.11",
+price_c: "11069.82",
+price_h: "11085.43",
+price_l: "11025.89",
+volume: "194211958",
+volume_price: "2806亿",
+zf_bfb: "0.54%"
+},
+{
+time: "2017-09-25",
+price_o: "11054.26",
+price_c: "10930.67",
+price_h: "11056.66",
+price_l: "10911.03",
+volume: "183699679",
+volume_price: "2660亿",
+zf_bfb: "1.32%"
+},
+{
+time: "2017-09-26",
+price_o: "10915.66",
+price_c: "10950.77",
+price_h: "10951.14",
+price_l: "10890.92",
+volume: "167782382",
+volume_price: "2424亿",
+zf_bfb: "0.55%"
+},
+{
+time: "2017-09-27",
+price_o: "10951.96",
+price_c: "11036.78",
+price_h: "11063.13",
+price_l: "10951.89",
+volume: "170431974",
+volume_price: "2492亿",
+zf_bfb: "1.02%"
+},
+{
+time: "2017-09-28",
+price_o: "11029.47",
+price_c: "11031.42",
+price_h: "11072.56",
+price_l: "11015.48",
+volume: "182851295",
+volume_price: "2595亿",
+zf_bfb: "0.52%"
+},
+{
+time: "2017-09-29",
+price_o: "11042.72",
+price_c: "11087.19",
+price_h: "11121.44",
+price_l: "11042.72",
+volume: "181068378",
+volume_price: "2584亿",
+zf_bfb: "0.71%"
+},
+{
+time: "2017-10-09",
+price_o: "11248.35",
+price_c: "11264.27",
+price_h: "11305.46",
+price_l: "11214.90",
+volume: "216678336",
+volume_price: "3109亿",
+zf_bfb: "0.82%"
+},
+{
+time: "2017-10-10",
+price_o: "11260.77",
+price_c: "11329.51",
+price_h: "11329.51",
+price_l: "11229.02",
+volume: "214431770",
+volume_price: "3111亿",
+zf_bfb: "0.89%"
+},
+{
+time: "2017-10-11",
+price_o: "11319.46",
+price_c: "11312.50",
+price_h: "11344.59",
+price_l: "11285.92",
+volume: "229886298",
+volume_price: "3373亿",
+zf_bfb: "0.52%"
+},
+{
+time: "2017-10-12",
+price_o: "11309.36",
+price_c: "11307.32",
+price_h: "11337.12",
+price_l: "11240.66",
+volume: "198752461",
+volume_price: "2798亿",
+zf_bfb: "0.85%"
+},
+{
+time: "2017-10-13",
+price_o: "11312.27",
+price_c: "11399.09",
+price_h: "11400.05",
+price_l: "11308.04",
+volume: "195039498",
+volume_price: "2775亿",
+zf_bfb: "0.81%"
+},
+{
+time: "2017-10-16",
+price_o: "11401.87",
+price_c: "11271.20",
+price_h: "11422.94",
+price_l: "11267.27",
+volume: "236289541",
+volume_price: "3242亿",
+zf_bfb: "1.37%"
+},
+{
+time: "2017-10-17",
+price_o: "11254.41",
+price_c: "11275.34",
+price_h: "11318.00",
+price_l: "11214.82",
+volume: "157441910",
+volume_price: "2267亿",
+zf_bfb: "0.92%"
+},
+{
+time: "2017-10-18",
+price_o: "11277.54",
+price_c: "11282.75",
+price_h: "11323.26",
+price_l: "11240.63",
+volume: "178797230",
+volume_price: "2478亿",
+zf_bfb: "0.73%"
+},
+{
+time: "2017-10-19",
+price_o: "11275.31",
+price_c: "11189.55",
+price_h: "11290.72",
+price_l: "11179.19",
+volume: "182603707",
+volume_price: "2455亿",
+zf_bfb: "0.99%"
+},
+{
+time: "2017-10-20",
+price_o: "11154.93",
+price_c: "11238.88",
+price_h: "11238.88",
+price_l: "11140.34",
+volume: "144399785",
+volume_price: "2077亿",
+zf_bfb: "0.88%"
+},
+{
+time: "2017-10-23",
+price_o: "11239.69",
+price_c: "11306.31",
+price_h: "11306.31",
+price_l: "11228.68",
+volume: "154500823",
+volume_price: "2194亿",
+zf_bfb: "0.69%"
+},
+{
+time: "2017-10-24",
+price_o: "11289.02",
+price_c: "11339.13",
+price_h: "11339.13",
+price_l: "11260.68",
+volume: "156281938",
+volume_price: "2286亿",
+zf_bfb: "0.69%"
+},
+{
+time: "2017-10-25",
+price_o: "11330.75",
+price_c: "11437.21",
+price_h: "11437.21",
+price_l: "11324.17",
+volume: "160022019",
+volume_price: "2293亿",
+zf_bfb: "1%"
+},
+{
+time: "2017-10-26",
+price_o: "11430.00",
+price_c: "11461.28",
+price_h: "11509.02",
+price_l: "11413.93",
+volume: "183886111",
+volume_price: "2737亿",
+zf_bfb: "0.83%"
+},
+{
+time: "2017-10-27",
+price_o: "11456.57",
+price_c: "11444.52",
+price_h: "11484.91",
+price_l: "11415.37",
+volume: "176979282",
+volume_price: "2508亿",
+zf_bfb: "0.61%"
+},
+{
+time: "2017-10-30",
+price_o: "11446.79",
+price_c: "11312.61",
+price_h: "11472.28",
+price_l: "11192.18",
+volume: "223352110",
+volume_price: "3047亿",
+zf_bfb: "2.45%"
+},
+{
+time: "2017-10-31",
+price_o: "11293.34",
+price_c: "11367.62",
+price_h: "11368.19",
+price_l: "11274.17",
+volume: "155987092",
+volume_price: "2320亿",
+zf_bfb: "0.83%"
+},
+{
+time: "2017-11-01",
+price_o: "11370.52",
+price_c: "11350.32",
+price_h: "11424.48",
+price_l: "11341.07",
+volume: "162985101",
+volume_price: "2498亿",
+zf_bfb: "0.73%"
+},
+{
+time: "2017-11-02",
+price_o: "11336.48",
+price_c: "11292.42",
+price_h: "11337.01",
+price_l: "11251.81",
+volume: "181190254",
+volume_price: "2600亿",
+zf_bfb: "0.75%"
+},
+{
+time: "2017-11-03",
+price_o: "11287.55",
+price_c: "11215.19",
+price_h: "11334.68",
+price_l: "11165.06",
+volume: "179760266",
+volume_price: "2580亿",
+zf_bfb: "1.5%"
+},
+{
+time: "2017-11-06",
+price_o: "11218.04",
+price_c: "11373.74",
+price_h: "11373.74",
+price_l: "11181.29",
+volume: "178683569",
+volume_price: "2607亿",
+zf_bfb: "1.72%"
+},
+{
+time: "2017-11-07",
+price_o: "11374.09",
+price_c: "11467.97",
+price_h: "11467.97",
+price_l: "11370.99",
+volume: "193616573",
+volume_price: "2831亿",
+zf_bfb: "0.85%"
+},
+{
+time: "2017-11-08",
+price_o: "11460.15",
+price_c: "11447.40",
+price_h: "11563.82",
+price_l: "11441.80",
+volume: "210038868",
+volume_price: "3162亿",
+zf_bfb: "1.06%"
+},
+{
+time: "2017-11-09",
+price_o: "11443.54",
+price_c: "11553.24",
+price_h: "11553.24",
+price_l: "11414.20",
+volume: "186042368",
+volume_price: "2766亿",
+zf_bfb: "1.21%"
+},
+{
+time: "2017-11-10",
+price_o: "11540.55",
+price_c: "11645.05",
+price_h: "11659.65",
+price_l: "11531.59",
+volume: "204295219",
+volume_price: "3121亿",
+zf_bfb: "1.11%"
+},
+{
+time: "2017-11-13",
+price_o: "11657.63",
+price_c: "11695.00",
+price_h: "11714.98",
+price_l: "11631.19",
+volume: "212922501",
+volume_price: "3297亿",
+zf_bfb: "0.72%"
+},
+{
+time: "2017-11-14",
+price_o: "11689.94",
+price_c: "11582.92",
+price_h: "11700.73",
+price_l: "11538.34",
+volume: "218041044",
+volume_price: "3363亿",
+zf_bfb: "1.39%"
+},
+{
+time: "2017-11-15",
+price_o: "11548.00",
+price_c: "11462.11",
+price_h: "11583.97",
+price_l: "11390.30",
+volume: "179370222",
+volume_price: "2846亿",
+zf_bfb: "1.67%"
+},
+{
+time: "2017-11-16",
+price_o: "11442.85",
+price_c: "11537.96",
+price_h: "11549.08",
+price_l: "11415.76",
+volume: "180035277",
+volume_price: "2699亿",
+zf_bfb: "1.16%"
+},
+{
+time: "2017-11-17",
+price_o: "11519.92",
+price_c: "11292.93",
+price_h: "11555.87",
+price_l: "11292.93",
+volume: "236670400",
+volume_price: "3323亿",
+zf_bfb: "2.28%"
+},
+{
+time: "2017-11-20",
+price_o: "11229.58",
+price_c: "11437.55",
+price_h: "11437.55",
+price_l: "11087.53",
+volume: "183784980",
+volume_price: "2611亿",
+zf_bfb: "3.1%"
+},
+{
+time: "2017-11-21",
+price_o: "11419.09",
+price_c: "11602.10",
+price_h: "11602.10",
+price_l: "11407.40",
+volume: "201203937",
+volume_price: "2972亿",
+zf_bfb: "1.7%"
+},
+{
+time: "2017-11-22",
+price_o: "11598.04",
+price_c: "11560.80",
+price_h: "11666.13",
+price_l: "11454.26",
+volume: "196786360",
+volume_price: "2923亿",
+zf_bfb: "1.83%"
+},
+{
+time: "2017-11-23",
+price_o: "11520.04",
+price_c: "11175.47",
+price_h: "11520.04",
+price_l: "11162.53",
+volume: "196371021",
+volume_price: "2839亿",
+zf_bfb: "3.09%"
+},
+{
+time: "2017-11-24",
+price_o: "11135.07",
+price_c: "11168.39",
+price_h: "11225.20",
+price_l: "11058.99",
+volume: "159697129",
+volume_price: "2325亿",
+zf_bfb: "1.49%"
+},
+{
+time: "2017-11-27",
+price_o: "11126.78",
+price_c: "10954.18",
+price_h: "11126.78",
+price_l: "10936.14",
+volume: "164559025",
+volume_price: "2256亿",
+zf_bfb: "1.71%"
+},
+{
+time: "2017-11-28",
+price_o: "10938.40",
+price_c: "11091.14",
+price_h: "11091.14",
+price_l: "10936.40",
+volume: "146029309",
+volume_price: "2043亿",
+zf_bfb: "1.41%"
+},
+{
+time: "2017-11-29",
+price_o: "11095.91",
+price_c: "11082.13",
+price_h: "11108.45",
+price_l: "10936.99",
+volume: "173222707",
+volume_price: "2393亿",
+zf_bfb: "1.55%"
+},
+{
+time: "2017-11-30",
+price_o: "11036.75",
+price_c: "10944.10",
+price_h: "11079.93",
+price_l: "10908.70",
+volume: "150778317",
+volume_price: "2109亿",
+zf_bfb: "1.55%"
+},
+{
+time: "2017-12-01",
+price_o: "10941.87",
+price_c: "11013.15",
+price_h: "11077.43",
+price_l: "10926.77",
+volume: "148449124",
+volume_price: "2102亿",
+zf_bfb: "1.38%"
+},
+{
+time: "2017-12-04",
+price_o: "11007.19",
+price_c: "11014.55",
+price_h: "11099.83",
+price_l: "10993.51",
+volume: "157333821",
+volume_price: "2222亿",
+zf_bfb: "0.97%"
+},
+{
+time: "2017-12-05",
+price_o: "10988.07",
+price_c: "10854.76",
+price_h: "11044.18",
+price_l: "10801.40",
+volume: "177587758",
+volume_price: "2391亿",
+zf_bfb: "2.2%"
+},
+{
+time: "2017-12-06",
+price_o: "10838.04",
+price_c: "10911.33",
+price_h: "10911.33",
+price_l: "10716.29",
+volume: "158824714",
+volume_price: "2142亿",
+zf_bfb: "1.8%"
+},
+{
+time: "2017-12-07",
+price_o: "10886.26",
+price_c: "10801.25",
+price_h: "10925.20",
+price_l: "10795.84",
+volume: "135430810",
+volume_price: "1881亿",
+zf_bfb: "1.19%"
+},
+{
+time: "2017-12-08",
+price_o: "10789.17",
+price_c: "10935.06",
+price_h: "10964.79",
+price_l: "10789.17",
+volume: "146228436",
+volume_price: "2071亿",
+zf_bfb: "1.63%"
+},
+{
+time: "2017-12-11",
+price_o: "10962.18",
+price_c: "11143.26",
+price_h: "11143.26",
+price_l: "10962.18",
+volume: "158546560",
+volume_price: "2290亿",
+zf_bfb: "1.66%"
+},
+{
+time: "2017-12-12",
+price_o: "11145.75",
+price_c: "11043.21",
+price_h: "11176.58",
+price_l: "11043.21",
+volume: "150996403",
+volume_price: "2176亿",
+zf_bfb: "1.2%"
+},
+{
+time: "2017-12-13",
+price_o: "11030.02",
+price_c: "11143.89",
+price_h: "11143.89",
+price_l: "11019.59",
+volume: "133789343",
+volume_price: "1908亿",
+zf_bfb: "1.13%"
+},
+{
+time: "2017-12-14",
+price_o: "11138.46",
+price_c: "11110.18",
+price_h: "11165.61",
+price_l: "11070.98",
+volume: "145975598",
+volume_price: "2067亿",
+zf_bfb: "0.85%"
+},
+{
+time: "2017-12-15",
+price_o: "11092.15",
+price_c: "10998.12",
+price_h: "11104.82",
+price_l: "10970.73",
+volume: "157212224",
+volume_price: "2147亿",
+zf_bfb: "1.21%"
+},
+{
+time: "2017-12-18",
+price_o: "10991.11",
+price_c: "10960.12",
+price_h: "11046.10",
+price_l: "10916.19",
+volume: "136016791",
+volume_price: "1927亿",
+zf_bfb: "1.18%"
+},
+{
+time: "2017-12-19",
+price_o: "10964.14",
+price_c: "11074.99",
+price_h: "11077.18",
+price_l: "10963.79",
+volume: "130291597",
+volume_price: "1820亿",
+zf_bfb: "1.03%"
+},
+{
+time: "2017-12-20",
+price_o: "11072.41",
+price_c: "11003.33",
+price_h: "11079.13",
+price_l: "10988.89",
+volume: "140075896",
+volume_price: "1945亿",
+zf_bfb: "0.81%"
+},
+{
+time: "2017-12-21",
+price_o: "10988.77",
+price_c: "11118.25",
+price_h: "11149.04",
+price_l: "10935.22",
+volume: "150891802",
+volume_price: "2113亿",
+zf_bfb: "1.94%"
+},
+{
+time: "2017-12-22",
+price_o: "11112.73",
+price_c: "11094.16",
+price_h: "11154.75",
+price_l: "11078.26",
+volume: "129119660",
+volume_price: "1851亿",
+zf_bfb: "0.69%"
+},
+{
+time: "2017-12-25",
+price_o: "11102.16",
+price_c: "11005.50",
+price_h: "11132.59",
+price_l: "10967.37",
+volume: "147971069",
+volume_price: "2039亿",
+zf_bfb: "1.49%"
+},
+{
+time: "2017-12-26",
+price_o: "11002.34",
+price_c: "11021.83",
+price_h: "11025.10",
+price_l: "10900.64",
+volume: "139956797",
+volume_price: "1898亿",
+zf_bfb: "1.13%"
+},
+{
+time: "2017-12-27",
+price_o: "11007.44",
+price_c: "10911.21",
+price_h: "11026.73",
+price_l: "10911.21",
+volume: "154718700",
+volume_price: "2117亿",
+zf_bfb: "1.05%"
+},
+{
+time: "2017-12-28",
+price_o: "10907.83",
+price_c: "10974.01",
+price_h: "11029.09",
+price_l: "10891.75",
+volume: "159818719",
+volume_price: "2162亿",
+zf_bfb: "1.26%"
+},
+{
+time: "2017-12-29",
+price_o: "10984.86",
+price_c: "11040.45",
+price_h: "11040.62",
+price_l: "10971.64",
+volume: "139772319",
+volume_price: "1954亿",
+zf_bfb: "0.63%"
+},
+{
+time: "2018-01-02",
+price_o: "11079.64",
+price_c: "11178.05",
+price_h: "11178.05",
+price_l: "11072.87",
+volume: "163737774",
+volume_price: "2177亿",
+zf_bfb: "0.95%"
+},
+{
+time: "2018-01-03",
+price_o: "11181.18",
+price_c: "11280.30",
+price_h: "11316.46",
+price_l: "11171.12",
+volume: "198404751",
+volume_price: "2733亿",
+zf_bfb: "1.3%"
+},
+{
+time: "2018-01-04",
+price_o: "11270.91",
+price_c: "11341.35",
+price_h: "11341.35",
+price_l: "11259.46",
+volume: "180376492",
+volume_price: "2533亿",
+zf_bfb: "0.73%"
+},
+{
+time: "2018-01-05",
+price_o: "11339.57",
+price_c: "11342.85",
+price_h: "11372.29",
+price_l: "11310.29",
+volume: "187950134",
+volume_price: "2508亿",
+zf_bfb: "0.55%"
+},
+{
+time: "2018-01-08",
+price_o: "11343.82",
+price_c: "11382.72",
+price_h: "11386.04",
+price_l: "11287.60",
+volume: "203604073",
+volume_price: "2724亿",
+zf_bfb: "0.87%"
+},
+{
+time: "2018-01-09",
+price_o: "11371.93",
+price_c: "11447.09",
+price_h: "11449.60",
+price_l: "11358.13",
+volume: "184081836",
+volume_price: "2442亿",
+zf_bfb: "0.8%"
+},
+{
+time: "2018-01-10",
+price_o: "11439.22",
+price_c: "11437.08",
+price_h: "11446.41",
+price_l: "11345.10",
+volume: "196342710",
+volume_price: "2618亿",
+zf_bfb: "0.89%"
+},
+{
+time: "2018-01-11",
+price_o: "11411.58",
+price_c: "11464.20",
+price_h: "11482.81",
+price_l: "11372.36",
+volume: "189897902",
+volume_price: "2588亿",
+zf_bfb: "0.97%"
+},
+{
+time: "2018-01-12",
+price_o: "11459.46",
+price_c: "11461.99",
+price_h: "11496.53",
+price_l: "11420.26",
+volume: "186021471",
+volume_price: "2452亿",
+zf_bfb: "0.67%"
+},
+{
+time: "2018-01-15",
+price_o: "11453.33",
+price_c: "11307.46",
+price_h: "11476.58",
+price_l: "11277.31",
+volume: "224433733",
+volume_price: "2993亿",
+zf_bfb: "1.74%"
+},
+{
+time: "2018-01-16",
+price_o: "11283.60",
+price_c: "11386.91",
+price_h: "11402.46",
+price_l: "11283.29",
+volume: "192863411",
+volume_price: "2687亿",
+zf_bfb: "1.05%"
+},
+{
+time: "2018-01-17",
+price_o: "11366.60",
+price_c: "11303.97",
+price_h: "11367.16",
+price_l: "11185.92",
+volume: "213515922",
+volume_price: "2934亿",
+zf_bfb: "1.59%"
+},
+{
+time: "2018-01-18",
+price_o: "11287.64",
+price_c: "11319.91",
+price_h: "11375.11",
+price_l: "11279.42",
+volume: "155610117",
+volume_price: "2171亿",
+zf_bfb: "0.85%"
+},
+{
+time: "2018-01-19",
+price_o: "11314.46",
+price_c: "11296.27",
+price_h: "11393.04",
+price_l: "11276.57",
+volume: "183429289",
+volume_price: "2472亿",
+zf_bfb: "1.03%"
+},
+{
+time: "2018-01-22",
+price_o: "11289.86",
+price_c: "11513.08",
+price_h: "11513.08",
+price_l: "11273.69",
+volume: "181074819",
+volume_price: "2559亿",
+zf_bfb: "2.12%"
+},
+{
+time: "2018-01-23",
+price_o: "11514.56",
+price_c: "11555.25",
+price_h: "11564.95",
+price_l: "11493.74",
+volume: "174188769",
+volume_price: "2393亿",
+zf_bfb: "0.62%"
+},
+{
+time: "2018-01-24",
+price_o: "11548.21",
+price_c: "11607.57",
+price_h: "11613.96",
+price_l: "11456.26",
+volume: "210735224",
+volume_price: "2931亿",
+zf_bfb: "1.36%"
+},
+{
+time: "2018-01-25",
+price_o: "11588.38",
+price_c: "11552.56",
+price_h: "11633.46",
+price_l: "11548.68",
+volume: "213762240",
+volume_price: "2934亿",
+zf_bfb: "0.73%"
+},
+{
+time: "2018-01-26",
+price_o: "11524.70",
+price_c: "11557.82",
+price_h: "11605.13",
+price_l: "11512.94",
+volume: "175611738",
+volume_price: "2437亿",
+zf_bfb: "0.8%"
+},
+{
+time: "2018-01-29",
+price_o: "11547.68",
+price_c: "11352.72",
+price_h: "11556.65",
+price_l: "11323.69",
+volume: "199666079",
+volume_price: "2699亿",
+zf_bfb: "2.02%"
+},
+{
+time: "2018-01-30",
+price_o: "11319.97",
+price_c: "11278.78",
+price_h: "11370.00",
+price_l: "11260.31",
+volume: "157973243",
+volume_price: "2130亿",
+zf_bfb: "0.97%"
+},
+{
+time: "2018-01-31",
+price_o: "11210.06",
+price_c: "11159.68",
+price_h: "11244.18",
+price_l: "11119.32",
+volume: "194794972",
+volume_price: "2514亿",
+zf_bfb: "1.11%"
+},
+{
+time: "2018-02-01",
+price_o: "11145.41",
+price_c: "10864.34",
+price_h: "11171.36",
+price_l: "10836.35",
+volume: "224818678",
+volume_price: "2742亿",
+zf_bfb: "3%"
+},
+{
+time: "2018-02-02",
+price_o: "10794.13",
+price_c: "10925.16",
+price_h: "10933.15",
+price_l: "10663.54",
+volume: "184626570",
+volume_price: "2265亿",
+zf_bfb: "2.48%"
+},
+{
+time: "2018-02-05",
+price_o: "10761.08",
+price_c: "10836.25",
+price_h: "10873.24",
+price_l: "10741.85",
+volume: "148705224",
+volume_price: "1952亿",
+zf_bfb: "1.2%"
+},
+{
+time: "2018-02-06",
+price_o: "10603.54",
+price_c: "10377.61",
+price_h: "10685.16",
+price_l: "10377.61",
+volume: "196877409",
+volume_price: "2408亿",
+zf_bfb: "2.84%"
+},
+{
+time: "2018-02-07",
+price_o: "10563.31",
+price_c: "10246.97",
+price_h: "10599.54",
+price_l: "10173.66",
+volume: "185364908",
+volume_price: "2312亿",
+zf_bfb: "4.1%"
+},
+{
+time: "2018-02-08",
+price_o: "10219.39",
+price_c: "10372.59",
+price_h: "10411.20",
+price_l: "10219.21",
+volume: "154429804",
+volume_price: "1895亿",
+zf_bfb: "1.87%"
+},
+{
+time: "2018-02-09",
+price_o: "10096.47",
+price_c: "10001.23",
+price_h: "10172.78",
+price_l: "9868.83",
+volume: "193571354",
+volume_price: "2221亿",
+zf_bfb: "2.93%"
+},
+{
+time: "2018-02-12",
+price_o: "10059.86",
+price_c: "10291.88",
+price_h: "10325.68",
+price_l: "10059.86",
+volume: "144996155",
+volume_price: "1786亿",
+zf_bfb: "2.66%"
+},
+{
+time: "2018-02-13",
+price_o: "10367.68",
+price_c: "10362.43",
+price_h: "10486.81",
+price_l: "10350.17",
+volume: "142167334",
+volume_price: "1751亿",
+zf_bfb: "1.33%"
+},
+{
+time: "2018-02-14",
+price_o: "10381.16",
+price_c: "10431.91",
+price_h: "10433.09",
+price_l: "10319.15",
+volume: "100082440",
+volume_price: "1223亿",
+zf_bfb: "1.1%"
+},
+{
+time: "2018-02-22",
+price_o: "10547.81",
+price_c: "10658.94",
+price_h: "10667.80",
+price_l: "10526.98",
+volume: "136170478",
+volume_price: "1679亿",
+zf_bfb: "1.35%"
+},
+{
+time: "2018-02-23",
+price_o: "10667.81",
+price_c: "10662.79",
+price_h: "10700.11",
+price_l: "10578.79",
+volume: "140530854",
+volume_price: "1731亿",
+zf_bfb: "1.14%"
+},
+{
+time: "2018-02-26",
+price_o: "10731.31",
+price_c: "10895.56",
+price_h: "10920.21",
+price_l: "10670.17",
+volume: "200183491",
+volume_price: "2538亿",
+zf_bfb: "2.34%"
+},
+{
+time: "2018-02-27",
+price_o: "10898.29",
+price_c: "10807.53",
+price_h: "10915.36",
+price_l: "10791.95",
+volume: "195932780",
+volume_price: "2566亿",
+zf_bfb: "1.13%"
+},
+{
+time: "2018-02-28",
+price_o: "10705.81",
+price_c: "10828.73",
+price_h: "10875.71",
+price_l: "10656.36",
+volume: "186638953",
+volume_price: "2446亿",
+zf_bfb: "2.03%"
+},
+{
+time: "2018-03-01",
+price_o: "10754.62",
+price_c: "10943.13",
+price_h: "10943.13",
+price_l: "10732.93",
+volume: "190070305",
+volume_price: "2472亿",
+zf_bfb: "1.94%"
+},
+{
+time: "2018-03-02",
+price_o: "10857.87",
+price_c: "10856.25",
+price_h: "10947.39",
+price_l: "10840.01",
+volume: "184646817",
+volume_price: "2382亿",
+zf_bfb: "0.98%"
+},
+{
+time: "2018-03-05",
+price_o: "10882.87",
+price_c: "10875.68",
+price_h: "10913.03",
+price_l: "10813.47",
+volume: "159549540",
+volume_price: "2122亿",
+zf_bfb: "0.92%"
+},
+{
+time: "2018-03-06",
+price_o: "10909.28",
+price_c: "11007.95",
+price_h: "11007.95",
+price_l: "10873.85",
+volume: "206525499",
+volume_price: "2740亿",
+zf_bfb: "1.23%"
+},
+{
+time: "2018-03-07",
+price_o: "10993.95",
+price_c: "10904.99",
+price_h: "11031.48",
+price_l: "10897.58",
+volume: "179148337",
+volume_price: "2349亿",
+zf_bfb: "1.22%"
+},
+{
+time: "2018-03-08",
+price_o: "10902.35",
+price_c: "11019.08",
+price_h: "11019.08",
+price_l: "10892.18",
+volume: "165203174",
+volume_price: "2270亿",
+zf_bfb: "1.16%"
+},
+{
+time: "2018-03-09",
+price_o: "11040.37",
+price_c: "11194.91",
+price_h: "11203.72",
+price_l: "11030.55",
+volume: "234555469",
+volume_price: "3096亿",
+zf_bfb: "1.57%"
+},
+{
+time: "2018-03-12",
+price_o: "11266.32",
+price_c: "11326.27",
+price_h: "11328.77",
+price_l: "11260.46",
+volume: "261773245",
+volume_price: "3592亿",
+zf_bfb: "0.61%"
+},
+{
+time: "2018-03-13",
+price_o: "11311.04",
+price_c: "11241.41",
+price_h: "11335.30",
+price_l: "11236.38",
+volume: "227848425",
+volume_price: "2999亿",
+zf_bfb: "0.87%"
+},
+{
+time: "2018-03-14",
+price_o: "11198.77",
+price_c: "11190.18",
+price_h: "11242.3",
+price_l: "11157.23",
+volume: "141497495",
+volume_price: "1874亿",
+zf_bfb: "0.76%"
+}
+]

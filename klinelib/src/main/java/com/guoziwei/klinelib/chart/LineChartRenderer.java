@@ -701,7 +701,7 @@ public class LineChartRenderer extends LineRadarRenderer {
             drawHighlightLines(c, (float) pix.x, (float) pix.y, set);
 
             // draw circle
-            drawCircle(c, high, (float) pix.x);
+//            drawCircle(c, high, (float) pix.x);
         }
     }
 

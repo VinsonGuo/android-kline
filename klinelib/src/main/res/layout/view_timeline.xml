@@ -1,0 +1,29 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.guoziwei.klinelib.chart.AppCombinedChart
+        android:id="@+id/vol_chart"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_chart_height"
+        android:layout_gravity="bottom" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.guoziwei.klinelib.chart.AppCombinedChart
+            android:id="@+id/price_chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.guoziwei.klinelib.chart.LineChartInfoView
+            android:id="@+id/line_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+    </FrameLayout>
+
+
+</FrameLayout>

@@ -38,7 +38,6 @@ public class ChartInfoViewHandler implements View.OnTouchListener {
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         mDetector.onTouchEvent(event);
-
         if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
             mIsLongPress = false;
         }

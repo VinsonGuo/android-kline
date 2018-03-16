@@ -5,13 +5,14 @@ package com.guoziwei.klinelib.model;
  */
 
 public class HisData {
+
     private double close;
     private double high;
     private double low;
     private double open;
-    private int vol;
+    private long vol;
     private long date;
-    private int amountVol;
+    private long amountVol;
     private double avePrice;
     private double total;
     private double maSum;
@@ -19,6 +20,20 @@ public class HisData {
     private double ma10;
     private double ma20;
     private double ma30;
+
+    private double dif;
+    private double dea;
+    private double macd;
+
+    private double k;
+    private double d;
+    private double j;
+
+    public double getDif() {
+        return dif;
+    }
+
+
 
     public HisData() {
     }
@@ -64,11 +79,11 @@ public class HisData {
         this.open = open;
     }
 
-    public int getVol() {
+    public long getVol() {
         return vol;
     }
 
-    public void setVol(int vol) {
+    public void setVol(long vol) {
         this.vol = vol;
     }
 
@@ -82,11 +97,11 @@ public class HisData {
     }
 
 
-    public int getAmountVol() {
+    public long getAmountVol() {
         return amountVol;
     }
 
-    public void setAmountVol(int amountVol) {
+    public void setAmountVol(long amountVol) {
         this.amountVol = amountVol;
     }
 
@@ -163,6 +178,50 @@ public class HisData {
         this.maSum = maSum;
     }
 
+    public void setDif(double dif) {
+        this.dif = dif;
+    }
+
+    public double getDea() {
+        return dea;
+    }
+
+    public void setDea(double dea) {
+        this.dea = dea;
+    }
+
+    public double getMacd() {
+        return macd;
+    }
+
+    public void setMacd(double macd) {
+        this.macd = macd;
+    }
+
+    public double getK() {
+        return k;
+    }
+
+    public void setK(double k) {
+        this.k = k;
+    }
+
+    public double getD() {
+        return d;
+    }
+
+    public void setD(double d) {
+        this.d = d;
+    }
+
+    public double getJ() {
+        return j;
+    }
+
+    public void setJ(double j) {
+        this.j = j;
+    }
+
     @Override
     public String toString() {
         return "HisData{" +
@@ -180,6 +239,13 @@ public class HisData {
                 ", ma10=" + ma10 +
                 ", ma20=" + ma20 +
                 ", ma30=" + ma30 +
+                ", dif=" + dif +
+                ", dea=" + dea +
+                ", macd=" + macd +
+                ", k=" + k +
+                ", d=" + d +
+                ", j=" + j +
                 '}';
     }
+
 }

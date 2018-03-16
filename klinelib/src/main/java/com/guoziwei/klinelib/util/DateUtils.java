@@ -7,27 +7,22 @@ import java.util.Locale;
 
 public class DateUtils {
 
-    public static String formatData(long time) {
-        DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
+    public static String formatDate(long time, String format) {
+        DateFormat dateFormat2 = new SimpleDateFormat(format, Locale.getDefault());
         String formatDate = dateFormat2.format(time);
         return formatDate;
     }
 
-    public static String formatDataOnly(long time) {
+
+    public static String formatDate(long time) {
         DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         String formatDate = dateFormat2.format(time);
         return formatDate;
     }
 
 
-    public static String formatDateTime(Date date) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-        String formatDate = dateFormat.format(date);
-        return formatDate;
-    }
-
     public static String formatDateTime(long date) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
         String formatDate = dateFormat.format(date);
         return formatDate;
     }

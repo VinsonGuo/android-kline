@@ -1,0 +1,2 @@
+这个只改了了XAxisRenderer的210行，将i/2了
+这个是官方库的bug，等待官方修复后通过gradle引用这个库

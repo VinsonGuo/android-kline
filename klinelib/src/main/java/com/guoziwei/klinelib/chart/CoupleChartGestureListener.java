@@ -3,7 +3,6 @@ package com.guoziwei.klinelib.chart;
 
 import android.graphics.Matrix;
 import android.view.MotionEvent;
-import android.view.View;
 
 import com.github.mikephil.charting.charts.BarLineChartBase;
 import com.github.mikephil.charting.charts.Chart;
@@ -19,6 +18,13 @@ public class CoupleChartGestureListener implements OnChartGestureListener {
 
     private BarLineChartBase srcChart;
     private Chart[] dstCharts;
+
+    private OnAxisChangeListener listener;
+
+    public CoupleChartGestureListener(OnAxisChangeListener listener, BarLineChartBase srcChart, Chart... dstCharts) {
+        this(srcChart, dstCharts);
+        this.listener = listener;
+    }
 
     public CoupleChartGestureListener(BarLineChartBase srcChart, Chart... dstCharts) {
         this.srcChart = srcChart;
@@ -58,12 +64,19 @@ public class CoupleChartGestureListener implements OnChartGestureListener {
     @Override
     public void onChartScale(MotionEvent me, float scaleX, float scaleY) {
 //        Log.d(TAG, "onChartScale " + scaleX + "/" + scaleY + " X=" + me.getX() + "Y=" + me.getY());
+        if (listener != null) {
+            listener.onAxisChange(srcChart);
+        }
         syncCharts();
     }
 
     @Override
     public void onChartTranslate(MotionEvent me, float dX, float dY) {
 //        Log.d(TAG, "onChartTranslate " + dX + "/" + dY + " X=" + me.getX() + "Y=" + me.getY());
+//        Log.d(TAG, "getHighestVisibleX  " +srcChart.getHighestVisibleX());
+        if (listener != null) {
+            listener.onAxisChange(srcChart);
+        }
         syncCharts();
     }
 
@@ -77,23 +90,25 @@ public class CoupleChartGestureListener implements OnChartGestureListener {
         srcMatrix.getValues(srcVals);
         // apply X axis scaling and position to dst charts:
         for (Chart dstChart : dstCharts) {
-            if (dstChart.getVisibility() == View.VISIBLE) {
-                dstMatrix = dstChart.getViewPortHandler().getMatrixTouch();
-                dstMatrix.getValues(dstVals);
+            dstMatrix = dstChart.getViewPortHandler().getMatrixTouch();
+            dstMatrix.getValues(dstVals);
 
-                dstVals[Matrix.MSCALE_X] = srcVals[Matrix.MSCALE_X];
-                dstVals[Matrix.MSKEW_X] = srcVals[Matrix.MSKEW_X];
-                dstVals[Matrix.MTRANS_X] = srcVals[Matrix.MTRANS_X];
-                dstVals[Matrix.MSKEW_Y] = srcVals[Matrix.MSKEW_Y];
-                dstVals[Matrix.MSCALE_Y] = srcVals[Matrix.MSCALE_Y];
-                dstVals[Matrix.MTRANS_Y] = srcVals[Matrix.MTRANS_Y];
-                dstVals[Matrix.MPERSP_0] = srcVals[Matrix.MPERSP_0];
-                dstVals[Matrix.MPERSP_1] = srcVals[Matrix.MPERSP_1];
-                dstVals[Matrix.MPERSP_2] = srcVals[Matrix.MPERSP_2];
+            dstVals[Matrix.MSCALE_X] = srcVals[Matrix.MSCALE_X];
+            dstVals[Matrix.MSKEW_X] = srcVals[Matrix.MSKEW_X];
+            dstVals[Matrix.MTRANS_X] = srcVals[Matrix.MTRANS_X];
+            dstVals[Matrix.MSKEW_Y] = srcVals[Matrix.MSKEW_Y];
+            dstVals[Matrix.MSCALE_Y] = srcVals[Matrix.MSCALE_Y];
+            dstVals[Matrix.MTRANS_Y] = srcVals[Matrix.MTRANS_Y];
+            dstVals[Matrix.MPERSP_0] = srcVals[Matrix.MPERSP_0];
+            dstVals[Matrix.MPERSP_1] = srcVals[Matrix.MPERSP_1];
+            dstVals[Matrix.MPERSP_2] = srcVals[Matrix.MPERSP_2];
 
-                dstMatrix.setValues(dstVals);
-                dstChart.getViewPortHandler().refresh(dstMatrix, dstChart, true);
-            }
+            dstMatrix.setValues(dstVals);
+            dstChart.getViewPortHandler().refresh(dstMatrix, dstChart, true);
         }
+    }
+
+    public interface OnAxisChangeListener {
+        void onAxisChange(BarLineChartBase chart);
     }
 }

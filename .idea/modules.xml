@@ -3,9 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://C:\Users\Administrator\Desktop\android-kline\KLine.iml" filepath="C:\Users\Administrator\Desktop\android-kline\KLine.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android-kline.iml" filepath="$PROJECT_DIR$/android-kline.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MPChartLib/MPChartLib.iml" filepath="$PROJECT_DIR$/MPChartLib/MPChartLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/klinelib/klinelib.iml" filepath="$PROJECT_DIR$/klinelib/klinelib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxy-project.iml" filepath="$PROJECT_DIR$/xxy-project.iml" />
     </modules>
   </component>
 </project>

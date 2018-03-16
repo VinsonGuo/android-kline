@@ -5,5 +5,5 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="main_text_color">#ffffff</color>
-    <color name="chart_background">#222222</color>
+    <color name="chart_background">#ffffff</color>
 </resources>

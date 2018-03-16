@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@color/chart_info_color"
     android:orientation="vertical">
 
@@ -13,9 +12,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="4dp"
-        android:textColor="@color/axis_color"
+        android:textColor="@color/white"
         android:textSize="12sp"
-        tools:text="201511111"/>
+        tools:text="201511111" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,13 +23,11 @@
         android:padding="4dp">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
             android:text="@string/open_price"
-            android:textColor="@color/axis_color"
-            android:textSize="12sp"/>
+            android:textColor="@color/white"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tv_open_price"
@@ -39,8 +36,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/price"
-            android:textColor="@color/axis_color"
-            android:textSize="12sp"/>
+            android:textColor="@color/white"
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -50,13 +47,11 @@
         android:padding="4dp">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
             android:text="@string/high_price"
-            android:textColor="@color/axis_color"
-            android:textSize="12sp"/>
+            android:textColor="@color/white"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tv_high_price"
@@ -65,8 +60,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/price"
-            android:textColor="@color/axis_color"
-            android:textSize="12sp"/>
+            android:textColor="@color/white"
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -76,13 +71,11 @@
         android:padding="4dp">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
             android:text="@string/low_price"
-            android:textColor="@color/axis_color"
-            android:textSize="12sp"/>
+            android:textColor="@color/white"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tv_low_price"
@@ -91,8 +84,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/price"
-            android:textColor="@color/axis_color"
-            android:textSize="12sp"/>
+            android:textColor="@color/white"
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -102,13 +95,11 @@
         android:padding="4dp">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
             android:text="@string/close_price"
-            android:textColor="@color/axis_color"
-            android:textSize="12sp"/>
+            android:textColor="@color/white"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tv_close_price"
@@ -117,8 +108,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/price"
-            android:textColor="@color/axis_color"
-            android:textSize="12sp"/>
+            android:textColor="@color/white"
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -129,13 +120,11 @@
         android:padding="4dp">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
             android:text="@string/change_rate"
-            android:textColor="@color/axis_color"
-            android:textSize="12sp"/>
+            android:textColor="@color/white"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tv_change_rate"
@@ -144,8 +133,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/price"
-            android:textColor="@color/axis_color"
-            android:textSize="12sp"/>
+            android:textColor="@color/white"
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -155,13 +144,11 @@
         android:padding="4dp">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
             android:text="@string/volume"
-            android:textColor="@color/axis_color"
-            android:textSize="12sp"/>
+            android:textColor="@color/white"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tv_vol"
@@ -170,7 +157,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/price"
-            android:textColor="@color/axis_color"
-            android:textSize="12sp"/>
+            android:textColor="@color/white"
+            android:textSize="12sp" />
     </LinearLayout>
 </LinearLayout>

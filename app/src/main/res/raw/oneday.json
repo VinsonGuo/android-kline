@@ -1,0 +1,849 @@
+[
+  {
+    time: "0930",
+    price: "11198.77",
+    volume: "0",
+    average: "11199.368",
+    num: "0"
+  },
+  {
+    time: "0931",
+    price: "11192.25",
+    volume: "4015350",
+    average: "11196.965",
+    num: "0"
+  },
+  {
+    time: "0932",
+    price: "11212.41",
+    volume: "2422212",
+    average: "11206.088",
+    num: "0"
+  },
+  {
+    time: "0933",
+    price: "11219.55",
+    volume: "2125388",
+    average: "11220.468",
+    num: "0"
+  },
+  {
+    time: "0934",
+    price: "11209.76",
+    volume: "2172361",
+    average: "11221.468",
+    num: "0"
+  },
+  {
+    time: "0935",
+    price: "11206.31",
+    volume: "2129756",
+    average: "11217.389",
+    num: "0"
+  },
+  {
+    time: "0936",
+    price: "11206.15",
+    volume: "1895497",
+    average: "11216.161",
+    num: "0"
+  },
+  {
+    time: "0937",
+    price: "11208.34",
+    volume: "1830740",
+    average: "11219.443",
+    num: "0"
+  },
+  {
+    time: "0938",
+    price: "11208.04",
+    volume: "1828515",
+    average: "11219.552",
+    num: "0"
+  },
+  {
+    time: "0939",
+    price: "11207.11",
+    volume: "1740278",
+    average: "11220.186",
+    num: "0"
+  },
+  {
+    time: "0940",
+    price: "11222.83",
+    volume: "1751002",
+    average: "11228.638",
+    num: "0"
+  },
+  {
+    time: "0941",
+    price: "11236.77",
+    volume: "1686812",
+    average: "11240.862",
+    num: "0"
+  },
+  {
+    time: "0942",
+    price: "11241.51",
+    volume: "1624198",
+    average: "11249.419",
+    num: "0"
+  },
+  {
+    time: "0943",
+    price: "11239.44",
+    volume: "1473420",
+    average: "11250.484",
+    num: "0"
+  },
+  {
+    time: "0944",
+    price: "11238.00",
+    volume: "1418409",
+    average: "11250.791",
+    num: "0"
+  },
+  {
+    time: "0945",
+    price: "11227.72",
+    volume: "1455764",
+    average: "11247.755",
+    num: "0"
+  },
+  {
+    time: "0946",
+    price: "11222.46",
+    volume: "1347880",
+    average: "11242.224",
+    num: "0"
+  },
+  {
+    time: "0947",
+    price: "11220.72",
+    volume: "1298547",
+    average: "11239.714",
+    num: "0"
+  },
+  {
+    time: "0948",
+    price: "11219.96",
+    volume: "1225644",
+    average: "11237.258",
+    num: "0"
+  },
+  {
+    time: "0949",
+    price: "11212.41",
+    volume: "1358962",
+    average: "11233.292",
+    num: "0"
+  },
+  {
+    time: "0950",
+    price: "11206.04",
+    volume: "1398221",
+    average: "11228.120",
+    num: "0"
+  },
+  {
+    time: "0951",
+    price: "11198.08",
+    volume: "1544726",
+    average: "11223.065",
+    num: "0"
+  },
+  {
+    time: "0952",
+    price: "11207.97",
+    volume: "1493195",
+    average: "11225.240",
+    num: "0"
+  },
+  {
+    time: "0953",
+    price: "11214.08",
+    volume: "1225310",
+    average: "11230.094",
+    num: "0"
+  },
+  {
+    time: "0954",
+    price: "11215.88",
+    volume: "1150064",
+    average: "11233.562",
+    num: "0"
+  },
+  {
+    time: "0955",
+    price: "11210.11",
+    volume: "1130723",
+    average: "11236.820",
+    num: "0"
+  },
+  {
+    time: "0956",
+    price: "11210.21",
+    volume: "1089400",
+    average: "11236.190",
+    num: "0"
+  },
+  {
+    time: "0957",
+    price: "11209.63",
+    volume: "1057530",
+    average: "11235.168",
+    num: "0"
+  },
+  {
+    time: "0958",
+    price: "11206.49",
+    volume: "1115438",
+    average: "11235.556",
+    num: "0"
+  },
+  {
+    time: "0959",
+    price: "11204.84",
+    volume: "1090474",
+    average: "11234.802",
+    num: "0"
+  },
+  {
+    time: "1000",
+    price: "11204.61",
+    volume: "1088309",
+    average: "11232.897",
+    num: "0"
+  },
+  {
+    time: "1001",
+    price: "11200.98",
+    volume: "1116921",
+    average: "11230.600",
+    num: "0"
+  },
+  {
+    time: "1002",
+    price: "11199.32",
+    volume: "1149736",
+    average: "11227.694",
+    num: "0"
+  },
+  {
+    time: "1003",
+    price: "11204.54",
+    volume: "1105034",
+    average: "11231.163",
+    num: "0"
+  },
+  {
+    time: "1004",
+    price: "11207.90",
+    volume: "1061183",
+    average: "11235.310",
+    num: "0"
+  },
+  {
+    time: "1005",
+    price: "11211.88",
+    volume: "1035703",
+    average: "11239.512",
+    num: "0"
+  },
+  {
+    time: "1006",
+    price: "11215.59",
+    volume: "995557",
+    average: "11242.279",
+    num: "0"
+  },
+  {
+    time: "1007",
+    price: "11212.99",
+    volume: "973141",
+    average: "11243.482",
+    num: "0"
+  },
+  {
+    time: "1008",
+    price: "11217.68",
+    volume: "1033567",
+    average: "11246.751",
+    num: "0"
+  },
+  {
+    time: "1009",
+    price: "11217.22",
+    volume: "986598",
+    average: "11248.371",
+    num: "0"
+  },
+  {
+    time: "1010",
+    price: "11216.04",
+    volume: "872312",
+    average: "11248.212",
+    num: "0"
+  },
+  {
+    time: "1011",
+    price: "11214.79",
+    volume: "871961",
+    average: "11247.921",
+    num: "0"
+  },
+  {
+    time: "1012",
+    price: "11212.10",
+    volume: "927274",
+    average: "11245.802",
+    num: "0"
+  },
+  {
+    time: "1013",
+    price: "11207.05",
+    volume: "1031390",
+    average: "11242.474",
+    num: "0"
+  },
+  {
+    time: "1014",
+    price: "11202.91",
+    volume: "1020682",
+    average: "11238.124",
+    num: "0"
+  },
+  {
+    time: "1015",
+    price: "11202.97",
+    volume: "922543",
+    average: "11237.194",
+    num: "0"
+  },
+  {
+    time: "1016",
+    price: "11211.28",
+    volume: "923893",
+    average: "11238.586",
+    num: "0"
+  },
+  {
+    time: "1017",
+    price: "11213.14",
+    volume: "872673",
+    average: "11240.902",
+    num: "0"
+  },
+  {
+    time: "1018",
+    price: "11211.21",
+    volume: "845692",
+    average: "11241.305",
+    num: "0"
+  },
+  {
+    time: "1019",
+    price: "11208.10",
+    volume: "925691",
+    average: "11239.262",
+    num: "0"
+  },
+  {
+    time: "1020",
+    price: "11200.04",
+    volume: "979651",
+    average: "11233.873",
+    num: "0"
+  },
+  {
+    time: "1021",
+    price: "11198.29",
+    volume: "859159",
+    average: "11230.182",
+    num: "0"
+  },
+  {
+    time: "1022",
+    price: "11195.34",
+    volume: "850140",
+    average: "11227.654",
+    num: "0"
+  },
+  {
+    time: "1023",
+    price: "11205.52",
+    volume: "871646",
+    average: "11230.435",
+    num: "0"
+  },
+  {
+    time: "1024",
+    price: "11215.80",
+    volume: "873207",
+    average: "11236.298",
+    num: "0"
+  },
+  {
+    time: "1025",
+    price: "11220.01",
+    volume: "764353",
+    average: "11242.809",
+    num: "0"
+  },
+  {
+    time: "1026",
+    price: "11223.28",
+    volume: "717278",
+    average: "11247.420",
+    num: "0"
+  },
+  {
+    time: "1027",
+    price: "11223.56",
+    volume: "692616",
+    average: "11249.115",
+    num: "0"
+  },
+  {
+    time: "1028",
+    price: "11224.67",
+    volume: "674144",
+    average: "11250.646",
+    num: "0"
+  },
+  {
+    time: "1029",
+    price: "11226.83",
+    volume: "638444",
+    average: "11251.946",
+    num: "0"
+  },
+  {
+    time: "1030",
+    price: "11225.32",
+    volume: "609837",
+    average: "11252.577",
+    num: "0"
+  },
+  {
+    time: "1031",
+    price: "11225.66",
+    volume: "737293",
+    average: "11251.643",
+    num: "0"
+  },
+  {
+    time: "1032",
+    price: "11225.13",
+    volume: "683392",
+    average: "11252.349",
+    num: "0"
+  },
+  {
+    time: "1033",
+    price: "11216.67",
+    volume: "782642",
+    average: "11249.210",
+    num: "0"
+  },
+  {
+    time: "1034",
+    price: "11212.75",
+    volume: "780570",
+    average: "11245.473",
+    num: "0"
+  },
+  {
+    time: "1035",
+    price: "11212.09",
+    volume: "666655",
+    average: "11242.575",
+    num: "0"
+  },
+  {
+    time: "1036",
+    price: "11211.85",
+    volume: "660059",
+    average: "11242.028",
+    num: "0"
+  },
+  {
+    time: "1037",
+    price: "11211.96",
+    volume: "701279",
+    average: "11242.596",
+    num: "0"
+  },
+  {
+    time: "1038",
+    price: "11210.84",
+    volume: "661047",
+    average: "11243.046",
+    num: "0"
+  },
+  {
+    time: "1039",
+    price: "11210.63",
+    volume: "674725",
+    average: "11241.704",
+    num: "0"
+  },
+  {
+    time: "1040",
+    price: "11208.11",
+    volume: "621463",
+    average: "11240.698",
+    num: "0"
+  },
+  {
+    time: "1041",
+    price: "11206.53",
+    volume: "647894",
+    average: "11239.513",
+    num: "0"
+  },
+  {
+    time: "1042",
+    price: "11205.06",
+    volume: "635728",
+    average: "11237.854",
+    num: "0"
+  },
+  {
+    time: "1043",
+    price: "11203.02",
+    volume: "669814",
+    average: "11236.169",
+    num: "0"
+  },
+  {
+    time: "1044",
+    price: "11202.21",
+    volume: "626253",
+    average: "11234.754",
+    num: "0"
+  },
+  {
+    time: "1045",
+    price: "11198.38",
+    volume: "647211",
+    average: "11233.115",
+    num: "0"
+  },
+  {
+    time: "1046",
+    price: "11196.39",
+    volume: "667452",
+    average: "11228.495",
+    num: "0"
+  },
+  {
+    time: "1047",
+    price: "11193.33",
+    volume: "783498",
+    average: "11224.984",
+    num: "0"
+  },
+  {
+    time: "1048",
+    price: "11190.51",
+    volume: "752221",
+    average: "11222.491",
+    num: "0"
+  },
+  {
+    time: "1049",
+    price: "11192.38",
+    volume: "671886",
+    average: "11222.611",
+    num: "0"
+  },
+  {
+    time: "1050",
+    price: "11198.37",
+    volume: "675881",
+    average: "11227.607",
+    num: "0"
+  },
+  {
+    time: "1051",
+    price: "11205.07",
+    volume: "579788",
+    average: "11234.442",
+    num: "0"
+  },
+  {
+    time: "1052",
+    price: "11206.88",
+    volume: "556342",
+    average: "11238.242",
+    num: "0"
+  },
+  {
+    time: "1053",
+    price: "11205.77",
+    volume: "500797",
+    average: "11239.370",
+    num: "0"
+  },
+  {
+    time: "1054",
+    price: "11207.61",
+    volume: "484804",
+    average: "11239.641",
+    num: "0"
+  },
+  {
+    time: "1055",
+    price: "11207.75",
+    volume: "481065",
+    average: "11239.509",
+    num: "0"
+  },
+  {
+    time: "1056",
+    price: "11207.61",
+    volume: "513461",
+    average: "11239.460",
+    num: "0"
+  },
+  {
+    time: "1057",
+    price: "11208.08",
+    volume: "453261",
+    average: "11239.686",
+    num: "0"
+  },
+  {
+    time: "1058",
+    price: "11202.76",
+    volume: "488219",
+    average: "11241.240",
+    num: "0"
+  },
+  {
+    time: "1059",
+    price: "11197.88",
+    volume: "535128",
+    average: "11237.716",
+    num: "0"
+  },
+  {
+    time: "1100",
+    price: "11195.77",
+    volume: "542913",
+    average: "11235.070",
+    num: "0"
+  },
+  {
+    time: "1101",
+    price: "11193.79",
+    volume: "514650",
+    average: "11233.358",
+    num: "0"
+  },
+  {
+    time: "1102",
+    price: "11193.40",
+    volume: "504854",
+    average: "11232.909",
+    num: "0"
+  },
+  {
+    time: "1103",
+    price: "11195.66",
+    volume: "455429",
+    average: "11232.773",
+    num: "0"
+  },
+  {
+    time: "1104",
+    price: "11197.71",
+    volume: "488724",
+    average: "11234.678",
+    num: "0"
+  },
+  {
+    time: "1105",
+    price: "11199.34",
+    volume: "456127",
+    average: "11235.146",
+    num: "0"
+  },
+  {
+    time: "1106",
+    price: "11194.56",
+    volume: "541338",
+    average: "11234.146",
+    num: "0"
+  },
+  {
+    time: "1107",
+    price: "11184.60",
+    volume: "693353",
+    average: "11228.553",
+    num: "0"
+  },
+  {
+    time: "1108",
+    price: "11179.86",
+    volume: "987994",
+    average: "11220.160",
+    num: "0"
+  },
+  {
+    time: "1109",
+    price: "11178.87",
+    volume: "890489",
+    average: "11214.044",
+    num: "0"
+  },
+  {
+    time: "1110",
+    price: "11181.50",
+    volume: "771397",
+    average: "11213.329",
+    num: "0"
+  },
+  {
+    time: "1111",
+    price: "11183.19",
+    volume: "608747",
+    average: "11215.087",
+    num: "0"
+  },
+  {
+    time: "1112",
+    price: "11186.75",
+    volume: "639176",
+    average: "11217.530",
+    num: "0"
+  },
+  {
+    time: "1113",
+    price: "11186.65",
+    volume: "632502",
+    average: "11218.512",
+    num: "0"
+  },
+  {
+    time: "1114",
+    price: "11186.51",
+    volume: "570915",
+    average: "11218.720",
+    num: "0"
+  },
+  {
+    time: "1115",
+    price: "11186.00",
+    volume: "495562",
+    average: "11219.129",
+    num: "0"
+  },
+  {
+    time: "1116",
+    price: "11187.31",
+    volume: "472146",
+    average: "11220.341",
+    num: "0"
+  },
+  {
+    time: "1117",
+    price: "11186.95",
+    volume: "485282",
+    average: "11220.160",
+    num: "0"
+  },
+  {
+    time: "1118",
+    price: "11185.10",
+    volume: "436084",
+    average: "11219.594",
+    num: "0"
+  },
+  {
+    time: "1119",
+    price: "11184.21",
+    volume: "468862",
+    average: "11217.514",
+    num: "0"
+  },
+  {
+    time: "1120",
+    price: "11180.83",
+    volume: "520390",
+    average: "11215.623",
+    num: "0"
+  },
+  {
+    time: "1121",
+    price: "11174.08",
+    volume: "687310",
+    average: "11210.765",
+    num: "0"
+  },
+  {
+    time: "1122",
+    price: "11169.89",
+    volume: "740524",
+    average: "11205.379",
+    num: "0"
+  },
+  {
+    time: "1123",
+    price: "11166.73",
+    volume: "740335",
+    average: "11200.566",
+    num: "0"
+  },
+  {
+    time: "1124",
+    price: "11168.86",
+    volume: "765869",
+    average: "11200.226",
+    num: "0"
+  },
+  {
+    time: "1125",
+    price: "11172.24",
+    volume: "687707",
+    average: "11202.181",
+    num: "0"
+  },
+  {
+    time: "1126",
+    price: "11174.00",
+    volume: "569083",
+    average: "11203.582",
+    num: "0"
+  },
+  {
+    time: "1127",
+    price: "11173.77",
+    volume: "545124",
+    average: "11205.239",
+    num: "0"
+  },
+  {
+    time: "1128",
+    price: "11174.07",
+    volume: "480597",
+    average: "11206.339",
+    num: "0"
+  },
+  {
+    time: "1129",
+    price: "11175.51",
+    volume: "448103",
+    average: "11206.839",
+    num: "0"
+  },
+  {
+    time: "1130",
+    price: "11175.65",
+    volume: "475052",
+    average: "11208.862",
+    num: "0"
+  }
+]
