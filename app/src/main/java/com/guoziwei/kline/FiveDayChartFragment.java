@@ -15,45 +15,40 @@ import com.guoziwei.klinelib.model.HisData;
 import java.util.List;
 
 
-public class TimeLineChartFragment extends Fragment {
+public class FiveDayChartFragment extends Fragment {
 
 
     private TimeLineView mTimeLineView;
-    private int mType;
 
-    public TimeLineChartFragment() {
+    public FiveDayChartFragment() {
         // Required empty public constructor
     }
 
-    public static TimeLineChartFragment newInstance(int type) {
-        TimeLineChartFragment fragment = new TimeLineChartFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt("type", type);
-        fragment.setArguments(bundle);
+    public static FiveDayChartFragment newInstance() {
+        FiveDayChartFragment fragment = new FiveDayChartFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mType = getArguments().getInt("type");
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mTimeLineView = new TimeLineView(getContext());
-        mTimeLineView.setDateFormat("HH:mm");
-        int count = 241;
+        mTimeLineView.setDateFormat("yyyy-MM-dd");
+        int count =241 * 5;
         mTimeLineView.setCount(count, count, count);
         initData();
         return mTimeLineView;
     }
 
     protected void initData() {
-        final List<HisData> hisData = Util.get1Day(getContext());
-        mTimeLineView.setLastClose(hisData.get(0).getClose());
-        mTimeLineView.initData(hisData);
+        final List<List<HisData>> hisData = Util.get5Day(getContext());
+        mTimeLineView.setLastClose(hisData.get(0).get(0).getClose());
+        mTimeLineView.initDatas(hisData.get(0), hisData.get(1), hisData.get(2), hisData.get(3), hisData.get(4));
 
        /* new Timer().schedule(new TimerTask() {
             @Override

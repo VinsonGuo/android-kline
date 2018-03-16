@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="4dp"
-        android:textColor="@color/axis_color"
+        android:textColor="@color/white"
         android:textSize="12sp"
         tools:text="201511111" />
 
@@ -26,7 +26,7 @@
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="@string/open_price"
-            android:textColor="@color/axis_color"
+            android:textColor="@color/white"
             android:textSize="12sp" />
 
         <TextView
@@ -36,7 +36,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/price"
-            android:textColor="@color/axis_color"
+            android:textColor="@color/white"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -50,7 +50,7 @@
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="@string/high_price"
-            android:textColor="@color/axis_color"
+            android:textColor="@color/white"
             android:textSize="12sp" />
 
         <TextView
@@ -60,7 +60,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/price"
-            android:textColor="@color/axis_color"
+            android:textColor="@color/white"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -74,7 +74,7 @@
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="@string/low_price"
-            android:textColor="@color/axis_color"
+            android:textColor="@color/white"
             android:textSize="12sp" />
 
         <TextView
@@ -84,7 +84,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/price"
-            android:textColor="@color/axis_color"
+            android:textColor="@color/white"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -98,7 +98,7 @@
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="@string/close_price"
-            android:textColor="@color/axis_color"
+            android:textColor="@color/white"
             android:textSize="12sp" />
 
         <TextView
@@ -108,7 +108,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/price"
-            android:textColor="@color/axis_color"
+            android:textColor="@color/white"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -123,7 +123,7 @@
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="@string/change_rate"
-            android:textColor="@color/axis_color"
+            android:textColor="@color/white"
             android:textSize="12sp" />
 
         <TextView
@@ -133,7 +133,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/price"
-            android:textColor="@color/axis_color"
+            android:textColor="@color/white"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -147,7 +147,7 @@
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="@string/volume"
-            android:textColor="@color/axis_color"
+            android:textColor="@color/white"
             android:textSize="12sp" />
 
         <TextView
@@ -157,7 +157,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/price"
-            android:textColor="@color/axis_color"
+            android:textColor="@color/white"
             android:textSize="12sp" />
     </LinearLayout>
 </LinearLayout>

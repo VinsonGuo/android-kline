@@ -19,6 +19,13 @@ public class CoupleChartGestureListener implements OnChartGestureListener {
     private BarLineChartBase srcChart;
     private Chart[] dstCharts;
 
+    private OnAxisChangeListener listener;
+
+    public CoupleChartGestureListener(OnAxisChangeListener listener, BarLineChartBase srcChart, Chart... dstCharts) {
+        this(srcChart, dstCharts);
+        this.listener = listener;
+    }
+
     public CoupleChartGestureListener(BarLineChartBase srcChart, Chart... dstCharts) {
         this.srcChart = srcChart;
         this.dstCharts = dstCharts;
@@ -57,12 +64,19 @@ public class CoupleChartGestureListener implements OnChartGestureListener {
     @Override
     public void onChartScale(MotionEvent me, float scaleX, float scaleY) {
 //        Log.d(TAG, "onChartScale " + scaleX + "/" + scaleY + " X=" + me.getX() + "Y=" + me.getY());
+        if (listener != null) {
+            listener.onAxisChange(srcChart);
+        }
         syncCharts();
     }
 
     @Override
     public void onChartTranslate(MotionEvent me, float dX, float dY) {
 //        Log.d(TAG, "onChartTranslate " + dX + "/" + dY + " X=" + me.getX() + "Y=" + me.getY());
+//        Log.d(TAG, "getHighestVisibleX  " +srcChart.getHighestVisibleX());
+        if (listener != null) {
+            listener.onAxisChange(srcChart);
+        }
         syncCharts();
     }
 
@@ -92,5 +106,9 @@ public class CoupleChartGestureListener implements OnChartGestureListener {
             dstMatrix.setValues(dstVals);
             dstChart.getViewPortHandler().refresh(dstMatrix, dstChart, true);
         }
+    }
+
+    public interface OnAxisChangeListener {
+        void onAxisChange(BarLineChartBase chart);
     }
 }

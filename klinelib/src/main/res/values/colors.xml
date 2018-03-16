@@ -4,7 +4,6 @@
     <color name="main_color_green">#4cd964</color>
 
 
-
     <!--图表-->
 
     <color name="marker_color">#be945c</color>
@@ -16,6 +15,13 @@
     <color name="ma20">#3C7193</color>
     <color name="ma30">#7F9976</color>
 
+    <color name="dif">@color/ma5</color>
+    <color name="dea">@color/ma10</color>
+
+    <color name="k">@color/ma5</color>
+    <color name="d">@color/ma10</color>
+    <color name="j">@color/ma20</color>
+
     <color name="increasing_color">@color/main_color_red</color>
     <color name="decreasing_color">@color/main_color_green</color>
     <color name="normal_line_color">#be945c</color>
@@ -25,4 +31,5 @@
     <color name="chart_no_data_color">#be945c</color>
     <color name="highlight_color">#be945c</color>
     <color name="limit_color">#adadad</color>
+    <color name="white">#fff</color>
 </resources>

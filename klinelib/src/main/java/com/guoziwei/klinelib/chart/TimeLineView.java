@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 
+import com.github.mikephil.charting.charts.BarLineChartBase;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LimitLine;
@@ -37,10 +38,12 @@ import java.util.Locale;
  * kline
  * Created by guoziwei on 2017/10/26.
  */
-public class TimeLineView extends BaseView {
+public class TimeLineView extends BaseView implements CoupleChartGestureListener.OnAxisChangeListener {
 
 
     public static final int NORMAL_LINE = 0;
+
+    public static final int NORMAL_LINE_5DAY = 5;
     /**
      * average line
      */
@@ -52,6 +55,7 @@ public class TimeLineView extends BaseView {
 
 
     public int MAX_COUNT_LINE = 300;
+    public int INIT_COUNT_LINE = 200;
     public int MIN_COUNT_LINE = 50;
 
     protected AppCombinedChart mChartPrice;
@@ -184,8 +188,8 @@ public class TimeLineView extends BaseView {
 
 
     private void initChartListener() {
-        mChartPrice.setOnChartGestureListener(new CoupleChartGestureListener(mChartPrice, mChartVolume));
-        mChartVolume.setOnChartGestureListener(new CoupleChartGestureListener(mChartVolume, mChartPrice));
+        mChartPrice.setOnChartGestureListener(new CoupleChartGestureListener(this, mChartPrice, mChartVolume));
+        mChartVolume.setOnChartGestureListener(new CoupleChartGestureListener(this, mChartVolume, mChartPrice));
         mChartPrice.setOnChartValueSelectedListener(new InfoViewListener(mContext, mLastClose, mData, mChartInfoView, mChartVolume));
         mChartVolume.setOnChartValueSelectedListener(new InfoViewListener(mContext, mLastClose, mData, mChartInfoView, mChartPrice));
 
@@ -199,22 +203,22 @@ public class TimeLineView extends BaseView {
         mData.clear();
         mData.addAll(DataUtils.calculateHisData(hisDatas));
 
-        ArrayList<Entry> lineCJEntries = new ArrayList<>(MAX_COUNT_LINE);
-        ArrayList<Entry> lineJJEntries = new ArrayList<>(MAX_COUNT_LINE);
+        ArrayList<Entry> priceEntries = new ArrayList<>(MAX_COUNT_LINE);
+        ArrayList<Entry> aveEntries = new ArrayList<>(MAX_COUNT_LINE);
         ArrayList<Entry> paddingEntries = new ArrayList<>(MAX_COUNT_LINE);
 
         for (int i = 0; i < mData.size(); i++) {
-            lineCJEntries.add(new Entry(i, (float) mData.get(i).getClose()));
-            lineJJEntries.add(new Entry(i, (float) mData.get(i).getAvePrice()));
+            priceEntries.add(new Entry(i, (float) mData.get(i).getClose()));
+            aveEntries.add(new Entry(i, (float) mData.get(i).getAvePrice()));
         }
-        if (!mData.isEmpty() && mData.size() < MAX_COUNT_LINE) {
-            for (int i = mData.size(); i < MAX_COUNT_LINE; i++) {
+        if (!mData.isEmpty() && mData.size() < INIT_COUNT_LINE) {
+            for (int i = mData.size(); i < INIT_COUNT_LINE; i++) {
                 paddingEntries.add(new Entry(i, (float) mData.get(mData.size() - 1).getClose()));
             }
         }
         ArrayList<ILineDataSet> sets = new ArrayList<>();
-        sets.add(setLine(NORMAL_LINE, lineCJEntries));
-        sets.add(setLine(AVE_LINE, lineJJEntries));
+        sets.add(setLine(NORMAL_LINE, priceEntries));
+        sets.add(setLine(AVE_LINE, aveEntries));
         sets.add(setLine(INVISIABLE_LINE, paddingEntries));
         LineData lineData = new LineData(sets);
 
@@ -231,8 +235,61 @@ public class TimeLineView extends BaseView {
         mChartPrice.getXAxis().setAxisMaximum(combinedData.getXMax() + 0.5f);
         mChartVolume.getXAxis().setAxisMaximum(mChartVolume.getData().getXMax() + 0.5f);
 
-        mChartVolume.zoom(3, 0, mData.size() / 2, 0);
-        mChartPrice.zoom(3, 0, mData.size() / 2, 0);
+        mChartPrice.zoom(MAX_COUNT_LINE * 1f / INIT_COUNT_LINE, 0, 0, 0);
+        mChartVolume.zoom(MAX_COUNT_LINE * 1f / INIT_COUNT_LINE, 0, 0, 0);
+
+        setDescription(mChartVolume, "成交量 " + getLastData().getVol());
+    }
+
+    public void initDatas(List<HisData>... hisDatas) {
+        // 设置标签数量
+        XAxis xAxis = mChartVolume.getXAxis();
+        xAxis.setLabelCount(hisDatas.length + 1, true);
+        xAxis.setAvoidFirstLastClipping(false);
+        xAxis.setCenterAxisLabels(true);
+        mData.clear();
+//        mData.addAll(DataUtils.calculateHisData(hisDatas));
+        ArrayList<ILineDataSet> sets = new ArrayList<>();
+        for (List<HisData> hisData : hisDatas) {
+            hisData = DataUtils.calculateHisData(hisData);
+            ArrayList<Entry> priceEntries = new ArrayList<>(MAX_COUNT_LINE);
+            ArrayList<Entry> aveEntries = new ArrayList<>(MAX_COUNT_LINE);
+            ArrayList<Entry> paddingEntries = new ArrayList<>(MAX_COUNT_LINE);
+
+            for (int i = 0; i < hisData.size(); i++) {
+                priceEntries.add(new Entry(i + mData.size(), (float) hisData.get(i).getClose()));
+                aveEntries.add(new Entry(i + mData.size(), (float) hisData.get(i).getAvePrice()));
+            }
+            if (!hisData.isEmpty() && hisData.size() < INIT_COUNT_LINE / hisDatas.length) {
+                for (int i = hisData.size(); i < INIT_COUNT_LINE / hisDatas.length; i++) {
+                    paddingEntries.add(new Entry(i, (float) hisData.get(hisData.size() - 1).getClose()));
+                }
+            }
+            sets.add(setLine(NORMAL_LINE_5DAY, priceEntries));
+            sets.add(setLine(AVE_LINE, aveEntries));
+            sets.add(setLine(INVISIABLE_LINE, paddingEntries));
+            mData.addAll(hisData);
+        }
+
+        LineData lineData = new LineData(sets);
+
+        CombinedData combinedData = new CombinedData();
+        combinedData.setData(lineData);
+        mChartPrice.setData(combinedData);
+
+        mChartPrice.setVisibleXRange(MAX_COUNT_LINE, MIN_COUNT_LINE);
+
+        mChartPrice.notifyDataSetChanged();
+        mChartPrice.moveViewToX(combinedData.getEntryCount());
+        initChartVolumeData();
+
+        mChartPrice.getXAxis().setAxisMaximum(combinedData.getXMax() + 0.5f);
+        mChartVolume.getXAxis().setAxisMaximum(mChartVolume.getData().getXMax() + 0.5f);
+
+        mChartPrice.zoom(MAX_COUNT_LINE * 1f / INIT_COUNT_LINE, 0, 0, 0);
+        mChartVolume.zoom(MAX_COUNT_LINE * 1f / INIT_COUNT_LINE, 0, 0, 0);
+
+        setDescription(mChartVolume, "成交量 " + getLastData().getVol());
     }
 
 
@@ -255,6 +312,9 @@ public class TimeLineView extends BaseView {
         if (type == NORMAL_LINE) {
             lineDataSetMa.setColor(getResources().getColor(R.color.normal_line_color));
             lineDataSetMa.setCircleColor(ContextCompat.getColor(mContext, R.color.normal_line_color));
+        } else if (type == NORMAL_LINE_5DAY) {
+            lineDataSetMa.setColor(getResources().getColor(R.color.normal_line_color));
+            lineDataSetMa.setCircleColor(mTransparentColor);
         } else if (type == AVE_LINE) {
             lineDataSetMa.setColor(getResources().getColor(R.color.ave_color));
             lineDataSetMa.setCircleColor(mTransparentColor);
@@ -281,7 +341,7 @@ public class TimeLineView extends BaseView {
             HisData t = mData.get(i);
             barEntries.add(new BarEntry(i, (float) t.getVol(), t));
         }
-        int maxCount = MAX_COUNT_LINE;
+        int maxCount = INIT_COUNT_LINE;
         if (!mData.isEmpty() && mData.size() < maxCount) {
             for (int i = mData.size(); i < maxCount; i++) {
                 paddingEntries.add(new BarEntry(i, 0));
@@ -352,6 +412,9 @@ public class TimeLineView extends BaseView {
         mChartPrice.invalidate();
         mChartVolume.notifyDataSetChanged();
         mChartVolume.invalidate();
+
+        setDescription(mChartVolume, "成交量 " + hisData.getVol());
+
     }
 
 
@@ -359,7 +422,7 @@ public class TimeLineView extends BaseView {
      * align two chart
      */
     private void setOffset() {
-        mChartPrice.setViewPortOffsets(0, 0, 5, DisplayUtils.dip2px(mContext, 20));
+        mChartPrice.setViewPortOffsets(0, 0, 5, 0);
         mChartVolume.setViewPortOffsets(0, 0, 5, DisplayUtils.dip2px(mContext, 20));
         /*float lineLeft = mChartPrice.getViewPortHandler().offsetLeft();
         float barLeft = mChartVolume.getViewPortHandler().offsetLeft();
@@ -387,9 +450,10 @@ public class TimeLineView extends BaseView {
     /**
      * set the count of line chart
      */
-    public void setCount(int max, int min) {
+    public void setCount(int init, int max, int min) {
         MAX_COUNT_LINE = max;
         MIN_COUNT_LINE = min;
+        INIT_COUNT_LINE = init;
     }
 
 
@@ -424,4 +488,13 @@ public class TimeLineView extends BaseView {
     }
 
 
+    @Override
+    public void onAxisChange(BarLineChartBase chart) {
+        float lowestVisibleX = chart.getLowestVisibleX();
+        if (lowestVisibleX <= chart.getXAxis().getAxisMinimum()) return;
+        int maxX = (int) chart.getHighestVisibleX();
+        int x = Math.min(maxX, mData.size() - 1);
+        HisData hisData = mData.get(x < 0 ? 0 : x);
+        setDescription(mChartVolume, "成交量 " + hisData.getVol());
+    }
 }

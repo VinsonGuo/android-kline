@@ -11,6 +11,7 @@ import com.github.mikephil.charting.data.CombinedData;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.IDataSet;
+import com.github.mikephil.charting.utils.MPPointF;
 
 /**
  * Created by dell on 2017/6/22.
@@ -97,9 +98,31 @@ public class AppCombinedChart extends CombinedChart {
         }
     }
 
-    @Override
-    public void highlightValue(Highlight highlight) {
-        super.highlightValue(highlight);
+    protected void drawDescription(Canvas c) {
+
+        // check if description should be drawn
+        if (mDescription != null && mDescription.isEnabled()) {
+
+            MPPointF position = mDescription.getPosition();
+
+            mDescPaint.setTypeface(mDescription.getTypeface());
+            mDescPaint.setTextSize(mDescription.getTextSize());
+            mDescPaint.setColor(mDescription.getTextColor());
+            mDescPaint.setTextAlign(mDescription.getTextAlign());
+
+            float x, y;
+
+            // if no position specified, draw on default position
+            if (position == null) {
+                x = getWidth() - mViewPortHandler.offsetRight() - mDescription.getXOffset();
+                y = mDescription.getTextSize() + mViewPortHandler.offsetTop() + mDescription.getYOffset();
+            } else {
+                x = position.x;
+                y = position.y;
+            }
+
+            c.drawText(mDescription.getText(), x, y, mDescPaint);
+        }
     }
 
 

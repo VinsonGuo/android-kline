@@ -1,6 +1,5 @@
 package com.guoziwei.kline;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -15,16 +14,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TabLayout tabLayout = findViewById(R.id.tab);
-        ViewPager viewPager = findViewById(R.id.view_pager);
-        Fragment[] fragments = {TimeLineChartFragment.newInstance(1), KLineChartFragment.newInstance(0)};
-        String[] titles = {"分时图专业版", "k线图专业版"};
+        final ViewPager viewPager = findViewById(R.id.view_pager);
+        Fragment[] fragments = {TimeLineChartFragment.newInstance(1), FiveDayChartFragment.newInstance(), KLineChartFragment.newInstance(0), KLineChartFragment.newInstance(0)};
+        String[] titles = {"分时图", "5Day", "日K", "周K"};
         viewPager.setOffscreenPageLimit(fragments.length);
         viewPager.setAdapter(new SimpleFragmentPagerAdapter(getSupportFragmentManager(), fragments, titles));
         tabLayout.setupWithViewPager(viewPager);
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, FullScreenChartActivity.class));
+                FullScreenChartActivity.launch(MainActivity.this, viewPager.getCurrentItem());
             }
         });
     }

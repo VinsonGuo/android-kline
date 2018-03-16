@@ -6,7 +6,9 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
+import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -25,6 +27,7 @@ import java.util.List;
 
 class BaseView extends LinearLayout {
 
+    private String mDateFormat = "yyyy-MM-dd HH:mm";
 
     protected int mDecreasingColor;
     protected int mIncreasingColor;
@@ -55,7 +58,7 @@ class BaseView extends LinearLayout {
         chart.setBorderWidth(1);
         chart.setDragEnabled(true);
         chart.setScaleYEnabled(false);
-        chart.getDescription().setEnabled(false);
+//        chart.getDescription().setEnabled(false);
         chart.setAutoScaleMinMaxEnabled(true);
         chart.setDragDecelerationEnabled(false);
         chart.setHighlightPerDragEnabled(false);
@@ -76,11 +79,14 @@ class BaseView extends LinearLayout {
         xAxisVolume.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
+                if (mData.isEmpty()) {
+                    return "";
+                }
                 if (value < 0) {
                     value = 0;
                 }
-                if (mData != null && value < mData.size()) {
-                    return DateUtils.formatDateTime(mData.get((int) value).getDate());
+                if (value < mData.size()) {
+                    return DateUtils.formatDate(mData.get((int) value).getDate(), mDateFormat);
                 }
                 return "";
             }
@@ -92,7 +98,7 @@ class BaseView extends LinearLayout {
         axisLeftVolume.setLabelCount(3, true);
         axisLeftVolume.setDrawAxisLine(false);
         axisLeftVolume.setTextColor(mAxisColor);
-        axisLeftVolume.setSpaceTop(0);
+        axisLeftVolume.setSpaceTop(10);
         axisLeftVolume.setSpaceBottom(0);
         axisLeftVolume.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
         /*axisLeftVolume.setValueFormatter(new IAxisValueFormatter() {
@@ -125,11 +131,21 @@ class BaseView extends LinearLayout {
     }
 
 
+    protected void setDescription(Chart chart, String text) {
+        Description description = chart.getDescription();
+//        float dx = chart.getWidth() - chart.getViewPortHandler().offsetRight() - description.getXOffset();
+//        description.setPosition(dx, description.getTextSize());
+        description.setText(text);
+    }
 
     public HisData getLastData() {
         if (mData != null && !mData.isEmpty()) {
             return mData.get(mData.size() - 1);
         }
         return null;
+    }
+
+    public void setDateFormat(String mDateFormat) {
+        this.mDateFormat = mDateFormat;
     }
 }
