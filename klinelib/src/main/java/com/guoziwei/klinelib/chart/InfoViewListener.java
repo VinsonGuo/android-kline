@@ -60,7 +60,7 @@ public class InfoViewListener implements OnChartValueSelectedListener {
         mInfoView.setLayoutParams(lp);
         if (mOtherChart != null) {
             for (int i = 0; i < mOtherChart.length; i++) {
-                mOtherChart[i].highlightValues(new Highlight[]{new Highlight(h.getX(), Float.NaN, 0)});
+                mOtherChart[i].highlightValues(new Highlight[]{new Highlight(h.getX(), Float.NaN, h.getDataSetIndex())});
             }
         }
     }

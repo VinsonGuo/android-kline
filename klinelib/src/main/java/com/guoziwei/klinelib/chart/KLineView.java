@@ -150,7 +150,6 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         mChartPrice.setBorderWidth(1);
         mChartPrice.setDragEnabled(true);
         mChartPrice.setScaleYEnabled(false);
-        mChartPrice.getDescription().setEnabled(false);
         mChartPrice.setAutoScaleMinMaxEnabled(true);
         mChartPrice.setDragDecelerationEnabled(false);
         LineChartXMarkerView mvx = new LineChartXMarkerView(mContext, mData);
@@ -312,9 +311,11 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
 
         HisData hisData = getLastData();
         setDescription(mChartVolume, "成交量 " + hisData.getVol());
-        setDescription(mChartMacd, String.format(Locale.getDefault(), "MACD:%.2f DEA:%.2f DIF:%.2f",
+        setDescription(mChartPrice, String.format(Locale.getDefault(), "MA5:%.2f  MA10:%.2f  MA20:%.2f  MA30:%.2f",
+                hisData.getMa5(), hisData.getMa10(), hisData.getMa20(), hisData.getMa30()));
+        setDescription(mChartMacd, String.format(Locale.getDefault(), "MACD:%.2f  DEA:%.2f  DIF:%.2f",
                 hisData.getMacd(), hisData.getDea(), hisData.getDif()));
-        setDescription(mChartKdj, String.format(Locale.getDefault(), "K:%.2f D:%.2f J:%.2f",
+        setDescription(mChartKdj, String.format(Locale.getDefault(), "K:%.2f  D:%.2f  J:%.2f",
                 hisData.getK(), hisData.getD(), hisData.getJ()));
 
 
@@ -346,15 +347,19 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         } else if (type == D) {
             lineDataSetMa.setColor(getResources().getColor(R.color.d));
             lineDataSetMa.setCircleColor(mTransparentColor);
+            lineDataSetMa.setHighlightEnabled(false);
         } else if (type == J) {
             lineDataSetMa.setColor(getResources().getColor(R.color.j));
             lineDataSetMa.setCircleColor(mTransparentColor);
+            lineDataSetMa.setHighlightEnabled(false);
         } else if (type == DIF) {
             lineDataSetMa.setColor(getResources().getColor(R.color.dif));
             lineDataSetMa.setCircleColor(mTransparentColor);
+            lineDataSetMa.setHighlightEnabled(false);
         } else if (type == DEA) {
             lineDataSetMa.setColor(getResources().getColor(R.color.dea));
             lineDataSetMa.setCircleColor(mTransparentColor);
+            lineDataSetMa.setHighlightEnabled(false);
         } else if (type == AVE_LINE) {
             lineDataSetMa.setColor(getResources().getColor(R.color.ave_color));
             lineDataSetMa.setCircleColor(mTransparentColor);
@@ -601,10 +606,13 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         mChartKdj.notifyDataSetChanged();
         mChartKdj.invalidate();
 
+
+        setDescription(mChartPrice, String.format(Locale.getDefault(), "MA5:%.2f  MA10:%.2f  MA20:%.2f  MA30:%.2f",
+                hisData.getMa5(), hisData.getMa10(), hisData.getMa20(), hisData.getMa30()));
         setDescription(mChartVolume, "成交量 " + hisData.getVol());
-        setDescription(mChartMacd, String.format(Locale.getDefault(), "MACD:%.2f DEA:%.2f DIF:%.2f",
+        setDescription(mChartMacd, String.format(Locale.getDefault(), "MACD:%.2f  DEA:%.2f  DIF:%.2f",
                 hisData.getMacd(), hisData.getDea(), hisData.getDif()));
-        setDescription(mChartKdj, String.format(Locale.getDefault(), "K:%.2f D:%.2f J:%.2f",
+        setDescription(mChartKdj, String.format(Locale.getDefault(), "K:%.2f  D:%.2f  J:%.2f",
                 hisData.getK(), hisData.getD(), hisData.getJ()));
 
     }
@@ -682,10 +690,12 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         int maxX = (int) chart.getHighestVisibleX();
         int x = Math.min(maxX, mData.size() - 1);
         HisData hisData = mData.get(x < 0 ? 0 : x);
+        setDescription(mChartPrice, String.format(Locale.getDefault(), "MA5:%.2f  MA10:%.2f  MA20:%.2f  MA30:%.2f",
+                hisData.getMa5(), hisData.getMa10(), hisData.getMa20(), hisData.getMa30()));
         setDescription(mChartVolume, "成交量 " + hisData.getVol());
-        setDescription(mChartMacd, String.format(Locale.getDefault(), "MACD:%.2f DEA:%.2f DIF:%.2f",
+        setDescription(mChartMacd, String.format(Locale.getDefault(), "MACD:%.2f  DEA:%.2f  DIF:%.2f",
                 hisData.getMacd(), hisData.getDea(), hisData.getDif()));
-        setDescription(mChartKdj, String.format(Locale.getDefault(), "K:%.2f D:%.2f J:%.2f",
+        setDescription(mChartKdj, String.format(Locale.getDefault(), "K:%.2f  D:%.2f  J:%.2f",
                 hisData.getK(), hisData.getD(), hisData.getJ()));
 
     }
