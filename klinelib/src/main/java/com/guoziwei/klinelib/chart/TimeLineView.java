@@ -466,8 +466,9 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
      * align two chart
      */
     private void setOffset() {
-        mChartPrice.setViewPortOffsets(0, 0, 5, 0);
-        mChartVolume.setViewPortOffsets(0, 0, 5, DisplayUtils.dip2px(mContext, 20));
+        int chartHeight = getResources().getDimensionPixelSize(R.dimen.bottom_chart_height);
+        mChartPrice.setViewPortOffsets(0, 0, 0, chartHeight);
+        mChartVolume.setViewPortOffsets(0, 0, 0, DisplayUtils.dip2px(mContext, 20));
         /*float lineLeft = mChartPrice.getViewPortHandler().offsetLeft();
         float barLeft = mChartVolume.getViewPortHandler().offsetLeft();
         float lineRight = mChartPrice.getViewPortHandler().offsetRight();

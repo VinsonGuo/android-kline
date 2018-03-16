@@ -1,13 +1,31 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
 
+    <com.guoziwei.klinelib.chart.AppCombinedChart
+        android:id="@+id/vol_chart"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_chart_height"
+        android:layout_gravity="bottom" />
+
+
+    <com.guoziwei.klinelib.chart.AppCombinedChart
+        android:id="@+id/macd_chart"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_chart_height"
+        android:layout_gravity="bottom" />
+
+    <com.guoziwei.klinelib.chart.AppCombinedChart
+        android:id="@+id/kdj_chart"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_chart_height"
+        android:layout_gravity="bottom" />
+
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3">
+        android:layout_height="match_parent">
 
         <com.guoziwei.klinelib.chart.AppCombinedChart
             android:id="@+id/price_chart"
@@ -22,23 +40,4 @@
             android:visibility="gone" />
     </FrameLayout>
 
-
-    <com.guoziwei.klinelib.chart.AppCombinedChart
-        android:id="@+id/vol_chart"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-
-    <com.guoziwei.klinelib.chart.AppCombinedChart
-        android:id="@+id/macd_chart"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <com.guoziwei.klinelib.chart.AppCombinedChart
-        android:id="@+id/kdj_chart"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-</LinearLayout>
+</FrameLayout>

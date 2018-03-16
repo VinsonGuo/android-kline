@@ -622,8 +622,9 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
      * align two chart
      */
     private void setOffset() {
+        int chartHeight = getResources().getDimensionPixelSize(R.dimen.bottom_chart_height);
+        mChartPrice.setViewPortOffsets(0, 0, 0, chartHeight);
         int bottom = DisplayUtils.dip2px(mContext, 20);
-        mChartPrice.setViewPortOffsets(0, 0, 0, 0);
         mChartVolume.setViewPortOffsets(0, 0, 0, bottom);
         mChartMacd.setViewPortOffsets(0, 0, 0, bottom);
         mChartKdj.setViewPortOffsets(0, 0, 0, bottom);
