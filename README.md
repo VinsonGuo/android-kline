@@ -1,8 +1,7 @@
 # android-kline
 **基于MPAndroidChart的专业K线图**
 
-_email/qq gzw19931217@qq.com_ 
-承接android各类图表需求，有需要的可以联系我
+**联系方式** _email/qq gzw19931217@qq.com_ 
 
 本项目通过继承的方式定制了最新版本的**MPAndroidChart**，没有修改MPAndroidChart的源代码，所以对已经使用了MPAndroidChart的童鞋不会造成影响。
 
@@ -81,30 +80,24 @@ _email/qq gzw19931217@qq.com_
     <color name="limit_color">#adadad</color>
 ```
 
-自定义悬浮的信息提示：
 
-继承`ChartInfoView`，然后在init方法前调用`KLineView`的`setChartInfoView`方法。
+本人利用业余时间完善了这个图表库，demo如下，也可以[点击这里下载](art/app-release.apk)
 
-此外，还可以通过下面的方法对图表和坐标进行个性化的定制。
 
-```
-    public AppCombinedChart getChartPrice() 
+![demo](art/new_chart.gif)
 
-    public AppCombinedChart getChartVolume() 
+目前图表库有很多不完善的地方，本人利用业余时间对以下方面进行了完善：
 
-    public XAxis getxAxisPrice() 
+- 增加了MACD、KDJ指标的显示和切换
+- 增加了五日的分时图
+- 优化图表的缩放，可以进行放大和缩小操作（之前只支持在初始状态下的放大操作）
+- 拼接图表的缩放功能（之前如果一个手指在K线图，另一个手指在交易量图的时候，图表是不可以缩放的）
+- 全屏模式的示例
+- 分时图增加涨跌幅的坐标，并且涨跌幅为0%时竖直居中显示
+- K线图增加最大/最小值得显示
 
-    public YAxis getAxisRightPrice() 
+研究图表花费了很多时间和精力，所以我想通过知识付费的形式与有需要的人进行分享，有需要的童鞋可以加入
+我的知识星球来获取完整的代码，并提供后续的技术支持。
 
-    public YAxis getAxisLeftPrice() 
+![知识星球](art/zsxq.png)
 
-    public XAxis getxAxisVolume() 
-
-    public YAxis getAxisRightVolume() 
-
-    public YAxis getAxisLeftVolume() 
-```
-
-这几个会获取到MPAndroidChart库的对象，可以根据MPAndroidChart的文档对其进行配置。
-
-如果还有更复杂的需求，可以选择继承KLineView。
