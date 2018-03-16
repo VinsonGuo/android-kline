@@ -1,0 +1,1502 @@
+[
+  {
+    time: "2015-04-17",
+    price_o: "14100.35",
+    price_c: "14149.34",
+    price_h: "14249.47",
+    price_l: "13492.77",
+    volume: "1583988864",
+    volume_price: "28975亿",
+    zf_bfb: "5.40%"
+  },
+  {
+    time: "2015-04-24",
+    price_o: "14132.83",
+    price_c: "14598.70",
+    price_h: "14893.01",
+    price_l: "13814.96",
+    volume: "1781616992",
+    volume_price: "31671亿",
+    zf_bfb: "7.62%"
+  },
+  {
+    time: "2015-04-30",
+    price_o: "14749.02",
+    price_c: "14818.64",
+    price_h: "15009.73",
+    price_l: "14542.32",
+    volume: "1233971136",
+    volume_price: "23354亿",
+    zf_bfb: "3.20%"
+  },
+  {
+    time: "2015-05-08",
+    price_o: "14846.48",
+    price_c: "14481.25",
+    price_h: "14958.79",
+    price_l: "14027.60",
+    volume: "1321243536",
+    volume_price: "25056亿",
+    zf_bfb: "6.28%"
+  },
+  {
+    time: "2015-05-15",
+    price_o: "14572.82",
+    price_c: "14694.95",
+    price_h: "15299.79",
+    price_l: "14447.78",
+    volume: "1659334592",
+    volume_price: "34817亿",
+    zf_bfb: "5.88%"
+  },
+  {
+    time: "2015-05-22",
+    price_o: "14612.88",
+    price_c: "16045.80",
+    price_h: "16191.15",
+    price_l: "14564.73",
+    volume: "1794573696",
+    volume_price: "39194亿",
+    zf_bfb: "11.07%"
+  },
+  {
+    time: "2015-05-29",
+    price_o: "15894.14",
+    price_c: "16100.45",
+    price_h: "17153.80",
+    price_l: "15299.65",
+    volume: "2255625824",
+    volume_price: "49095亿",
+    zf_bfb: "11.56%"
+  },
+  {
+    time: "2015-06-05",
+    price_o: "16247.39",
+    price_c: "17649.09",
+    price_h: "17901.86",
+    price_l: "16245.55",
+    volume: "2024716576",
+    volume_price: "47070亿",
+    zf_bfb: "10.29%"
+  },
+  {
+    time: "2015-06-12",
+    price_o: "17648.72",
+    price_c: "18098.27",
+    price_h: "18198.07",
+    price_l: "17145.70",
+    volume: "1871360256",
+    volume_price: "42922亿",
+    zf_bfb: "5.96%"
+  },
+  {
+    time: "2015-06-19",
+    price_o: "18182.64",
+    price_c: "15725.47",
+    price_h: "18211.76",
+    price_l: "15700.49",
+    volume: "1650324032",
+    volume_price: "37182亿",
+    zf_bfb: "13.88%"
+  },
+  {
+    time: "2015-06-26",
+    price_o: "15720.32",
+    price_c: "14398.79",
+    price_h: "16399.34",
+    price_l: "14321.05",
+    volume: "1251482720",
+    volume_price: "25196亿",
+    zf_bfb: "13.22%"
+  },
+  {
+    time: "2015-07-03",
+    price_o: "14703.97",
+    price_c: "12246.06",
+    price_h: "14712.16",
+    price_l: "11953.08",
+    volume: "1743500416",
+    volume_price: "31010亿",
+    zf_bfb: "19.16%"
+  },
+  {
+    time: "2015-07-10",
+    price_o: "13140.14",
+    price_c: "12038.15",
+    price_h: "13140.14",
+    price_l: "10850.38",
+    volume: "1297360352",
+    volume_price: "18496亿",
+    zf_bfb: "18.70%"
+  },
+  {
+    time: "2015-07-17",
+    price_o: "12367.62",
+    price_c: "13004.96",
+    price_h: "13097.45",
+    price_l: "11637.47",
+    volume: "1496081472",
+    volume_price: "24454亿",
+    zf_bfb: "12.13%"
+  },
+  {
+    time: "2015-07-24",
+    price_o: "13115.48",
+    price_c: "13518.52",
+    price_h: "13970.84",
+    price_l: "12928.13",
+    volume: "1773389248",
+    volume_price: "31961亿",
+    zf_bfb: "8.02%"
+  },
+  {
+    time: "2015-07-31",
+    price_o: "13242.69",
+    price_c: "12374.25",
+    price_h: "13579.64",
+    price_l: "11719.00",
+    volume: "1569888896",
+    volume_price: "27679亿",
+    zf_bfb: "13.76%"
+  },
+  {
+    time: "2015-08-07",
+    price_o: "12178.57",
+    price_c: "12753.05",
+    price_h: "12842.31",
+    price_l: "11909.01",
+    volume: "1230605792",
+    volume_price: "21194亿",
+    zf_bfb: "7.54%"
+  },
+  {
+    time: "2015-08-14",
+    price_o: "12877.31",
+    price_c: "13445.87",
+    price_h: "13606.33",
+    price_l: "12821.89",
+    volume: "1573882048",
+    volume_price: "27763亿",
+    zf_bfb: "6.15%"
+  },
+  {
+    time: "2015-08-21",
+    price_o: "13417.33",
+    price_c: "11902.05",
+    price_h: "13652.54",
+    price_l: "11891.84",
+    volume: "1591509200",
+    volume_price: "26744亿",
+    zf_bfb: "13.09%"
+  },
+  {
+    time: "2015-08-28",
+    price_o: "11399.66",
+    price_c: "10800.00",
+    price_h: "11446.10",
+    price_l: "9713.99",
+    volume: "1327253712",
+    volume_price: "17790亿",
+    zf_bfb: "14.55%"
+  },
+  {
+    time: "2015-09-02",
+    price_o: "10706.23",
+    price_c: "10054.80",
+    price_h: "10706.23",
+    price_l: "9682.71",
+    volume: "772167744",
+    volume_price: "9960亿",
+    zf_bfb: "9.48%"
+  },
+  {
+    time: "2015-09-11",
+    price_o: "10121.83",
+    price_c: "10463.69",
+    price_h: "10702.18",
+    price_l: "9763.95",
+    volume: "1156673184",
+    volume_price: "15664亿",
+    zf_bfb: "9.33%"
+  },
+  {
+    time: "2015-09-18",
+    price_o: "10517.68",
+    price_c: "9850.77",
+    price_h: "10544.28",
+    price_l: "9259.65",
+    volume: "1135294768",
+    volume_price: "14408亿",
+    zf_bfb: "12.28%"
+  },
+  {
+    time: "2015-09-25",
+    price_o: "9732.12",
+    price_c: "9904.76",
+    price_h: "10357.42",
+    price_l: "9701.33",
+    volume: "1171141504",
+    volume_price: "16344亿",
+    zf_bfb: "6.66%"
+  },
+  {
+    time: "2015-09-30",
+    price_o: "9919.56",
+    price_c: "9988.25",
+    price_h: "10124.31",
+    price_l: "9796.93",
+    volume: "488305760",
+    volume_price: "7038亿",
+    zf_bfb: "3.31%"
+  },
+  {
+    time: "2015-10-09",
+    price_o: "10332.24",
+    price_c: "10540.19",
+    price_h: "10589.52",
+    price_l: "10265.00",
+    volume: "472573536",
+    volume_price: "6689亿",
+    zf_bfb: "3.25%"
+  },
+  {
+    time: "2015-10-16",
+    price_o: "10599.88",
+    price_c: "11374.83",
+    price_h: "11384.24",
+    price_l: "10593.54",
+    volume: "1598389248",
+    volume_price: "23583亿",
+    zf_bfb: "7.50%"
+  },
+  {
+    time: "2015-10-23",
+    price_o: "11426.52",
+    price_c: "11603.46",
+    price_h: "11653.09",
+    price_l: "10872.57",
+    volume: "1810868640",
+    volume_price: "28518亿",
+    zf_bfb: "6.86%"
+  },
+  {
+    time: "2015-10-30",
+    price_o: "11765.65",
+    price_c: "11546.05",
+    price_h: "11834.07",
+    price_l: "11229.10",
+    volume: "1677554400",
+    volume_price: "27421亿",
+    zf_bfb: "5.21%"
+  },
+  {
+    time: "2015-11-06",
+    price_o: "11306.20",
+    price_c: "12273.35",
+    price_h: "12292.42",
+    price_l: "11200.60",
+    volume: "1644688176",
+    volume_price: "27334亿",
+    zf_bfb: "9.46%"
+  },
+  {
+    time: "2015-11-13",
+    price_o: "12227.41",
+    price_c: "12402.04",
+    price_h: "12758.67",
+    price_l: "12145.07",
+    volume: "1971809184",
+    volume_price: "35186亿",
+    zf_bfb: "5.00%"
+  },
+  {
+    time: "2015-11-20",
+    price_o: "12180.99",
+    price_c: "12702.03",
+    price_h: "12827.20",
+    price_l: "12171.66",
+    volume: "1661248864",
+    volume_price: "30378亿",
+    zf_bfb: "5.29%"
+  },
+  {
+    time: "2015-11-27",
+    price_o: "12699.15",
+    price_c: "11961.70",
+    price_h: "12970.47",
+    price_l: "11880.32",
+    volume: "1692868896",
+    volume_price: "31873亿",
+    zf_bfb: "8.58%"
+  },
+  {
+    time: "2015-12-04",
+    price_o: "11991.70",
+    price_c: "12329.18",
+    price_h: "12474.46",
+    price_l: "11455.50",
+    volume: "1377040736",
+    volume_price: "25382亿",
+    zf_bfb: "8.52%"
+  },
+  {
+    time: "2015-12-11",
+    price_o: "12351.41",
+    price_c: "12134.02",
+    price_h: "12467.85",
+    price_l: "12051.45",
+    volume: "1174982688",
+    volume_price: "22486亿",
+    zf_bfb: "3.38%"
+  },
+  {
+    time: "2015-12-18",
+    price_o: "12023.82",
+    price_c: "12830.25",
+    price_h: "12904.08",
+    price_l: "12004.49",
+    volume: "1312977696",
+    volume_price: "25024亿",
+    zf_bfb: "7.41%"
+  },
+  {
+    time: "2015-12-25",
+    price_o: "12824.43",
+    price_c: "12980.57",
+    price_h: "13187.05",
+    price_l: "12770.36",
+    volume: "1346021824",
+    volume_price: "24785亿",
+    zf_bfb: "3.25%"
+  },
+  {
+    time: "2015-12-31",
+    price_o: "13025.66",
+    price_c: "12664.89",
+    price_h: "13064.50",
+    price_l: "12598.11",
+    volume: "948785936",
+    volume_price: "18251亿",
+    zf_bfb: "3.59%"
+  },
+  {
+    time: "2016-01-08",
+    price_o: "12650.72",
+    price_c: "10888.91",
+    price_h: "12659.41",
+    price_l: "10376.29",
+    volume: "1109454656",
+    volume_price: "17980亿",
+    zf_bfb: "18.03%"
+  },
+  {
+    time: "2016-01-15",
+    price_o: "10656.87",
+    price_c: "9997.93",
+    price_h: "10809.57",
+    price_l: "9668.90",
+    volume: "1137549952",
+    volume_price: "16809亿",
+    zf_bfb: "10.48%"
+  },
+  {
+    time: "2016-01-22",
+    price_o: "9807.25",
+    price_c: "10111.57",
+    price_h: "10554.04",
+    price_l: "9807.25",
+    volume: "1042635568",
+    volume_price: "16299亿",
+    zf_bfb: "7.47%"
+  },
+  {
+    time: "2016-01-29",
+    price_o: "10194.75",
+    price_c: "9418.20",
+    price_h: "10291.50",
+    price_l: "8986.52",
+    volume: "950230320",
+    volume_price: "13529亿",
+    zf_bfb: "12.91%"
+  },
+  {
+    time: "2016-02-05",
+    price_o: "9389.62",
+    price_c: "9673.48",
+    price_h: "9844.02",
+    price_l: "9196.15",
+    volume: "807029600",
+    volume_price: "11756亿",
+    zf_bfb: "6.88%"
+  },
+  {
+    time: "2016-02-19",
+    price_o: "9385.52",
+    price_c: "10162.32",
+    price_h: "10273.63",
+    price_l: "9385.53",
+    volume: "996174400",
+    volume_price: "15075亿",
+    zf_bfb: "9.18%"
+  },
+  {
+    time: "2016-02-26",
+    price_o: "10290.05",
+    price_c: "9573.70",
+    price_h: "10397.52",
+    price_l: "9392.67",
+    volume: "1165139904",
+    volume_price: "17685亿",
+    zf_bfb: "9.89%"
+  },
+  {
+    time: "2016-03-04",
+    price_o: "9528.72",
+    price_c: "9536.71",
+    price_h: "9946.94",
+    price_l: "9000.89",
+    volume: "1237700432",
+    volume_price: "16308亿",
+    zf_bfb: "9.88%"
+  },
+  {
+    time: "2016-03-11",
+    price_o: "9642.25",
+    price_c: "9363.41",
+    price_h: "9805.37",
+    price_l: "9254.24",
+    volume: "888039128",
+    volume_price: "12206亿",
+    zf_bfb: "5.78%"
+  },
+  {
+    time: "2016-03-18",
+    price_o: "9466.42",
+    price_c: "10126.59",
+    price_h: "10170.69",
+    price_l: "9418.55",
+    volume: "1087657408",
+    volume_price: "16392亿",
+    zf_bfb: "8.03%"
+  },
+  {
+    time: "2016-03-25",
+    price_o: "10255.90",
+    price_c: "10339.68",
+    price_h: "10473.22",
+    price_l: "10223.16",
+    volume: "1345450985",
+    volume_price: "21984亿",
+    zf_bfb: "2.47%"
+  },
+  {
+    time: "2016-04-01",
+    price_o: "10399.17",
+    price_c: "10379.65",
+    price_h: "10552.58",
+    price_l: "10024.06",
+    volume: "1143974620",
+    volume_price: "19338亿",
+    zf_bfb: "5.11%"
+  },
+  {
+    time: "2016-04-08",
+    price_o: "10393.65",
+    price_c: "10413.54",
+    price_h: "10743.23",
+    price_l: "10288.80",
+    volume: "1012232405",
+    volume_price: "17157亿",
+    zf_bfb: "4.38%"
+  },
+  {
+    time: "2016-04-15",
+    price_o: "10513.87",
+    price_c: "10733.64",
+    price_h: "10810.41",
+    price_l: "10430.31",
+    volume: "1232602819",
+    volume_price: "20334亿",
+    zf_bfb: "3.65%"
+  },
+  {
+    time: "2016-04-22",
+    price_o: "10665.44",
+    price_c: "10151.76",
+    price_h: "10665.44",
+    price_l: "9976.05",
+    volume: "1086433896",
+    volume_price: "17719亿",
+    zf_bfb: "6.42%"
+  },
+  {
+    time: "2016-04-29",
+    price_o: "10122.13",
+    price_c: "10141.54",
+    price_h: "10279.09",
+    price_l: "9986.39",
+    volume: "785045609",
+    volume_price: "12903亿",
+    zf_bfb: "2.88%"
+  },
+  {
+    time: "2016-05-06",
+    price_o: "10144.15",
+    price_c: "10100.54",
+    price_h: "10501.44",
+    price_l: "10100.54",
+    volume: "849386497",
+    volume_price: "14267亿",
+    zf_bfb: "3.95%"
+  },
+  {
+    time: "2016-05-13",
+    price_o: "10018.51",
+    price_c: "9759.27",
+    price_h: "10018.51",
+    price_l: "9544.12",
+    volume: "791399678",
+    volume_price: "12390亿",
+    zf_bfb: "4.70%"
+  },
+  {
+    time: "2016-05-20",
+    price_o: "9729.79",
+    price_c: "9816.75",
+    price_h: "10007.38",
+    price_l: "9591.18",
+    volume: "810808753",
+    volume_price: "12870亿",
+    zf_bfb: "4.26%"
+  },
+  {
+    time: "2016-05-27",
+    price_o: "9839.78",
+    price_c: "9813.63",
+    price_h: "9937.83",
+    price_l: "9605.45",
+    volume: "802336332",
+    volume_price: "13022亿",
+    zf_bfb: "3.39%"
+  },
+  {
+    time: "2016-06-03",
+    price_o: "9756.88",
+    price_c: "10344.91",
+    price_h: "10412.95",
+    price_l: "9681.24",
+    volume: "1143001348",
+    volume_price: "18558亿",
+    zf_bfb: "7.46%"
+  },
+  {
+    time: "2016-06-08",
+    price_o: "10383.45",
+    price_c: "10316.82",
+    price_h: "10403.81",
+    price_l: "10232.13",
+    volume: "616018233",
+    volume_price: "10694亿",
+    zf_bfb: "1.66%"
+  },
+  {
+    time: "2016-06-17",
+    price_o: "10190.78",
+    price_c: "10182.53",
+    price_h: "10261.97",
+    price_l: "9779.11",
+    volume: "1093209711",
+    volume_price: "18076亿",
+    zf_bfb: "4.68%"
+  },
+  {
+    time: "2016-06-24",
+    price_o: "10183.77",
+    price_c: "10147.71",
+    price_h: "10357.18",
+    price_l: "9901.90",
+    volume: "1119778169",
+    volume_price: "18524亿",
+    zf_bfb: "4.47%"
+  },
+  {
+    time: "2016-07-01",
+    price_o: "10090.05",
+    price_c: "10458.43",
+    price_h: "10555.95",
+    price_l: "10090.05",
+    volume: "1180775071",
+    volume_price: "20029亿",
+    zf_bfb: "4.59%"
+  },
+  {
+    time: "2016-07-08",
+    price_o: "10369.69",
+    price_c: "10611.80",
+    price_h: "10672.92",
+    price_l: "10362.85",
+    volume: "1275521251",
+    volume_price: "21038亿",
+    zf_bfb: "2.96%"
+  },
+  {
+    time: "2016-07-15",
+    price_o: "10633.63",
+    price_c: "10823.22",
+    price_h: "10890.03",
+    price_l: "10487.55",
+    volume: "1291836813",
+    volume_price: "20682亿",
+    zf_bfb: "3.79%"
+  },
+  {
+    time: "2016-07-22",
+    price_o: "10793.18",
+    price_c: "10709.07",
+    price_h: "10872.34",
+    price_l: "10661.39",
+    volume: "1046196248",
+    volume_price: "17132亿",
+    zf_bfb: "1.95%"
+  },
+  {
+    time: "2016-07-29",
+    price_o: "10684.55",
+    price_c: "10329.43",
+    price_h: "10873.26",
+    price_l: "10262.30",
+    volume: "1088643577",
+    volume_price: "17070亿",
+    zf_bfb: "5.71%"
+  },
+  {
+    time: "2016-08-05",
+    price_o: "10289.89",
+    price_c: "10342.28",
+    price_h: "10420.43",
+    price_l: "10086.64",
+    volume: "775300526",
+    volume_price: "11631亿",
+    zf_bfb: "3.23%"
+  },
+  {
+    time: "2016-08-12",
+    price_o: "10315.00",
+    price_c: "10528.10",
+    price_h: "10594.77",
+    price_l: "10259.30",
+    volume: "890825065",
+    volume_price: "13196亿",
+    zf_bfb: "3.24%"
+  },
+  {
+    time: "2016-08-19",
+    price_o: "10556.40",
+    price_c: "10872.71",
+    price_h: "10946.74",
+    price_l: "10552.95",
+    volume: "1255595000",
+    volume_price: "19022亿",
+    zf_bfb: "3.74%"
+  },
+  {
+    time: "2016-08-26",
+    price_o: "10869.06",
+    price_c: "10693.75",
+    price_h: "10894.84",
+    price_l: "10564.36",
+    volume: "974284214",
+    volume_price: "14974亿",
+    zf_bfb: "3.04%"
+  },
+  {
+    time: "2016-09-02",
+    price_o: "10690.95",
+    price_c: "10640.42",
+    price_h: "10787.32",
+    price_l: "10592.08",
+    volume: "850519010",
+    volume_price: "13343亿",
+    zf_bfb: "1.83%"
+  },
+  {
+    time: "2016-09-09",
+    price_o: "10682.71",
+    price_c: "10762.79",
+    price_h: "10903.64",
+    price_l: "10623.99",
+    volume: "991549815",
+    volume_price: "15240亿",
+    zf_bfb: "2.63%"
+  },
+  {
+    time: "2016-09-14",
+    price_o: "10578.78",
+    price_c: "10454.24",
+    price_h: "10619.89",
+    price_l: "10425.69",
+    volume: "535004601",
+    volume_price: "7892亿",
+    zf_bfb: "1.80%"
+  },
+  {
+    time: "2016-09-23",
+    price_o: "10476.63",
+    price_c: "10609.70",
+    price_h: "10697.39",
+    price_l: "10476.63",
+    volume: "770012747",
+    volume_price: "11533亿",
+    zf_bfb: "2.11%"
+  },
+  {
+    time: "2016-09-30",
+    price_o: "10588.35",
+    price_c: "10567.58",
+    price_h: "10590.37",
+    price_l: "10352.02",
+    volume: "722879889",
+    volume_price: "10554亿",
+    zf_bfb: "2.25%"
+  },
+  {
+    time: "2016-10-14",
+    price_o: "10612.21",
+    price_c: "10759.68",
+    price_h: "10818.04",
+    price_l: "10584.70",
+    volume: "928977175",
+    volume_price: "13498亿",
+    zf_bfb: "2.21%"
+  },
+  {
+    time: "2016-10-21",
+    price_o: "10770.34",
+    price_c: "10748.90",
+    price_h: "10824.41",
+    price_l: "10624.82",
+    volume: "980664893",
+    volume_price: "14710亿",
+    zf_bfb: "1.85%"
+  },
+  {
+    time: "2016-10-28",
+    price_o: "10755.49",
+    price_c: "10711.04",
+    price_h: "10871.66",
+    price_l: "10710.93",
+    volume: "1005340327",
+    volume_price: "15331亿",
+    zf_bfb: "1.50%"
+  },
+  {
+    time: "2016-11-04",
+    price_o: "10685.36",
+    price_c: "10702.57",
+    price_h: "10804.26",
+    price_l: "10630.30",
+    volume: "988125530",
+    volume_price: "15735亿",
+    zf_bfb: "1.62%"
+  },
+  {
+    time: "2016-11-11",
+    price_o: "10704.26",
+    price_c: "10878.14",
+    price_h: "10878.14",
+    price_l: "10575.16",
+    volume: "1177212548",
+    volume_price: "17676亿",
+    zf_bfb: "2.83%"
+  },
+  {
+    time: "2016-11-18",
+    price_o: "10855.98",
+    price_c: "10889.11",
+    price_h: "10998.92",
+    price_l: "10847.82",
+    volume: "1187887737",
+    volume_price: "17952亿",
+    zf_bfb: "1.39%"
+  },
+  {
+    time: "2016-11-25",
+    price_o: "10877.08",
+    price_c: "11036.53",
+    price_h: "11041.52",
+    price_l: "10830.40",
+    volume: "1119211354",
+    volume_price: "18232亿",
+    zf_bfb: "1.94%"
+  },
+  {
+    time: "2016-12-02",
+    price_o: "11078.77",
+    price_c: "10912.63",
+    price_h: "11124.81",
+    price_l: "10905.39",
+    volume: "1036930322",
+    volume_price: "15977亿",
+    zf_bfb: "1.99%"
+  },
+  {
+    time: "2016-12-09",
+    price_o: "10776.12",
+    price_c: "10789.62",
+    price_h: "10894.08",
+    price_l: "10751.20",
+    volume: "835675318",
+    volume_price: "12804亿",
+    zf_bfb: "1.31%"
+  },
+  {
+    time: "2016-12-16",
+    price_o: "10774.59",
+    price_c: "10334.76",
+    price_h: "10775.57",
+    price_l: "10192.13",
+    volume: "928082007",
+    volume_price: "13516亿",
+    zf_bfb: "5.41%"
+  },
+  {
+    time: "2016-12-23",
+    price_o: "10330.61",
+    price_c: "10199.86",
+    price_h: "10330.61",
+    price_l: "10196.72",
+    volume: "757604296",
+    volume_price: "10897亿",
+    zf_bfb: "1.30%"
+  },
+  {
+    time: "2016-12-30",
+    price_o: "10163.51",
+    price_c: "10177.14",
+    price_h: "10270.98",
+    price_l: "10062.37",
+    volume: "677887094",
+    volume_price: "9896亿",
+    zf_bfb: "2.05%"
+  },
+  {
+    time: "2017-01-06",
+    price_o: "10205.14",
+    price_c: "10289.36",
+    price_h: "10396.90",
+    price_l: "10205.14",
+    volume: "659151176",
+    volume_price: "9520亿",
+    zf_bfb: "1.88%"
+  },
+  {
+    time: "2017-01-13",
+    price_o: "10281.31",
+    price_c: "10008.30",
+    price_h: "10357.14",
+    price_l: "9997.40",
+    volume: "756728793",
+    volume_price: "10722亿",
+    zf_bfb: "3.50%"
+  },
+  {
+    time: "2017-01-20",
+    price_o: "9993.56",
+    price_c: "9906.14",
+    price_h: "9993.56",
+    price_l: "9482.84",
+    volume: "694648807",
+    volume_price: "9722亿",
+    zf_bfb: "5.10%"
+  },
+  {
+    time: "2017-01-26",
+    price_o: "9919.41",
+    price_c: "10052.05",
+    price_h: "10053.36",
+    price_l: "9919.41",
+    volume: "472693174",
+    volume_price: "6566亿",
+    zf_bfb: "1.35%"
+  },
+  {
+    time: "2017-02-03",
+    price_o: "10061.29",
+    price_c: "10004.84",
+    price_h: "10066.70",
+    price_l: "9985.30",
+    volume: "98785052",
+    volume_price: "1321亿",
+    zf_bfb: "0.81%"
+  },
+  {
+    time: "2017-02-10",
+    price_o: "10004.22",
+    price_c: "10186.38",
+    price_h: "10212.48",
+    price_l: "9984.64",
+    volume: "780780705",
+    volume_price: "10950亿",
+    zf_bfb: "2.28%"
+  },
+  {
+    time: "2017-02-17",
+    price_o: "10188.71",
+    price_c: "10197.92",
+    price_h: "10296.14",
+    price_l: "10160.11",
+    volume: "874051917",
+    volume_price: "12127亿",
+    zf_bfb: "1.34%"
+  },
+  {
+    time: "2017-02-24",
+    price_o: "10203.02",
+    price_c: "10443.73",
+    price_h: "10454.16",
+    price_l: "10203.02",
+    volume: "937550559",
+    volume_price: "13252亿",
+    zf_bfb: "2.46%"
+  },
+  {
+    time: "2017-03-03",
+    price_o: "10443.30",
+    price_c: "10397.05",
+    price_h: "10447.68",
+    price_l: "10308.22",
+    volume: "849748178",
+    volume_price: "12800亿",
+    zf_bfb: "1.34%"
+  },
+  {
+    time: "2017-03-10",
+    price_o: "10406.23",
+    price_c: "10451.01",
+    price_h: "10552.14",
+    price_l: "10402.36",
+    volume: "823579075",
+    volume_price: "13237亿",
+    zf_bfb: "1.44%"
+  },
+  {
+    time: "2017-03-17",
+    price_o: "10450.65",
+    price_c: "10515.41",
+    price_h: "10650.46",
+    price_l: "10402.72",
+    volume: "873350284",
+    volume_price: "14372亿",
+    zf_bfb: "2.37%"
+  },
+  {
+    time: "2017-03-24",
+    price_o: "10512.89",
+    price_c: "10646.72",
+    price_h: "10666.12",
+    price_l: "10459.74",
+    volume: "882917277",
+    volume_price: "14772亿",
+    zf_bfb: "1.96%"
+  },
+  {
+    time: "2017-03-31",
+    price_o: "10643.45",
+    price_c: "10428.72",
+    price_h: "10660.23",
+    price_l: "10328.95",
+    volume: "891499346",
+    volume_price: "14114亿",
+    zf_bfb: "3.11%"
+  },
+  {
+    time: "2017-04-07",
+    price_o: "10496.78",
+    price_c: "10669.48",
+    price_h: "10702.88",
+    price_l: "10496.78",
+    volume: "597695634",
+    volume_price: "8934亿",
+    zf_bfb: "1.98%"
+  },
+  {
+    time: "2017-04-14",
+    price_o: "10663.86",
+    price_c: "10519.86",
+    price_h: "10678.78",
+    price_l: "10476.66",
+    volume: "1186700303",
+    volume_price: "16282亿",
+    zf_bfb: "1.89%"
+  },
+  {
+    time: "2017-04-21",
+    price_o: "10483.96",
+    price_c: "10314.35",
+    price_h: "10522.85",
+    price_l: "10235.00",
+    volume: "895154595",
+    volume_price: "12399亿",
+    zf_bfb: "2.74%"
+  },
+  {
+    time: "2017-04-28",
+    price_o: "10285.04",
+    price_c: "10234.65",
+    price_h: "10285.04",
+    price_l: "10015.89",
+    volume: "848616819",
+    volume_price: "11789亿",
+    zf_bfb: "2.61%"
+  },
+  {
+    time: "2017-05-05",
+    price_o: "10205.66",
+    price_c: "10024.43",
+    price_h: "10244.35",
+    price_l: "10024.43",
+    volume: "668309220",
+    volume_price: "9556亿",
+    zf_bfb: "2.15%"
+  },
+  {
+    time: "2017-05-12",
+    price_o: "10000.95",
+    price_c: "9787.99",
+    price_h: "10018.57",
+    price_l: "9566.42",
+    volume: "773907481",
+    volume_price: "10653亿",
+    zf_bfb: "4.51%"
+  },
+  {
+    time: "2017-05-19",
+    price_o: "9812.38",
+    price_c: "9970.96",
+    price_h: "10091.47",
+    price_l: "9761.35",
+    volume: "816663355",
+    volume_price: "11731亿",
+    zf_bfb: "3.37%"
+  },
+  {
+    time: "2017-05-26",
+    price_o: "9958.29",
+    price_c: "9859.23",
+    price_h: "10014.94",
+    price_l: "9609.41",
+    volume: "801893616",
+    volume_price: "10670亿",
+    zf_bfb: "4.07%"
+  },
+  {
+    time: "2017-06-02",
+    price_o: "9944.12",
+    price_c: "9794.89",
+    price_h: "9976.64",
+    price_l: "9637.54",
+    volume: "460468042",
+    volume_price: "5992亿",
+    zf_bfb: "3.44%"
+  },
+  {
+    time: "2017-06-09",
+    price_o: "9799.81",
+    price_c: "10177.45",
+    price_h: "10182.61",
+    price_l: "9799.65",
+    volume: "803136975",
+    volume_price: "10815亿",
+    zf_bfb: "3.91%"
+  },
+  {
+    time: "2017-06-16",
+    price_o: "10144.12",
+    price_c: "10191.24",
+    price_h: "10237.40",
+    price_l: "10102.50",
+    volume: "809817291",
+    volume_price: "11035亿",
+    zf_bfb: "1.33%"
+  },
+  {
+    time: "2017-06-23",
+    price_o: "10191.98",
+    price_c: "10366.78",
+    price_h: "10418.61",
+    price_l: "10191.87",
+    volume: "850363597",
+    volume_price: "11480亿",
+    zf_bfb: "2.22%"
+  },
+  {
+    time: "2017-06-30",
+    price_o: "10377.22",
+    price_c: "10529.61",
+    price_h: "10548.80",
+    price_l: "10377.22",
+    volume: "786069630",
+    volume_price: "10629亿",
+    zf_bfb: "1.66%"
+  },
+  {
+    time: "2017-07-07",
+    price_o: "10531.73",
+    price_c: "10563.72",
+    price_h: "10574.11",
+    price_l: "10434.68",
+    volume: "883264078",
+    volume_price: "12108亿",
+    zf_bfb: "1.32%"
+  },
+  {
+    time: "2017-07-14",
+    price_o: "10542.55",
+    price_c: "10427.79",
+    price_h: "10574.21",
+    price_l: "10360.10",
+    volume: "922538320",
+    volume_price: "12149亿",
+    zf_bfb: "2.03%"
+  },
+  {
+    time: "2017-07-21",
+    price_o: "10383.22",
+    price_c: "10364.82",
+    price_h: "10406.25",
+    price_l: "9960.56",
+    volume: "1017856023",
+    volume_price: "12452亿",
+    zf_bfb: "4.27%"
+  },
+  {
+    time: "2017-07-28",
+    price_o: "10352.85",
+    price_c: "10437.94",
+    price_h: "10456.41",
+    price_l: "10216.02",
+    volume: "1027731556",
+    volume_price: "12658亿",
+    zf_bfb: "2.32%"
+  },
+  {
+    time: "2017-08-04",
+    price_o: "10438.23",
+    price_c: "10361.23",
+    price_h: "10557.47",
+    price_l: "10360.83",
+    volume: "1180922094",
+    volume_price: "14376亿",
+    zf_bfb: "1.88%"
+  },
+  {
+    time: "2017-08-11",
+    price_o: "10353.15",
+    price_c: "10291.35",
+    price_h: "10582.16",
+    price_l: "10281.63",
+    volume: "1078340052",
+    volume_price: "12995亿",
+    zf_bfb: "2.90%"
+  },
+  {
+    time: "2017-08-18",
+    price_o: "10308.97",
+    price_c: "10614.08",
+    price_h: "10658.16",
+    price_l: "10308.97",
+    volume: "1031761892",
+    volume_price: "13623亿",
+    zf_bfb: "3.39%"
+  },
+  {
+    time: "2017-08-25",
+    price_o: "10624.81",
+    price_c: "10659.01",
+    price_h: "10699.05",
+    price_l: "10537.78",
+    volume: "886201123",
+    volume_price: "11947亿",
+    zf_bfb: "1.52%"
+  },
+  {
+    time: "2017-09-01",
+    price_o: "10678.35",
+    price_c: "10880.56",
+    price_h: "10880.56",
+    price_l: "10678.35",
+    volume: "1078164969",
+    volume_price: "15175亿",
+    zf_bfb: "1.90%"
+  },
+  {
+    time: "2017-09-08",
+    price_o: "10882.13",
+    price_c: "10970.77",
+    price_h: "11059.47",
+    price_l: "10859.36",
+    volume: "1187847894",
+    volume_price: "16889亿",
+    zf_bfb: "1.84%"
+  },
+  {
+    time: "2017-09-15",
+    price_o: "10979.72",
+    price_c: "11063.10",
+    price_h: "11131.95",
+    price_l: "10963.62",
+    volume: "1208581579",
+    volume_price: "17161亿",
+    zf_bfb: "1.53%"
+  },
+  {
+    time: "2017-09-22",
+    price_o: "11062.43",
+    price_c: "11069.82",
+    price_h: "11199.19",
+    price_l: "11025.89",
+    volume: "1055580414",
+    volume_price: "15086亿",
+    zf_bfb: "1.57%"
+  },
+  {
+    time: "2017-09-29",
+    price_o: "11054.26",
+    price_c: "11087.19",
+    price_h: "11121.44",
+    price_l: "10890.92",
+    volume: "885833708",
+    volume_price: "12757亿",
+    zf_bfb: "2.08%"
+  },
+  {
+    time: "2017-10-13",
+    price_o: "11248.35",
+    price_c: "11399.09",
+    price_h: "11400.05",
+    price_l: "11214.90",
+    volume: "1054788363",
+    volume_price: "15167亿",
+    zf_bfb: "1.67%"
+  },
+  {
+    time: "2017-10-20",
+    price_o: "11401.87",
+    price_c: "11238.88",
+    price_h: "11422.94",
+    price_l: "11140.34",
+    volume: "899532173",
+    volume_price: "12520亿",
+    zf_bfb: "2.48%"
+  },
+  {
+    time: "2017-10-27",
+    price_o: "11239.69",
+    price_c: "11444.52",
+    price_h: "11509.02",
+    price_l: "11228.68",
+    volume: "831670173",
+    volume_price: "12020亿",
+    zf_bfb: "2.49%"
+  },
+  {
+    time: "2017-11-03",
+    price_o: "11446.79",
+    price_c: "11215.19",
+    price_h: "11472.28",
+    price_l: "11165.06",
+    volume: "903274823",
+    volume_price: "13047亿",
+    zf_bfb: "2.68%"
+  },
+  {
+    time: "2017-11-10",
+    price_o: "11218.04",
+    price_c: "11645.05",
+    price_h: "11659.65",
+    price_l: "11181.29",
+    volume: "972676597",
+    volume_price: "14489亿",
+    zf_bfb: "4.27%"
+  },
+  {
+    time: "2017-11-17",
+    price_o: "11657.63",
+    price_c: "11292.93",
+    price_h: "11714.98",
+    price_l: "11292.93",
+    volume: "1027039444",
+    volume_price: "15529亿",
+    zf_bfb: "3.62%"
+  },
+  {
+    time: "2017-11-24",
+    price_o: "11229.58",
+    price_c: "11168.39",
+    price_h: "11666.13",
+    price_l: "11058.99",
+    volume: "937843427",
+    volume_price: "13671亿",
+    zf_bfb: "5.38%"
+  },
+  {
+    time: "2017-12-01",
+    price_o: "11126.78",
+    price_c: "11013.15",
+    price_h: "11126.78",
+    price_l: "10908.70",
+    volume: "783038482",
+    volume_price: "10904亿",
+    zf_bfb: "1.95%"
+  },
+  {
+    time: "2017-12-08",
+    price_o: "11007.19",
+    price_c: "10935.06",
+    price_h: "11099.83",
+    price_l: "10716.29",
+    volume: "775405539",
+    volume_price: "10709亿",
+    zf_bfb: "3.48%"
+  },
+  {
+    time: "2017-12-15",
+    price_o: "10962.18",
+    price_c: "10998.12",
+    price_h: "11176.58",
+    price_l: "10962.18",
+    volume: "746520128",
+    volume_price: "10589亿",
+    zf_bfb: "1.96%"
+  },
+  {
+    time: "2017-12-22",
+    price_o: "10991.11",
+    price_c: "11094.16",
+    price_h: "11154.75",
+    price_l: "10916.19",
+    volume: "686395746",
+    volume_price: "9659亿",
+    zf_bfb: "2.17%"
+  },
+  {
+    time: "2017-12-29",
+    price_o: "11102.16",
+    price_c: "11040.45",
+    price_h: "11132.59",
+    price_l: "10891.75",
+    volume: "742237604",
+    volume_price: "10173亿",
+    zf_bfb: "2.17%"
+  },
+  {
+    time: "2018-01-05",
+    price_o: "11079.64",
+    price_c: "11342.85",
+    price_h: "11372.29",
+    price_l: "11072.87",
+    volume: "730469151",
+    volume_price: "9952亿",
+    zf_bfb: "2.71%"
+  },
+  {
+    time: "2018-01-12",
+    price_o: "11343.82",
+    price_c: "11461.99",
+    price_h: "11496.53",
+    price_l: "11287.60",
+    volume: "959947992",
+    volume_price: "12825亿",
+    zf_bfb: "1.84%"
+  },
+  {
+    time: "2018-01-19",
+    price_o: "11453.33",
+    price_c: "11296.27",
+    price_h: "11476.58",
+    price_l: "11185.92",
+    volume: "969852472",
+    volume_price: "13258亿",
+    zf_bfb: "2.54%"
+  },
+  {
+    time: "2018-01-26",
+    price_o: "11289.86",
+    price_c: "11557.82",
+    price_h: "11633.46",
+    price_l: "11273.69",
+    volume: "955372790",
+    volume_price: "13256亿",
+    zf_bfb: "3.18%"
+  },
+  {
+    time: "2018-02-02",
+    price_o: "11547.68",
+    price_c: "10925.16",
+    price_h: "11556.65",
+    price_l: "10663.54",
+    volume: "961879542",
+    volume_price: "12351亿",
+    zf_bfb: "7.73%"
+  },
+  {
+    time: "2018-02-09",
+    price_o: "10761.08",
+    price_c: "10001.23",
+    price_h: "10873.24",
+    price_l: "9868.83",
+    volume: "878948699",
+    volume_price: "10790亿",
+    zf_bfb: "9.19%"
+  },
+  {
+    time: "2018-02-14",
+    price_o: "10059.86",
+    price_c: "10431.91",
+    price_h: "10486.81",
+    price_l: "10059.86",
+    volume: "387245929",
+    volume_price: "4761亿",
+    zf_bfb: "4.27%"
+  },
+  {
+    time: "2018-02-23",
+    price_o: "10547.81",
+    price_c: "10662.79",
+    price_h: "10700.11",
+    price_l: "10526.98",
+    volume: "276701332",
+    volume_price: "3411亿",
+    zf_bfb: "1.66%"
+  },
+  {
+    time: "2018-03-02",
+    price_o: "10731.31",
+    price_c: "10856.25",
+    price_h: "10947.39",
+    price_l: "10656.36",
+    volume: "957472346",
+    volume_price: "12406亿",
+    zf_bfb: "2.73%"
+  },
+  {
+    time: "2018-03-09",
+    price_o: "10882.87",
+    price_c: "11194.91",
+    price_h: "11203.72",
+    price_l: "10813.47",
+    volume: "944982019",
+    volume_price: "12580亿",
+    zf_bfb: "3.59%"
+  },
+  {
+    time: "2018-03-16",
+    price_o: "11266.32",
+    price_c: "11123.55",
+    price_h: "11335.30",
+    price_l: "11051.62",
+    volume: "966689034",
+    volume_price: "13055亿",
+    zf_bfb: "2.53%"
+  }
+]

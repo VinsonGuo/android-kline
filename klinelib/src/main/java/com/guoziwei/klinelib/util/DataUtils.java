@@ -33,7 +33,7 @@ public class DataUtils {
         ArrayList<Double> k = kdj.getK();
         ArrayList<Double> j = kdj.getJ();
 
-        int amountVol = 0;
+        long amountVol = 0;
         if (lastData != null) {
             amountVol = lastData.getAmountVol();
         }
@@ -85,7 +85,7 @@ public class DataUtils {
     public static HisData calculateHisData(HisData newData, List<HisData> hisDatas) {
 
         HisData lastData = hisDatas.get(hisDatas.size() - 1);
-        int amountVol = lastData.getAmountVol();
+        long amountVol = lastData.getAmountVol();
 
         newData.setMa5(calculateLastMA(5, hisDatas));
         newData.setMa10(calculateLastMA(10, hisDatas));

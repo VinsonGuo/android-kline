@@ -149,8 +149,14 @@ public class Util {
         return fivedays;
     }
 
-    public static List<HisData> getDayK(Context context) {
-        InputStream is = context.getResources().openRawResource(R.raw.day_k);
+    public static List<HisData> getK(Context context, int day) {
+        int res = R.raw.day_k;
+        if (day == 7) {
+            res = R.raw.week_k;
+        } else if (day == 30) {
+            res = R.raw.month_k;
+        }
+        InputStream is = context.getResources().openRawResource(res);
         Writer writer = new StringWriter();
         char[] buffer = new char[1024];
         try {

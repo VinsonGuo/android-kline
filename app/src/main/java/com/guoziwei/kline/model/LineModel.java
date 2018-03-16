@@ -16,7 +16,7 @@ public class LineModel {
 
     private String time;
     private double price;
-    private int volume;
+    private long volume;
     private double average;
 
     public String getTime() {
@@ -35,11 +35,11 @@ public class LineModel {
         this.price = price;
     }
 
-    public int getVolume() {
+    public long getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    public void setVolume(long volume) {
         this.volume = volume;
     }
 

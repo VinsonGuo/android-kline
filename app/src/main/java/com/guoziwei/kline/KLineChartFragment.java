@@ -21,16 +21,16 @@ public class KLineChartFragment extends Fragment {
 
 
     private KLineView mKLineView;
-    private int mType;
+    private int mDay;
 
     public KLineChartFragment() {
         // Required empty public constructor
     }
 
-    public static KLineChartFragment newInstance(int type) {
+    public static KLineChartFragment newInstance(int day) {
         KLineChartFragment fragment = new KLineChartFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt("type", type);
+        bundle.putInt("day", day);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -38,7 +38,7 @@ public class KLineChartFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mType = getArguments().getInt("type");
+        mDay = getArguments().getInt("day");
     }
 
     @Nullable
@@ -94,7 +94,7 @@ public class KLineChartFragment extends Fragment {
     }
 
     protected void initData() {
-        final List<HisData> hisData = Util.getDayK(getContext());
+        final List<HisData> hisData = Util.getK(getContext(), mDay);
         mKLineView.initData(hisData);
         mKLineView.setLimitLine();
 
