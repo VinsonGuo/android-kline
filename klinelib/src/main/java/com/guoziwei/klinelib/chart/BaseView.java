@@ -27,7 +27,7 @@ import java.util.List;
 
 class BaseView extends LinearLayout {
 
-    private String mDateFormat = "yyyy-MM-dd HH:mm";
+    protected String mDateFormat = "yyyy-MM-dd HH:mm";
 
     protected int mDecreasingColor;
     protected int mIncreasingColor;

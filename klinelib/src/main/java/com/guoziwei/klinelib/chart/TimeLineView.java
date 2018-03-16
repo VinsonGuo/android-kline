@@ -27,6 +27,7 @@ import com.github.mikephil.charting.utils.Transformer;
 import com.guoziwei.klinelib.R;
 import com.guoziwei.klinelib.model.HisData;
 import com.guoziwei.klinelib.util.DataUtils;
+import com.guoziwei.klinelib.util.DateUtils;
 import com.guoziwei.klinelib.util.DisplayUtils;
 import com.guoziwei.klinelib.util.DoubleUtil;
 
@@ -242,11 +243,27 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
     }
 
     public void initDatas(List<HisData>... hisDatas) {
-        // 设置标签数量
+        // 设置标签数量，并让标签居中显示
         XAxis xAxis = mChartVolume.getXAxis();
-        xAxis.setLabelCount(hisDatas.length, true);
-        xAxis.setAvoidFirstLastClipping(true);
-//        xAxis.setCenterAxisLabels(true);
+        xAxis.setLabelCount(hisDatas.length + 1, true);
+        xAxis.setAvoidFirstLastClipping(false);
+        xAxis.setCenterAxisLabels(true);
+        xAxis.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                value += 1; // 这里不设置+1会有bug
+                if (mData.isEmpty()) {
+                    return "";
+                }
+                if (value < 0) {
+                    value = 0;
+                }
+                if (value < mData.size()) {
+                    return DateUtils.formatDate(mData.get((int) value).getDate(), mDateFormat);
+                }
+                return "";
+            }
+        });
         mData.clear();
         ArrayList<ILineDataSet> sets = new ArrayList<>();
         ArrayList<IBarDataSet> barSets = new ArrayList<>();
