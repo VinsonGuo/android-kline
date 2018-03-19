@@ -32,6 +32,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.android.support:design:26.1.0'
-//    implementation 'com.github.gzw19931217:android-kline:0.1.0'
+//    implementation 'com.github.gzw19931217:android-kline:1.0.0'
     implementation project(':klinelib')
 }

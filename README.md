@@ -1,22 +1,21 @@
 # android-kline
 **基于MPAndroidChart的专业K线图**
 
-**联系方式** _email/qq: gzw19931217@qq.com_  _WeChat: buck_guo_
-
-本项目通过继承的方式定制了最新版本的**MPAndroidChart**，没有修改MPAndroidChart的源代码，所以对已经使用了MPAndroidChart的童鞋不会造成影响。
+##简介
+android-kline是Android平台的金融图表库，包括**分时图**和**K线图**。本项目通过继承的方式定制了最新版本的**MPAndroidChart**，解决了下面的问题：
 
 - 解决了多图表手势同步的问题
 - 解决多图表**highlight**联动的问题
 - 使用简单，两行代码就可以实现专业K线效果
 
 
-# Demo
+## Demo
 
 ![demo](art/new_chart.gif)
 
 也可以[点击这里下载](https://github.com/gzw19931217/android-kline/raw/master/art/app-debug.apk)
 
-# What's new
+## What's new
 
 - 增加了MACD、KDJ指标的显示和切换
 - 增加了五日的分时图
@@ -26,7 +25,7 @@
 - 分时图增加涨跌幅的坐标，并且涨跌幅为0%时竖直居中显示
 - K线图增加最大/最小值的显示
 
-# 使用方式
+## 配置
 
 在项目**build.gradle**中添加依赖：
 
@@ -40,6 +39,16 @@
    dependencies {
         compile com.github.gzw19931217:android-kline:1.0.0'
    }
+```
+
+
+##快速开始
+```java
+mTimeLineView = new TimeLineView(getContext());  //初始化分时图
+mTimeLineView.setDateFormat("HH:mm");  // 设置x轴时间的格式
+List<HisData> hisData =  ...  // 初始化数据，一般通过网络获取数据
+mTimeLineView.setLastClose(hisData.get(0).getClose());  // 设置昨收价
+mTimeLineView.initData(hisData);  // 初始化图表数据
 ```
 
 **xml**
@@ -63,8 +72,8 @@
 ```
        KLineView  K线图控件
        public void showKdj() 显示kdj指标
-       	public void showMacd() 显示macd指标
-       	public void showVolume() 显示交易量指标
+       public void showMacd() 显示macd指标
+       public void showVolume() 显示交易量指标
        public void initData(List<HisData> hisDatas) 初始化数据，获取到数据后调用
        public void addData(HisData hisData) 图表末尾增加一个数据
        public void refreshData(float price) 刷新最后一个点的价格（不增加数据）
@@ -79,23 +88,41 @@
        
        两个类共同的api：
        public void setCount(int init, int max, int min) 设置图标的可见个数，分别是初始值，最大值，最小值。比如(100,300,50)就是开始的时候100个点，最小可以缩放到300个点，最大可以放大到50个点
+       public void setDateFormat(String format) 设置x轴时间的格式
+       public void setLastClose(douhle lastClose) 设置昨收价格，用于计算涨跌幅
        
 ```
 
 **注意：** 这里需要接收一个**HisData**的List，HisData需要如下的几个数据（**开盘、收盘、最高、最低、买卖量、时间**），其他的指标会根据公式计算出来
 
-在本项目中，时间戳**date**相当于唯一的id，如果重复的话无法将这个data添加到图表中
+在本项目中，时间戳**date**相当于唯一的id，如果重复的话无法将这个date添加到图表中
 
 ```
-  public HisData(double open, double close, double high, double low,  int vol, long date)
+  public HisData(double open, double close, double high, double low,  long vol, long date)
 ```
 
-**个性化**：如果需要配置颜色，到colors.xml中配置。
+**个性化**：如果需要配置颜色，可以到colors.xml中重写颜色的值。
+
+##反馈
+
+欢迎各位提issues和PRs！
+
+**联系方式** _email/qq: gzw19931217@qq.com_  _WeChat: buck_guo_
 
 
+## License
 
-研究图表花费了很多时间和精力，所以我想通过知识付费的形式与有需要的人进行分享这方面的经验，有需要的童鞋可以加入
-我的知识星球来向我提问和获取提供后续的技术支持。
+   Copyright gzw19931217 <gzw19931217@qq.com>
 
-![知识星球](art/zsxq.png)
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
 
