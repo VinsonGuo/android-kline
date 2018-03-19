@@ -1,7 +1,9 @@
 # android-kline
+
 **基于MPAndroidChart的专业K线图**
 
 ##简介
+
 android-kline是Android平台的金融图表库，包括**分时图**和**K线图**。本项目通过继承的方式定制了最新版本的**MPAndroidChart**，解决了下面的问题：
 
 - 解决了多图表手势同步的问题

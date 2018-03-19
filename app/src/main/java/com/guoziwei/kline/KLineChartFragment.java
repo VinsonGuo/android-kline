@@ -15,6 +15,8 @@ import com.guoziwei.klinelib.chart.KLineView;
 import com.guoziwei.klinelib.model.HisData;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class KLineChartFragment extends Fragment {
@@ -98,7 +100,7 @@ public class KLineChartFragment extends Fragment {
         mKLineView.initData(hisData);
         mKLineView.setLimitLine();
 
-      /*  new Timer().schedule(new TimerTask() {
+       /* new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 mKLineView.post(new Runnable() {
@@ -119,15 +121,17 @@ public class KLineChartFragment extends Fragment {
                     }
                 });
             }
-        }, 5000, 5000);
+        }, 1000, 6000);*/
 
-        new Timer().schedule(new TimerTask() {
+       /* new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 mKLineView.post(new Runnable() {
                     @Override
                     public void run() {
-                        mKLineView.refreshData((float) (56.8 + 0.1 * Math.random()));
+                        int index = (int) (Math.random() * 100);
+                        HisData data = hisData.get(index);
+                        mKLineView.refreshData((float) data.getClose());
                     }
                 });
             }

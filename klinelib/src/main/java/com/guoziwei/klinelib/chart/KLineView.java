@@ -564,6 +564,11 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         if (mData.contains(hisData)) {
             int index = mData.indexOf(hisData);
             klineSet.removeEntry(index);
+            // ma比较特殊，entry数量和k线的不一致，移除最后一个
+            ma5Set.removeLast();
+            ma10Set.removeLast();
+            ma20Set.removeLast();
+            ma30Set.removeLast();
             volSet.removeEntry(index);
             macdSet.removeEntry(index);
             difSet.removeEntry(index);
@@ -574,7 +579,8 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
             mData.remove(index);
         }
         mData.add(hisData);
-        klineSet.addEntry(new CandleEntry(klineSet.getEntryCount(), (float) hisData.getHigh(), (float) hisData.getLow(), (float) hisData.getOpen(), (float) hisData.getClose()));
+        int klineCount = klineSet.getEntryCount();
+        klineSet.addEntry(new CandleEntry(klineCount, (float) hisData.getHigh(), (float) hisData.getLow(), (float) hisData.getOpen(), (float) hisData.getClose()));
         volSet.addEntry(new BarEntry(volSet.getEntryCount(), hisData.getVol(), hisData));
 
         macdSet.addEntry(new BarEntry(macdSet.getEntryCount(), (float) hisData.getMacd()));
@@ -585,10 +591,19 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         dSet.addEntry(new Entry(dSet.getEntryCount(), (float) hisData.getD()));
         jSet.addEntry(new Entry(jSet.getEntryCount(), (float) hisData.getJ()));
 
-        ma5Set.addEntry(new Entry(ma5Set.getEntryCount(), (float) hisData.getMa5()));
-        ma10Set.addEntry(new Entry(ma10Set.getEntryCount(), (float) hisData.getMa10()));
-        ma20Set.addEntry(new Entry(ma20Set.getEntryCount(), (float) hisData.getMa20()));
-        ma30Set.addEntry(new Entry(ma30Set.getEntryCount(), (float) hisData.getMa30()));
+        // 因为ma的数量会少，所以这里用kline的set数量作为x
+        if (!Double.isNaN(hisData.getMa5())) {
+            ma5Set.addEntry(new Entry(klineCount, (float) hisData.getMa5()));
+        }
+        if (!Double.isNaN(hisData.getMa10())) {
+            ma10Set.addEntry(new Entry(klineCount, (float) hisData.getMa10()));
+        }
+        if (!Double.isNaN(hisData.getMa20())) {
+            ma20Set.addEntry(new Entry(klineCount, (float) hisData.getMa20()));
+        }
+        if (!Double.isNaN(hisData.getMa30())) {
+            ma30Set.addEntry(new Entry(klineCount, (float) hisData.getMa30()));
+        }
 
 
         mChartPrice.getXAxis().setAxisMaximum(combinedData.getXMax() + 1.5f);
@@ -596,6 +611,11 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         mChartMacd.getXAxis().setAxisMaximum(mChartMacd.getData().getXMax() + 1.5f);
         mChartKdj.getXAxis().setAxisMaximum(mChartKdj.getData().getXMax() + 1.5f);
 
+
+        mChartPrice.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
+        mChartVolume.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
+        mChartMacd.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
+        mChartKdj.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
 
         mChartPrice.notifyDataSetChanged();
         mChartPrice.invalidate();

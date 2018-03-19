@@ -13,6 +13,8 @@ import com.guoziwei.klinelib.chart.TimeLineView;
 import com.guoziwei.klinelib.model.HisData;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class TimeLineChartFragment extends Fragment {
@@ -55,7 +57,7 @@ public class TimeLineChartFragment extends Fragment {
         mTimeLineView.setLastClose(hisData.get(0).getClose());
         mTimeLineView.initData(hisData);
 
-       /* new Timer().schedule(new TimerTask() {
+        /*new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 mTimeLineView.post(new Runnable() {
@@ -76,15 +78,15 @@ public class TimeLineChartFragment extends Fragment {
                     }
                 });
             }
-        }, 5000, 5000);
+        }, 1000, 500);*/
 
-        new Timer().schedule(new TimerTask() {
+       /* new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 mTimeLineView.post(new Runnable() {
                     @Override
                     public void run() {
-                        mTimeLineView.refreshData((float) (56.8 + 0.1 * Math.random()));
+                        mTimeLineView.refreshData((float) (hisData.get(0).getClose() + 10 * Math.random()));
                     }
                 });
             }
