@@ -105,11 +105,15 @@ mTimeLineView.initData(hisData);  // 初始化图表数据
 
 **个性化**：如果需要配置颜色，可以到colors.xml中重写颜色的值。
 
-##反馈
+## 反馈
 
 欢迎各位提issues和PRs！
 
-**联系方式** _email/qq: gzw19931217@qq.com_  _WeChat: buck_guo_
+**联系方式**
+
+_qq群: 629878453_ 
+
+_email: gzw19931217@qq.com_
 
 
 ## License
