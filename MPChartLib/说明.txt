@@ -1,2 +1,12 @@
-这个只改了了XAxisRenderer的210行，将i/2了
+1改了XAxisRenderer的210行，将i/2了
 这个是官方库的bug，等待官方修复后通过gradle引用这个库
+
+2 https://github.com/PhilJay/MPAndroidChart/pull/2462/commits/de2130d7774ed56e0e532b09ef3ecaa834eaf97f
+ MPChartLib/src/main/java/com/github/mikephil/charting/data/DataSet.java
+
+     @Override	     @Override
+     public T getEntryForIndex(int index) {	     public T getEntryForIndex(int index) {
+-        return mValues.get(index);	+        return (mValues == null || mValues.isEmpty()) ? null : mValues.get(index);
+     }	     }
+
+     重写了这个方法，修复个数少的时候的crash

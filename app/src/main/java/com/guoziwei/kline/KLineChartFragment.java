@@ -100,13 +100,13 @@ public class KLineChartFragment extends Fragment {
         mKLineView.initData(hisData);
         mKLineView.setLimitLine();
 
-       /* new Timer().schedule(new TimerTask() {
+        /*new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 mKLineView.post(new Runnable() {
                     @Override
                     public void run() {
-                        int index = (int) (Math.random() * 100);
+                        int index = (int) (Math.random() * hisData.size());
                         HisData data = hisData.get(index);
                         HisData lastData = hisData.get(hisData.size() - 1);
                         HisData newData = new HisData();
@@ -121,7 +121,7 @@ public class KLineChartFragment extends Fragment {
                     }
                 });
             }
-        }, 1000, 6000);*/
+        }, 1000, 1000);*/
 
        /* new Timer().schedule(new TimerTask() {
             @Override

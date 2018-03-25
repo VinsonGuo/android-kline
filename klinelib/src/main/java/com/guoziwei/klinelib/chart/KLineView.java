@@ -70,9 +70,6 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
     public static final int DIF = 34;
     public static final int DEA = 35;
 
-    public int MAX_COUNT_K = 300;
-    public int MIN_COUNT_K = 10;
-    public int INIT_COUNT_K = 50;
 
     protected AppCombinedChart mChartPrice;
     protected AppCombinedChart mChartVolume;
@@ -245,12 +242,12 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         mData.clear();
         mData.addAll(DataUtils.calculateHisData(hisDatas));
 
-        ArrayList<CandleEntry> lineCJEntries = new ArrayList<>(MAX_COUNT_K);
-        ArrayList<Entry> ma5Entries = new ArrayList<>(MAX_COUNT_K);
-        ArrayList<Entry> ma10Entries = new ArrayList<>(MAX_COUNT_K);
-        ArrayList<Entry> ma20Entries = new ArrayList<>(MAX_COUNT_K);
-        ArrayList<Entry> ma30Entries = new ArrayList<>(MAX_COUNT_K);
-        ArrayList<Entry> paddingEntries = new ArrayList<>(MAX_COUNT_K);
+        ArrayList<CandleEntry> lineCJEntries = new ArrayList<>(INIT_COUNT);
+        ArrayList<Entry> ma5Entries = new ArrayList<>(INIT_COUNT);
+        ArrayList<Entry> ma10Entries = new ArrayList<>(INIT_COUNT);
+        ArrayList<Entry> ma20Entries = new ArrayList<>(INIT_COUNT);
+        ArrayList<Entry> ma30Entries = new ArrayList<>(INIT_COUNT);
+        ArrayList<Entry> paddingEntries = new ArrayList<>(INIT_COUNT);
 
         for (int i = 0; i < mData.size(); i++) {
             HisData hisData = mData.get(i);
@@ -273,8 +270,8 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
             }
         }
 
-        if (!mData.isEmpty() && mData.size() < INIT_COUNT_K) {
-            for (int i = mData.size(); i < INIT_COUNT_K; i++) {
+        if (!mData.isEmpty() && mData.size() < MAX_COUNT) {
+            for (int i = mData.size(); i < MAX_COUNT; i++) {
                 paddingEntries.add(new Entry(i, (float) mData.get(mData.size() - 1).getClose()));
             }
         }
@@ -291,9 +288,10 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         combinedData.setData(candleData);
         mChartPrice.setData(combinedData);
 
-        mChartPrice.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
+        mChartPrice.setVisibleXRange(MAX_COUNT, MIN_COUNT);
         mChartPrice.notifyDataSetChanged();
-        mChartPrice.moveViewToX(combinedData.getEntryCount());
+//        mChartPrice.moveViewToX(combinedData.getEntryCount());
+        moveToLast(mChartPrice);
         initChartVolumeData();
         initChartMacdData();
         initChartKdjData();
@@ -304,10 +302,12 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         mChartMacd.getXAxis().setAxisMaximum(mChartMacd.getData().getXMax() + 0.5f);
         mChartKdj.getXAxis().setAxisMaximum(mChartKdj.getData().getXMax() + 0.5f);
 
-        mChartPrice.zoom(MAX_COUNT_K * 1f / INIT_COUNT_K, 0, 0, 0);
-        mChartVolume.zoom(MAX_COUNT_K * 1f / INIT_COUNT_K, 0, 0, 0);
-        mChartMacd.zoom(MAX_COUNT_K * 1f / INIT_COUNT_K, 0, 0, 0);
-        mChartKdj.zoom(MAX_COUNT_K * 1f / INIT_COUNT_K, 0, 0, 0);
+        mChartPrice.zoom(MAX_COUNT * 1f / INIT_COUNT, 0, 0, 0);
+        mChartVolume.zoom(MAX_COUNT * 1f / INIT_COUNT, 0, 0, 0);
+        mChartMacd.zoom(MAX_COUNT * 1f / INIT_COUNT, 0, 0, 0);
+        mChartKdj.zoom(MAX_COUNT * 1f / INIT_COUNT, 0, 0, 0);
+
+        lineData.removeDataSet(0);
 
         HisData hisData = getLastData();
         setDescription(mChartVolume, "成交量 " + hisData.getVol());
@@ -423,7 +423,7 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
             HisData t = mData.get(i);
             barEntries.add(new BarEntry(i, (float) t.getVol(), t));
         }
-        int maxCount = INIT_COUNT_K;
+        int maxCount = MAX_COUNT;
         if (!mData.isEmpty() && mData.size() < maxCount) {
             for (int i = mData.size(); i < maxCount; i++) {
                 paddingEntries.add(new BarEntry(i, 0));
@@ -436,10 +436,11 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         combinedData.setData(barData);
         mChartVolume.setData(combinedData);
 
-        mChartVolume.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
+        mChartVolume.setVisibleXRange(MAX_COUNT, MIN_COUNT);
 
         mChartVolume.notifyDataSetChanged();
-        mChartVolume.moveViewToX(combinedData.getEntryCount());
+//        mChartVolume.moveViewToX(combinedData.getEntryCount());
+        moveToLast(mChartVolume);
 
     }
 
@@ -454,7 +455,7 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
             difEntries.add(new Entry(i, (float) t.getDif()));
             deaEntries.add(new Entry(i, (float) t.getDea()));
         }
-        int maxCount = INIT_COUNT_K;
+        int maxCount = MAX_COUNT;
         if (!mData.isEmpty() && mData.size() < maxCount) {
             for (int i = mData.size(); i < maxCount; i++) {
                 paddingEntries.add(new BarEntry(i, 0));
@@ -469,25 +470,26 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         combinedData.setData(lineData);
         mChartMacd.setData(combinedData);
 
-        mChartMacd.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
+        mChartMacd.setVisibleXRange(MAX_COUNT, MIN_COUNT);
 
         mChartMacd.notifyDataSetChanged();
-        mChartMacd.moveViewToX(combinedData.getEntryCount());
+//        mChartMacd.moveViewToX(combinedData.getEntryCount());
+        moveToLast(mChartMacd);
     }
 
     private void initChartKdjData() {
-        ArrayList<Entry> kEntries = new ArrayList<>(MAX_COUNT_K);
-        ArrayList<Entry> dEntries = new ArrayList<>(MAX_COUNT_K);
-        ArrayList<Entry> jEntries = new ArrayList<>(MAX_COUNT_K);
-        ArrayList<Entry> paddingEntries = new ArrayList<>(MAX_COUNT_K);
+        ArrayList<Entry> kEntries = new ArrayList<>(INIT_COUNT);
+        ArrayList<Entry> dEntries = new ArrayList<>(INIT_COUNT);
+        ArrayList<Entry> jEntries = new ArrayList<>(INIT_COUNT);
+        ArrayList<Entry> paddingEntries = new ArrayList<>(INIT_COUNT);
 
         for (int i = 0; i < mData.size(); i++) {
             kEntries.add(new Entry(i, (float) mData.get(i).getK()));
             dEntries.add(new Entry(i, (float) mData.get(i).getD()));
             jEntries.add(new Entry(i, (float) mData.get(i).getJ()));
         }
-        if (!mData.isEmpty() && mData.size() < INIT_COUNT_K) {
-            for (int i = mData.size(); i < INIT_COUNT_K; i++) {
+        if (!mData.isEmpty() && mData.size() < MAX_COUNT) {
+            for (int i = mData.size(); i < MAX_COUNT; i++) {
                 paddingEntries.add(new Entry(i, (float) mData.get(mData.size() - 1).getK()));
             }
         }
@@ -502,11 +504,12 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         combinedData.setData(lineData);
         mChartKdj.setData(combinedData);
 
-        mChartMacd.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
+        mChartMacd.setVisibleXRange(MAX_COUNT, MIN_COUNT);
 
         mChartKdj.notifyDataSetChanged();
-        mChartKdj.moveViewToX(combinedData.getEntryCount());
+        moveToLast(mChartKdj);
     }
+
 
     /**
      * according to the price to refresh the last data of the chart
@@ -612,10 +615,10 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         mChartKdj.getXAxis().setAxisMaximum(mChartKdj.getData().getXMax() + 1.5f);
 
 
-        mChartPrice.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
-        mChartVolume.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
-        mChartMacd.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
-        mChartKdj.setVisibleXRange(MAX_COUNT_K, MIN_COUNT_K);
+        mChartPrice.setVisibleXRange(MAX_COUNT, MIN_COUNT);
+        mChartVolume.setVisibleXRange(MAX_COUNT, MIN_COUNT);
+        mChartMacd.setVisibleXRange(MAX_COUNT, MIN_COUNT);
+        mChartKdj.setVisibleXRange(MAX_COUNT, MIN_COUNT);
 
         mChartPrice.notifyDataSetChanged();
         mChartPrice.invalidate();
@@ -648,37 +651,8 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         mChartVolume.setViewPortOffsets(0, 0, 0, bottom);
         mChartMacd.setViewPortOffsets(0, 0, 0, bottom);
         mChartKdj.setViewPortOffsets(0, 0, 0, bottom);
-        /*float lineLeft = mChartPrice.getViewPortHandler().offsetLeft();
-        float barLeft = mChartVolume.getViewPortHandler().offsetLeft();
-        float lineRight = mChartPrice.getViewPortHandler().offsetRight();
-        float barRight = mChartVolume.getViewPortHandler().offsetRight();
-        float offsetLeft, offsetRight;
-        if (barLeft < lineLeft) {
-            offsetLeft = Utils.convertPixelsToDp(lineLeft - barLeft);
-            mChartVolume.setExtraLeftOffset(offsetLeft);
-        } else {
-            offsetLeft = Utils.convertPixelsToDp(barLeft - lineLeft);
-            mChartPrice.setExtraLeftOffset(offsetLeft);
-        }
-        if (barRight < lineRight) {
-            offsetRight = Utils.convertPixelsToDp(lineRight);
-            mChartVolume.setExtraRightOffset(offsetRight);
-        } else {
-            offsetRight = Utils.convertPixelsToDp(barRight);
-            mChartPrice.setExtraRightOffset(offsetRight);
-        }*/
-
     }
 
-
-    /**
-     * set the count of k chart
-     */
-    public void setCount(int init, int max, int min) {
-        INIT_COUNT_K = init;
-        MAX_COUNT_K = max;
-        MIN_COUNT_K = min;
-    }
 
     /**
      * add limit line to chart
@@ -718,6 +692,5 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
                 hisData.getMacd(), hisData.getDea(), hisData.getDif()));
         setDescription(mChartKdj, String.format(Locale.getDefault(), "K:%.2f  D:%.2f  J:%.2f",
                 hisData.getK(), hisData.getD(), hisData.getJ()));
-
     }
 }

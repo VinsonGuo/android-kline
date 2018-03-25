@@ -34,6 +34,11 @@ class BaseView extends LinearLayout {
     protected int mAxisColor;
     protected int mTransparentColor;
 
+
+    public int MAX_COUNT = 150;
+    public int MIN_COUNT = 10;
+    public int INIT_COUNT = 80;
+
     protected List<HisData> mData = new ArrayList<>(300);
 
     public BaseView(Context context) {
@@ -58,7 +63,6 @@ class BaseView extends LinearLayout {
         chart.setBorderWidth(1);
         chart.setDragEnabled(true);
         chart.setScaleYEnabled(false);
-//        chart.getDescription().setEnabled(false);
         chart.setAutoScaleMinMaxEnabled(true);
         chart.setDragDecelerationEnabled(false);
         chart.setHighlightPerDragEnabled(false);
@@ -130,6 +134,21 @@ class BaseView extends LinearLayout {
 
     }
 
+
+    protected void moveToLast(AppCombinedChart chart) {
+        if (mData.size() > INIT_COUNT) {
+            chart.moveViewToX(mData.size() - INIT_COUNT);
+        }
+    }
+
+    /**
+     * set the count of k chart
+     */
+    public void setCount(int init, int max, int min) {
+        INIT_COUNT = init;
+        MAX_COUNT = max;
+        MIN_COUNT = min;
+    }
 
     protected void setDescription(Chart chart, String text) {
         Description description = chart.getDescription();

@@ -54,11 +54,6 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
      */
     public static final int INVISIABLE_LINE = 6;
 
-
-    public int MAX_COUNT_LINE = 300;
-    public int INIT_COUNT_LINE = 200;
-    public int MIN_COUNT_LINE = 50;
-
     protected AppCombinedChart mChartPrice;
     protected AppCombinedChart mChartVolume;
 
@@ -204,16 +199,16 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
         mData.clear();
         mData.addAll(DataUtils.calculateHisData(hisDatas));
 
-        ArrayList<Entry> priceEntries = new ArrayList<>(MAX_COUNT_LINE);
-        ArrayList<Entry> aveEntries = new ArrayList<>(MAX_COUNT_LINE);
-        ArrayList<Entry> paddingEntries = new ArrayList<>(MAX_COUNT_LINE);
+        ArrayList<Entry> priceEntries = new ArrayList<>(INIT_COUNT);
+        ArrayList<Entry> aveEntries = new ArrayList<>(INIT_COUNT);
+        ArrayList<Entry> paddingEntries = new ArrayList<>(INIT_COUNT);
 
         for (int i = 0; i < mData.size(); i++) {
             priceEntries.add(new Entry(i, (float) mData.get(i).getClose()));
             aveEntries.add(new Entry(i, (float) mData.get(i).getAvePrice()));
         }
-        if (!mData.isEmpty() && mData.size() < INIT_COUNT_LINE) {
-            for (int i = mData.size(); i < INIT_COUNT_LINE; i++) {
+        if (!mData.isEmpty() && mData.size() < MAX_COUNT) {
+            for (int i = mData.size(); i < MAX_COUNT; i++) {
                 paddingEntries.add(new Entry(i, (float) mData.get(mData.size() - 1).getClose()));
             }
         }
@@ -227,17 +222,18 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
         combinedData.setData(lineData);
         mChartPrice.setData(combinedData);
 
-        mChartPrice.setVisibleXRange(MAX_COUNT_LINE, MIN_COUNT_LINE);
+        mChartPrice.setVisibleXRange(MAX_COUNT, MIN_COUNT);
 
         mChartPrice.notifyDataSetChanged();
-        mChartPrice.moveViewToX(combinedData.getEntryCount());
+//        mChartPrice.moveViewToX(combinedData.getEntryCount());
+        moveToLast(mChartPrice);
         initChartVolumeData();
 
         mChartPrice.getXAxis().setAxisMaximum(combinedData.getXMax() + 0.5f);
         mChartVolume.getXAxis().setAxisMaximum(mChartVolume.getData().getXMax() + 0.5f);
 
-        mChartPrice.zoom(MAX_COUNT_LINE * 1f / INIT_COUNT_LINE, 0, 0, 0);
-        mChartVolume.zoom(MAX_COUNT_LINE * 1f / INIT_COUNT_LINE, 0, 0, 0);
+        mChartPrice.zoom(MAX_COUNT * 1f / INIT_COUNT, 0, 0, 0);
+        mChartVolume.zoom(MAX_COUNT * 1f / INIT_COUNT, 0, 0, 0);
 
         setDescription(mChartVolume, "成交量 " + getLastData().getVol());
     }
@@ -270,11 +266,11 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
 
         for (List<HisData> hisData : hisDatas) {
             hisData = DataUtils.calculateHisData(hisData);
-            ArrayList<Entry> priceEntries = new ArrayList<>(MAX_COUNT_LINE);
-            ArrayList<Entry> aveEntries = new ArrayList<>(MAX_COUNT_LINE);
-            ArrayList<Entry> paddingEntries = new ArrayList<>(MAX_COUNT_LINE);
-            ArrayList<BarEntry> barPaddingEntries = new ArrayList<>(MAX_COUNT_LINE);
-            ArrayList<BarEntry> barEntries = new ArrayList<>(MAX_COUNT_LINE);
+            ArrayList<Entry> priceEntries = new ArrayList<>(INIT_COUNT);
+            ArrayList<Entry> aveEntries = new ArrayList<>(INIT_COUNT);
+            ArrayList<Entry> paddingEntries = new ArrayList<>(INIT_COUNT);
+            ArrayList<BarEntry> barPaddingEntries = new ArrayList<>(INIT_COUNT);
+            ArrayList<BarEntry> barEntries = new ArrayList<>(INIT_COUNT);
 
             for (int i = 0; i < hisData.size(); i++) {
                 HisData t = hisData.get(i);
@@ -282,8 +278,8 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
                 aveEntries.add(new Entry(i + mData.size(), (float) t.getAvePrice()));
                 barEntries.add(new BarEntry(i + mData.size(), (float) t.getVol(), t));
             }
-            if (!hisData.isEmpty() && hisData.size() < INIT_COUNT_LINE / hisDatas.length) {
-                for (int i = hisData.size(); i < INIT_COUNT_LINE / hisDatas.length; i++) {
+            if (!hisData.isEmpty() && hisData.size() < INIT_COUNT / hisDatas.length) {
+                for (int i = hisData.size(); i < INIT_COUNT / hisDatas.length; i++) {
                     paddingEntries.add(new Entry(i, (float) hisData.get(hisData.size() - 1).getClose()));
                     barPaddingEntries.add(new BarEntry(i, (float) hisData.get(hisData.size() - 1).getClose()));
                 }
@@ -302,9 +298,10 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
         CombinedData combinedData = new CombinedData();
         combinedData.setData(lineData);
         mChartPrice.setData(combinedData);
-        mChartPrice.setVisibleXRange(MAX_COUNT_LINE, MIN_COUNT_LINE);
+        mChartPrice.setVisibleXRange(MAX_COUNT, MIN_COUNT);
         mChartPrice.notifyDataSetChanged();
-        mChartPrice.moveViewToX(combinedData.getEntryCount());
+//        mChartPrice.moveViewToX(combinedData.getEntryCount());
+        moveToLast(mChartVolume);
 
 
         BarData barData = new BarData(barSets);
@@ -312,15 +309,15 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
         CombinedData combinedData2 = new CombinedData();
         combinedData2.setData(barData);
         mChartVolume.setData(combinedData2);
-        mChartVolume.setVisibleXRange(MAX_COUNT_LINE, MIN_COUNT_LINE);
+        mChartVolume.setVisibleXRange(MAX_COUNT, MIN_COUNT);
         mChartVolume.notifyDataSetChanged();
         mChartVolume.moveViewToX(combinedData2.getEntryCount());
 
         mChartPrice.getXAxis().setAxisMaximum(combinedData.getXMax() + 0.5f);
         mChartVolume.getXAxis().setAxisMaximum(mChartVolume.getData().getXMax() + 0.5f);
 
-        mChartPrice.zoom(MAX_COUNT_LINE * 1f / INIT_COUNT_LINE, 0, 0, 0);
-        mChartVolume.zoom(MAX_COUNT_LINE * 1f / INIT_COUNT_LINE, 0, 0, 0);
+        mChartPrice.zoom(MAX_COUNT * 1f / INIT_COUNT, 0, 0, 0);
+        mChartVolume.zoom(MAX_COUNT * 1f / INIT_COUNT, 0, 0, 0);
 
         setDescription(mChartVolume, "成交量 " + getLastData().getVol());
     }
@@ -374,7 +371,7 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
             HisData t = mData.get(i);
             barEntries.add(new BarEntry(i, (float) t.getVol(), t));
         }
-        int maxCount = INIT_COUNT_LINE;
+        int maxCount = MAX_COUNT;
         if (!mData.isEmpty() && mData.size() < maxCount) {
             for (int i = mData.size(); i < maxCount; i++) {
                 paddingEntries.add(new BarEntry(i, 0));
@@ -387,7 +384,7 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
         combinedData.setData(barData);
         mChartVolume.setData(combinedData);
 
-        mChartVolume.setVisibleXRange(MAX_COUNT_LINE, MIN_COUNT_LINE);
+        mChartVolume.setVisibleXRange(MAX_COUNT, MIN_COUNT);
 
         mChartVolume.notifyDataSetChanged();
         mChartVolume.moveViewToX(combinedData.getEntryCount());
@@ -437,8 +434,8 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
         aveSet.addEntry(new Entry(aveSet.getEntryCount(), (float) hisData.getAvePrice()));
         volSet.addEntry(new BarEntry(volSet.getEntryCount(), hisData.getVol(), hisData));
 
-        mChartPrice.setVisibleXRange(MAX_COUNT_LINE, MIN_COUNT_LINE);
-        mChartVolume.setVisibleXRange(MAX_COUNT_LINE, MIN_COUNT_LINE);
+        mChartPrice.setVisibleXRange(MAX_COUNT, MIN_COUNT);
+        mChartVolume.setVisibleXRange(MAX_COUNT, MIN_COUNT);
 
         mChartPrice.getXAxis().setAxisMaximum(combinedData.getXMax() + 1.5f);
         mChartVolume.getXAxis().setAxisMaximum(mChartVolume.getData().getXMax() + 1.5f);
@@ -479,16 +476,6 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
             mChartPrice.setExtraRightOffset(offsetRight);
         }*/
 
-    }
-
-
-    /**
-     * set the count of line chart
-     */
-    public void setCount(int init, int max, int min) {
-        MAX_COUNT_LINE = max;
-        MIN_COUNT_LINE = min;
-        INIT_COUNT_LINE = init;
     }
 
 
