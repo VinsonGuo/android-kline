@@ -10,11 +10,13 @@ import android.view.animation.AnimationUtils;
 
 import com.github.mikephil.charting.charts.BarLineChartBase;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarLineScatterCandleBubbleData;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.IBarLineScatterCandleBubbleDataSet;
 import com.github.mikephil.charting.interfaces.datasets.IDataSet;
+import com.github.mikephil.charting.utils.MPPointD;
 import com.github.mikephil.charting.utils.MPPointF;
 import com.github.mikephil.charting.utils.Utils;
 import com.github.mikephil.charting.utils.ViewPortHandler;
@@ -41,12 +43,12 @@ public class BarLineChartTouchListener extends ChartTouchListener<BarLineChartBa
     /**
      * point where the touch action started
      */
-    private MPPointF mTouchStartPoint = MPPointF.getInstance(0,0);
+    private MPPointF mTouchStartPoint = MPPointF.getInstance(0, 0);
 
     /**
      * center between two pointers (fingers on the display)
      */
-    private MPPointF mTouchPointCenter = MPPointF.getInstance(0,0);
+    private MPPointF mTouchPointCenter = MPPointF.getInstance(0, 0);
 
     private float mSavedXDist = 1f;
     private float mSavedYDist = 1f;
@@ -60,8 +62,8 @@ public class BarLineChartTouchListener extends ChartTouchListener<BarLineChartBa
     private VelocityTracker mVelocityTracker;
 
     private long mDecelerationLastTime = 0;
-    private MPPointF mDecelerationCurrentPoint = MPPointF.getInstance(0,0);
-    private MPPointF mDecelerationVelocity = MPPointF.getInstance(0,0);
+    private MPPointF mDecelerationCurrentPoint = MPPointF.getInstance(0, 0);
+    private MPPointF mDecelerationVelocity = MPPointF.getInstance(0, 0);
 
     /**
      * the distance of movement that will be counted as a drag
@@ -317,6 +319,11 @@ public class BarLineChartTouchListener extends ChartTouchListener<BarLineChartBa
             dY = event.getY() - mTouchStartPoint.y;
         }
 
+        MPPointD point = mChart.getTransformer(YAxis.AxisDependency.LEFT).getValuesByTouchPoint(mTouchStartPoint.x, mTouchStartPoint.y);
+        // 如果向右滑，而且手指不在有效区域内
+        if (dX < 0 && point.x > mChart.getRealCount()) {
+            return;
+        }
         mMatrix.postTranslate(dX, dY);
 
         if (l != null)
@@ -387,7 +394,14 @@ public class BarLineChartTouchListener extends ChartTouchListener<BarLineChartBa
                     if (canZoomMoreX) {
 
                         mMatrix.set(mSavedMatrix);
-                        mMatrix.postScale(scaleX, 1f, t.x, t.y);
+                        // 这里是自己改的
+                        MPPointD point = mChart.getTransformer(YAxis.AxisDependency.LEFT).getValuesByTouchPoint(mTouchPointCenter.x, mTouchPointCenter.y);
+                        if (point.x > mChart.getRealCount()) {
+                            mMatrix.postScale(scaleX, 1f, 0, t.y);
+                        } else {
+                            // 这里是原来的
+                            mMatrix.postScale(scaleX, 1f, t.x, t.y);
+                        }
 
                         if (l != null)
                             l.onChartScale(event, scaleX, 1f);

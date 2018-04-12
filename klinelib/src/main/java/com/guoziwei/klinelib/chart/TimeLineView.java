@@ -198,6 +198,7 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
 
         mData.clear();
         mData.addAll(DataUtils.calculateHisData(hisDatas));
+        mChartPrice.setRealCount(mData.size());
 
         ArrayList<Entry> priceEntries = new ArrayList<>(INIT_COUNT);
         ArrayList<Entry> aveEntries = new ArrayList<>(INIT_COUNT);
@@ -241,13 +242,13 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
     public void initDatas(List<HisData>... hisDatas) {
         // 设置标签数量，并让标签居中显示
         XAxis xAxis = mChartVolume.getXAxis();
-        xAxis.setLabelCount(hisDatas.length + 1, true);
+        xAxis.setLabelCount(hisDatas.length, false);
         xAxis.setAvoidFirstLastClipping(false);
         xAxis.setCenterAxisLabels(true);
+        xAxis.setGranularity(hisDatas[0].size());
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
-                value += 1; // 这里不设置+1会有bug
                 if (mData.isEmpty()) {
                     return "";
                 }
@@ -291,6 +292,7 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
             barSets.add(setBar(barPaddingEntries, INVISIABLE_LINE));
             barSets.add(setBar(barPaddingEntries, INVISIABLE_LINE));
             mData.addAll(hisData);
+            mChartPrice.setRealCount(mData.size());
         }
 
         LineData lineData = new LineData(sets);
@@ -429,7 +431,10 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
             volSet.removeEntry(index);
             mData.remove(index);
         }
+
         mData.add(hisData);
+        mChartPrice.setRealCount(mData.size());
+
         priceSet.addEntry(new Entry(priceSet.getEntryCount(), (float) hisData.getClose()));
         aveSet.addEntry(new Entry(aveSet.getEntryCount(), (float) hisData.getAvePrice()));
         volSet.addEntry(new BarEntry(volSet.getEntryCount(), hisData.getVol(), hisData));

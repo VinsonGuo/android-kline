@@ -59,6 +59,9 @@ public class CoupleChartGestureListener implements OnChartGestureListener {
     @Override
     public void onChartFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {
         syncCharts();
+        if (listener != null) {
+            listener.onAxisChange(srcChart);
+        }
     }
 
     @Override
@@ -80,7 +83,7 @@ public class CoupleChartGestureListener implements OnChartGestureListener {
         syncCharts();
     }
 
-    public void syncCharts() {
+    private void syncCharts() {
         Matrix srcMatrix;
         float[] srcVals = new float[9];
         Matrix dstMatrix;

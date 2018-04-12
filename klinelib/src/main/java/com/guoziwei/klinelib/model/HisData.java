@@ -38,7 +38,7 @@ public class HisData {
     public HisData() {
     }
 
-    public HisData(double open,double close, double high, double low,  int vol, long date) {
+    public HisData(double open,double close, double high, double low,  long vol, long date) {
         this.open = open;
         this.close = close;
         this.high = high;
