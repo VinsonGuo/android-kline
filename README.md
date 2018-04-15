@@ -39,7 +39,7 @@ android-kline是Android平台的金融图表库，包括**分时图**和**K线�
         }
    }
    dependencies {
-        compile com.github.gzw19931217:android-kline:1.0.3'
+        compile 'com.github.VinsonGuo:android-kline:1.0.3'
    }
 ```
 
@@ -116,19 +116,12 @@ _qq群: 629878453_
 _email: gzw19931217@qq.com_
 
 
-## License
 
-   Copyright gzw19931217 <gzw19931217@qq.com>
+## 支持作者
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
+   开发花费了一些时间和精力，如果你觉得对你有所帮助，不妨请我喝杯☕️以鼓励我
+  
+</br><img src="https://github.com/VinsonGuo/android-kline/blob/master/art/alipay.jpg" height="300" hspace="20" />
 
-       http://www.apache.org/licenses/LICENSE-2.0
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
 
