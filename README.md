@@ -39,7 +39,7 @@ android-kline是Android平台的金融图表库，包括**分时图**和**K线�
         }
    }
    dependencies {
-        compile 'com.github.VinsonGuo:android-kline:1.0.3'
+        compile 'com.github.VinsonGuo:android-kline:1.0.4'
    }
 ```
 

@@ -2,6 +2,7 @@ package com.guoziwei.klinelib.chart;
 
 
 import android.graphics.Matrix;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.github.mikephil.charting.charts.BarLineChartBase;
@@ -20,6 +21,14 @@ public class CoupleChartGestureListener implements OnChartGestureListener {
     private Chart[] dstCharts;
 
     private OnAxisChangeListener listener;
+
+    private OnLoadMoreListener mOnLoadMoreListener;
+
+    private boolean isLoadMore = false;
+
+    public void setOnLoadMoreListener(OnLoadMoreListener onLoadMoreListener) {
+        mOnLoadMoreListener = onLoadMoreListener;
+    }
 
     public CoupleChartGestureListener(OnAxisChangeListener listener, BarLineChartBase srcChart, Chart... dstCharts) {
         this(srcChart, dstCharts);
@@ -58,10 +67,11 @@ public class CoupleChartGestureListener implements OnChartGestureListener {
 
     @Override
     public void onChartFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {
-        syncCharts();
         if (listener != null) {
             listener.onAxisChange(srcChart);
         }
+        performLoadMore();
+        syncCharts();
     }
 
     @Override
@@ -70,17 +80,30 @@ public class CoupleChartGestureListener implements OnChartGestureListener {
         if (listener != null) {
             listener.onAxisChange(srcChart);
         }
+        performLoadMore();
         syncCharts();
     }
 
     @Override
     public void onChartTranslate(MotionEvent me, float dX, float dY) {
 //        Log.d(TAG, "onChartTranslate " + dX + "/" + dY + " X=" + me.getX() + "Y=" + me.getY());
+        Log.d(TAG, srcChart.getLowestVisibleX() + "");
 //        Log.d(TAG, "getHighestVisibleX  " +srcChart.getHighestVisibleX());
         if (listener != null) {
             listener.onAxisChange(srcChart);
         }
+        performLoadMore();
         syncCharts();
+    }
+
+    private void performLoadMore() {
+        // 加载更多
+        if (mOnLoadMoreListener != null && !isLoadMore) {
+            if (srcChart.getLowestVisibleX() <= 0) {
+                isLoadMore = true;
+                mOnLoadMoreListener.onLoadMore();
+            }
+        }
     }
 
     private void syncCharts() {
@@ -111,7 +134,12 @@ public class CoupleChartGestureListener implements OnChartGestureListener {
         }
     }
 
+    public void loadMoreComplete() {
+        isLoadMore = false;
+    }
+
     public interface OnAxisChangeListener {
         void onAxisChange(BarLineChartBase chart);
     }
+
 }

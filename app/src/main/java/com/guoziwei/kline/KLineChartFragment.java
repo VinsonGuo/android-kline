@@ -10,8 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.guoziwei.klinelib.chart.KLineView;
+import com.guoziwei.klinelib.chart.OnLoadMoreListener;
 import com.guoziwei.klinelib.model.HisData;
 
 import java.util.List;
@@ -95,8 +97,24 @@ public class KLineChartFragment extends Fragment {
 
     protected void initData() {
         final List<HisData> hisData = Util.getK(getContext(), mDay);
-        mKLineView.initData(hisData);
+        List<HisData> subHisData = hisData.subList(50, hisData.size());
+        mKLineView.initData(subHisData);
         mKLineView.setLimitLine();
+        mKLineView.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                Toast.makeText(getContext(), "触发加载更多", Toast.LENGTH_SHORT).show();
+                mKLineView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(), "加载更多完成", Toast.LENGTH_SHORT).show();
+                        mKLineView.addDatasFirst(hisData.subList(0, 50));
+                        mKLineView.loadMoreComplete();
+                        mKLineView.setOnLoadMoreListener(null);
+                    }
+                }, 3000);
+            }
+        });
 
        /* new Timer().schedule(new TimerTask() {
             @Override

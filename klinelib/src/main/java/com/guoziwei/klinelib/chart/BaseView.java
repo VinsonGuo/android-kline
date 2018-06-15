@@ -105,21 +105,7 @@ class BaseView extends LinearLayout {
         axisLeftVolume.setSpaceTop(10);
         axisLeftVolume.setSpaceBottom(0);
         axisLeftVolume.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
-        /*axisLeftVolume.setValueFormatter(new IAxisValueFormatter() {
-            @Override
-            public String getFormattedValue(float value, AxisBase axis) {
-                String s;
-                if (value > 10000) {
-                    s = (int) (value / 10000) + "w";
-                } else if (value > 1000) {
-                    s = (int) (value / 1000) + "k";
-                } else {
-                    s = (int) value + "";
-                }
-                return String.format(Locale.getDefault(), "%1$5s", s);
-            }
-        });
-*/
+
         Transformer leftYTransformer = chart.getRendererLeftYAxis().getTransformer();
         ColorContentYAxisRenderer leftColorContentYAxisRenderer = new ColorContentYAxisRenderer(chart.getViewPortHandler(), chart.getAxisLeft(), leftYTransformer);
         leftColorContentYAxisRenderer.setLabelInContent(true);
@@ -152,8 +138,6 @@ class BaseView extends LinearLayout {
 
     protected void setDescription(Chart chart, String text) {
         Description description = chart.getDescription();
-//        float dx = chart.getWidth() - chart.getViewPortHandler().offsetRight() - description.getXOffset();
-//        description.setPosition(dx, description.getTextSize());
         description.setText(text);
     }
 
