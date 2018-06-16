@@ -4,7 +4,7 @@
              android:layout_height="match_parent"
              xmlns:tools="http://schemas.android.com/tools">
 
-    <com.guoziwei.klinelib.chart.AppLineChart
+    <com.guoziwei.klinelib.chart.CustomLineChart
         android:id="@+id/line_chart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

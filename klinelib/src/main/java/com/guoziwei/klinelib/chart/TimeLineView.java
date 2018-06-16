@@ -54,8 +54,8 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
      */
     public static final int INVISIABLE_LINE = 6;
 
-    protected AppCombinedChart mChartPrice;
-    protected AppCombinedChart mChartVolume;
+    protected CustomCombinedChart mChartPrice;
+    protected CustomCombinedChart mChartVolume;
 
     protected ChartInfoView mChartInfoView;
     protected Context mContext;
@@ -87,9 +87,9 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
         super(context, attrs, defStyleAttr);
         mContext = context;
         LayoutInflater.from(context).inflate(R.layout.view_timeline, this);
-        mChartPrice = (AppCombinedChart) findViewById(R.id.price_chart);
-        mChartVolume = (AppCombinedChart) findViewById(R.id.vol_chart);
-        mChartInfoView = (ChartInfoView) findViewById(R.id.line_info);
+        mChartPrice = findViewById(R.id.price_chart);
+        mChartVolume = findViewById(R.id.vol_chart);
+        mChartInfoView = findViewById(R.id.line_info);
 
         mChartInfoView.setChart(mChartPrice, mChartVolume);
 
@@ -460,27 +460,7 @@ public class TimeLineView extends BaseView implements CoupleChartGestureListener
     private void setOffset() {
         int chartHeight = getResources().getDimensionPixelSize(R.dimen.bottom_chart_height);
         mChartPrice.setViewPortOffsets(0, 0, 0, chartHeight);
-        mChartVolume.setViewPortOffsets(0, 0, 0, DisplayUtils.dip2px(mContext, 20));
-        /*float lineLeft = mChartPrice.getViewPortHandler().offsetLeft();
-        float barLeft = mChartVolume.getViewPortHandler().offsetLeft();
-        float lineRight = mChartPrice.getViewPortHandler().offsetRight();
-        float barRight = mChartVolume.getViewPortHandler().offsetRight();
-        float offsetLeft, offsetRight;
-        if (barLeft < lineLeft) {
-            offsetLeft = Utils.convertPixelsToDp(lineLeft - barLeft);
-            mChartVolume.setExtraLeftOffset(offsetLeft);
-        } else {
-            offsetLeft = Utils.convertPixelsToDp(barLeft - lineLeft);
-            mChartPrice.setExtraLeftOffset(offsetLeft);
-        }
-        if (barRight < lineRight) {
-            offsetRight = Utils.convertPixelsToDp(lineRight);
-            mChartVolume.setExtraRightOffset(offsetRight);
-        } else {
-            offsetRight = Utils.convertPixelsToDp(barRight);
-            mChartPrice.setExtraRightOffset(offsetRight);
-        }*/
-
+        mChartVolume.setViewPortOffsets(0, 0, 0, DisplayUtils.dip2px(mContext, 14));
     }
 
 

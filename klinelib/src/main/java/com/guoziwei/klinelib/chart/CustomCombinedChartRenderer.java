@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * Renderer class that is responsible for rendering multiple different data-types.
  */
-public class AppCombinedChartRenderer extends DataRenderer {
+public class CustomCombinedChartRenderer extends DataRenderer {
 
     /**
      * all rederers for the different kinds of data this combined-renderer can draw
@@ -28,7 +28,7 @@ public class AppCombinedChartRenderer extends DataRenderer {
 
     protected WeakReference<Chart> mChart;
 
-    public AppCombinedChartRenderer(CombinedChart chart, ChartAnimator animator, ViewPortHandler viewPortHandler) {
+    public CustomCombinedChartRenderer(CombinedChart chart, ChartAnimator animator, ViewPortHandler viewPortHandler) {
         super(animator, viewPortHandler);
         mChart = new WeakReference<Chart>(chart);
         createRenderers();
@@ -61,7 +61,7 @@ public class AppCombinedChartRenderer extends DataRenderer {
                     break;
                 case LINE:
                     if (chart.getLineData() != null)
-                        mRenderers.add(new AppLineChartRenderer(chart, mAnimator, mViewPortHandler));
+                        mRenderers.add(new CustomLineChartRenderer(chart, mAnimator, mViewPortHandler));
                     break;
                 case CANDLE:
                     if (chart.getCandleData() != null)
@@ -116,8 +116,8 @@ public class AppCombinedChartRenderer extends DataRenderer {
 
             if (renderer instanceof BarChartRenderer)
                 data = ((BarChartRenderer)renderer).mChart.getBarData();
-            else if (renderer instanceof AppLineChartRenderer)
-                data = ((AppLineChartRenderer)renderer).mChart.getLineData();
+            else if (renderer instanceof CustomLineChartRenderer)
+                data = ((CustomLineChartRenderer)renderer).mChart.getLineData();
             else if (renderer instanceof CandleStickChartRenderer)
                 data = ((CandleStickChartRenderer)renderer).mChart.getCandleData();
             else if (renderer instanceof ScatterChartRenderer)

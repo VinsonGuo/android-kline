@@ -57,7 +57,7 @@ class BaseView extends LinearLayout {
         mIncreasingColor = ContextCompat.getColor(getContext(), R.color.increasing_color);
     }
 
-    protected void initBottomChart(AppCombinedChart chart) {
+    protected void initBottomChart(CustomCombinedChart chart) {
         chart.setScaleEnabled(true);
         chart.setDrawBorders(false);
         chart.setBorderWidth(1);
@@ -121,7 +121,7 @@ class BaseView extends LinearLayout {
     }
 
 
-    protected void moveToLast(AppCombinedChart chart) {
+    protected void moveToLast(CustomCombinedChart chart) {
         if (mData.size() > INIT_COUNT) {
             chart.moveViewToX(mData.size() - INIT_COUNT);
         }

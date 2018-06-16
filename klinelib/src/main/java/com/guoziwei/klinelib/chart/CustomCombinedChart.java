@@ -17,28 +17,28 @@ import com.github.mikephil.charting.utils.MPPointF;
  * Created by dell on 2017/6/22.
  */
 
-public class AppCombinedChart extends CombinedChart {
+public class CustomCombinedChart extends CombinedChart {
 
     private IMarker mXMarker;
 
     private float mYCenter;
 
-    public AppCombinedChart(Context context) {
+    public CustomCombinedChart(Context context) {
         this(context, null);
     }
 
-    public AppCombinedChart(Context context, AttributeSet attrs) {
+    public CustomCombinedChart(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public AppCombinedChart(Context context, AttributeSet attrs, int defStyle) {
+    public CustomCombinedChart(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
     @Override
     protected void init() {
         super.init();
-        mRenderer = new AppCombinedChartRenderer(this, mAnimator, mViewPortHandler);
+        mRenderer = new CustomCombinedChartRenderer(this, mAnimator, mViewPortHandler);
     }
 
     public void setXMarker(IMarker marker) {
@@ -52,7 +52,7 @@ public class AppCombinedChart extends CombinedChart {
         }catch (ClassCastException e) {
             // ignore
         }
-        ((AppCombinedChartRenderer) mRenderer).createRenderers();
+        ((CustomCombinedChartRenderer) mRenderer).createRenderers();
         mRenderer.initBuffers();
     }
 

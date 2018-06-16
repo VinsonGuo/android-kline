@@ -14,26 +14,26 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
  * Created by dell on 2017/6/22.
  */
 
-public class AppLineChart extends LineChart {
+public class CustomLineChart extends LineChart {
 
     private IMarker mXMarker;
 
-    public AppLineChart(Context context) {
+    public CustomLineChart(Context context) {
         this(context, null);
     }
 
-    public AppLineChart(Context context, AttributeSet attrs) {
+    public CustomLineChart(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public AppLineChart(Context context, AttributeSet attrs, int defStyle) {
+    public CustomLineChart(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
     @Override
     protected void init() {
         super.init();
-        mRenderer = new AppLineChartRenderer(this, mAnimator, mViewPortHandler);
+        mRenderer = new CustomLineChartRenderer(this, mAnimator, mViewPortHandler);
     }
 
     public void setXMarker(IMarker marker) {

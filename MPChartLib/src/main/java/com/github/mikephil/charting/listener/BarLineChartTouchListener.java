@@ -396,7 +396,7 @@ public class BarLineChartTouchListener extends ChartTouchListener<BarLineChartBa
                         mMatrix.set(mSavedMatrix);
                         // 这里是自己改的
                         MPPointD point = mChart.getTransformer(YAxis.AxisDependency.LEFT).getValuesByTouchPoint(mTouchPointCenter.x, mTouchPointCenter.y);
-                        if (point.x > mChart.getRealCount()) {
+                        if (mChart.getRealCount() > 0 && point.x > mChart.getRealCount()) {
                             mMatrix.postScale(scaleX, 1f, 0, t.y);
                         } else {
                             // 这里是原来的

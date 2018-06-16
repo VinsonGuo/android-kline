@@ -71,10 +71,10 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
     public static final int DEA = 35;
 
 
-    protected AppCombinedChart mChartPrice;
-    protected AppCombinedChart mChartVolume;
-    protected AppCombinedChart mChartMacd;
-    protected AppCombinedChart mChartKdj;
+    protected CustomCombinedChart mChartPrice;
+    protected CustomCombinedChart mChartVolume;
+    protected CustomCombinedChart mChartMacd;
+    protected CustomCombinedChart mChartKdj;
 
     protected ChartInfoView mChartInfoView;
     protected Context mContext;
@@ -107,11 +107,11 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         super(context, attrs, defStyleAttr);
         mContext = context;
         LayoutInflater.from(context).inflate(R.layout.view_kline, this);
-        mChartPrice = (AppCombinedChart) findViewById(R.id.price_chart);
-        mChartVolume = (AppCombinedChart) findViewById(R.id.vol_chart);
-        mChartMacd = (AppCombinedChart) findViewById(R.id.macd_chart);
-        mChartKdj = (AppCombinedChart) findViewById(R.id.kdj_chart);
-        mChartInfoView = (ChartInfoView) findViewById(R.id.k_info);
+        mChartPrice = findViewById(R.id.price_chart);
+        mChartVolume = findViewById(R.id.vol_chart);
+        mChartMacd = findViewById(R.id.macd_chart);
+        mChartKdj = findViewById(R.id.kdj_chart);
+        mChartInfoView = findViewById(R.id.k_info);
         mChartInfoView.setChart(mChartPrice, mChartVolume, mChartMacd, mChartKdj);
 
         mChartPrice.setNoDataText(context.getString(R.string.loading));
@@ -428,7 +428,6 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         mChartVolume.setVisibleXRange(MAX_COUNT, MIN_COUNT);
 
         mChartVolume.notifyDataSetChanged();
-//        mChartVolume.moveViewToX(combinedData.getEntryCount());
         moveToLast(mChartVolume);
 
     }
@@ -462,7 +461,6 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
         mChartMacd.setVisibleXRange(MAX_COUNT, MIN_COUNT);
 
         mChartMacd.notifyDataSetChanged();
-//        mChartMacd.moveViewToX(combinedData.getEntryCount());
         moveToLast(mChartMacd);
     }
 

@@ -49,7 +49,7 @@ public class TickChart extends RelativeLayout {
     public static final int DATA_SET_PADDING = 1;
     public static final int DATA_SET_AVE = 2;
     private List<HisData> mList = new ArrayList<>();
-    private AppLineChart mChart;
+    private CustomLineChart mChart;
     private Context mContext;
     private int mLineColor = getResources().getColor(R.color.normal_line_color);
     private int transparentColor = getResources().getColor(android.R.color.transparent);
@@ -88,7 +88,7 @@ public class TickChart extends RelativeLayout {
     private void init(Context context) {
         mContext = context;
         LayoutInflater.from(context).inflate(R.layout.view_mp_line_chart, this);
-        mChart = (AppLineChart) findViewById(R.id.line_chart);
+        mChart = (CustomLineChart) findViewById(R.id.line_chart);
         mInfoView = (LineChartInfoView) findViewById(R.id.info);
         setupSettingParameter();
     }

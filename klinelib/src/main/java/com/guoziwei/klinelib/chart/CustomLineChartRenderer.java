@@ -16,12 +16,12 @@ import java.util.List;
  * Created by dell on 2017/6/26.
  */
 
-public class AppLineChartRenderer extends LineChartRenderer {
+public class CustomLineChartRenderer extends LineChartRenderer {
 
 
     private float[] mCirclesBuffer = new float[2];
 
-    public AppLineChartRenderer(LineDataProvider chart, ChartAnimator animator, ViewPortHandler viewPortHandler) {
+    public CustomLineChartRenderer(LineDataProvider chart, ChartAnimator animator, ViewPortHandler viewPortHandler) {
         super(chart, animator, viewPortHandler);
     }
 

@@ -1760,7 +1760,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
         this.mUnbind = enabled;
     }
 
-    private int mRealCount;
+    private int mRealCount = -1;
 
     public int getRealCount() {
         return mRealCount;

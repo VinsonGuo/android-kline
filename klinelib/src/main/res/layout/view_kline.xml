@@ -4,20 +4,20 @@
     android:orientation="vertical">
 
 
-    <com.guoziwei.klinelib.chart.AppCombinedChart
+    <com.guoziwei.klinelib.chart.CustomCombinedChart
         android:id="@+id/vol_chart"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_chart_height"
         android:layout_gravity="bottom" />
 
 
-    <com.guoziwei.klinelib.chart.AppCombinedChart
+    <com.guoziwei.klinelib.chart.CustomCombinedChart
         android:id="@+id/macd_chart"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_chart_height"
         android:layout_gravity="bottom" />
 
-    <com.guoziwei.klinelib.chart.AppCombinedChart
+    <com.guoziwei.klinelib.chart.CustomCombinedChart
         android:id="@+id/kdj_chart"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_chart_height"
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.guoziwei.klinelib.chart.AppCombinedChart
+        <com.guoziwei.klinelib.chart.CustomCombinedChart
             android:id="@+id/price_chart"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
