@@ -113,6 +113,8 @@ mTimeLineView.initData(hisData);  // 初始化图表数据
 
 _email: gzw19931217@qq.com_
 
+_qq群: 494309361_
+
 
 
 ## 支持作者
