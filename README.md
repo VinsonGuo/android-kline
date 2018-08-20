@@ -117,11 +117,3 @@ _qq群: 494309361_
 
 
 
-## 支持作者
-
-   开发花费了一些时间和精力，如果你觉得对你有所帮助，不妨请我喝杯☕️以鼓励我
-  
-</br><img src="https://github.com/VinsonGuo/android-kline/blob/master/art/alipay.jpg" height="300" hspace="20" />
-
-
-
