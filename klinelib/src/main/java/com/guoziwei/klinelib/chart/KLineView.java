@@ -532,9 +532,100 @@ public class KLineView extends BaseView implements CoupleChartGestureListener.On
     }
 
     public void addDatas(List<HisData> hisDatas) {
-        for (HisData hisData : hisDatas) {
-            addData(hisData);
+        HisData lastData = getLastData();
+        if (lastData == null) {
+            hisDatas = DataUtils.calculateHisData(hisDatas);
+        } else {
+            hisDatas = DataUtils.calculateHisData(hisDatas, lastData);
         }
+        CombinedData combinedData = mChartPrice.getData();
+        LineData priceData = combinedData.getLineData();
+        ILineDataSet padding = priceData.getDataSetByIndex(0);
+        ILineDataSet ma5Set = priceData.getDataSetByIndex(1);
+        ILineDataSet ma10Set = priceData.getDataSetByIndex(2);
+        ILineDataSet ma20Set = priceData.getDataSetByIndex(3);
+        ILineDataSet ma30Set = priceData.getDataSetByIndex(4);
+        CandleData kData = combinedData.getCandleData();
+        ICandleDataSet klineSet = kData.getDataSetByIndex(0);
+        IBarDataSet volSet = mChartVolume.getData().getBarData().getDataSetByIndex(0);
+        IBarDataSet macdSet = mChartMacd.getData().getBarData().getDataSetByIndex(0);
+        ILineDataSet difSet = mChartMacd.getData().getLineData().getDataSetByIndex(0);
+        ILineDataSet deaSet = mChartMacd.getData().getLineData().getDataSetByIndex(1);
+        LineData kdjData = mChartKdj.getData().getLineData();
+        ILineDataSet kSet = kdjData.getDataSetByIndex(0);
+        ILineDataSet dSet = kdjData.getDataSetByIndex(1);
+        ILineDataSet jSet = kdjData.getDataSetByIndex(2);
+
+        for (HisData hisData : hisDatas) {
+            if (mData.contains(hisData)) {
+                int index = mData.indexOf(hisData);
+                klineSet.removeEntry(index);
+                padding.removeFirst();
+                // ma比较特殊，entry数量和k线的不一致，移除最后一个
+                ma5Set.removeLast();
+                ma10Set.removeLast();
+                ma20Set.removeLast();
+                ma30Set.removeLast();
+                volSet.removeEntry(index);
+                macdSet.removeEntry(index);
+                difSet.removeEntry(index);
+                deaSet.removeEntry(index);
+                kSet.removeEntry(index);
+                dSet.removeEntry(index);
+                jSet.removeEntry(index);
+                mData.remove(index);
+            }
+            mData.add(hisData);
+            mChartPrice.setRealCount(mData.size());
+            int klineCount = klineSet.getEntryCount();
+            klineSet.addEntry(new CandleEntry(klineCount, (float) hisData.getHigh(), (float) hisData.getLow(), (float) hisData.getOpen(), (float) hisData.getClose()));
+            volSet.addEntry(new BarEntry(volSet.getEntryCount(), hisData.getVol(), hisData));
+
+            macdSet.addEntry(new BarEntry(macdSet.getEntryCount(), (float) hisData.getMacd()));
+            difSet.addEntry(new Entry(difSet.getEntryCount(), (float) hisData.getDif()));
+            deaSet.addEntry(new Entry(deaSet.getEntryCount(), (float) hisData.getDea()));
+
+            kSet.addEntry(new Entry(kSet.getEntryCount(), (float) hisData.getK()));
+            dSet.addEntry(new Entry(dSet.getEntryCount(), (float) hisData.getD()));
+            jSet.addEntry(new Entry(jSet.getEntryCount(), (float) hisData.getJ()));
+
+            // 因为ma的数量会少，所以这里用kline的set数量作为x
+            if (!Double.isNaN(hisData.getMa5())) {
+                ma5Set.addEntry(new Entry(klineCount, (float) hisData.getMa5()));
+            }
+            if (!Double.isNaN(hisData.getMa10())) {
+                ma10Set.addEntry(new Entry(klineCount, (float) hisData.getMa10()));
+            }
+            if (!Double.isNaN(hisData.getMa20())) {
+                ma20Set.addEntry(new Entry(klineCount, (float) hisData.getMa20()));
+            }
+            if (!Double.isNaN(hisData.getMa30())) {
+                ma30Set.addEntry(new Entry(klineCount, (float) hisData.getMa30()));
+            }
+
+        }
+        mChartPrice.getXAxis().setAxisMaximum(combinedData.getXMax() + 1.5f);
+        mChartVolume.getXAxis().setAxisMaximum(mChartVolume.getData().getXMax() + 1.5f);
+        mChartMacd.getXAxis().setAxisMaximum(mChartMacd.getData().getXMax() + 1.5f);
+        mChartKdj.getXAxis().setAxisMaximum(mChartKdj.getData().getXMax() + 1.5f);
+
+
+        mChartPrice.setVisibleXRange(MAX_COUNT, MIN_COUNT);
+        mChartVolume.setVisibleXRange(MAX_COUNT, MIN_COUNT);
+        mChartMacd.setVisibleXRange(MAX_COUNT, MIN_COUNT);
+        mChartKdj.setVisibleXRange(MAX_COUNT, MIN_COUNT);
+
+        mChartPrice.notifyDataSetChanged();
+        mChartPrice.invalidate();
+        mChartVolume.notifyDataSetChanged();
+        mChartVolume.invalidate();
+        mChartMacd.notifyDataSetChanged();
+        mChartMacd.invalidate();
+        mChartKdj.notifyDataSetChanged();
+        mChartKdj.invalidate();
+
+
+        setChartDescription(getLastData());
     }
 
     public void addData(HisData hisData) {
