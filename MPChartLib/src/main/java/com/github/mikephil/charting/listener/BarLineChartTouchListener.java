@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils;
 
 import com.github.mikephil.charting.charts.BarLineChartBase;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarLineScatterCandleBubbleData;
 import com.github.mikephil.charting.data.Entry;
@@ -295,11 +296,6 @@ public class BarLineChartTouchListener extends ChartTouchListener<BarLineChartBa
      */
     private void performDrag(MotionEvent event) {
 
-        mLastGesture = ChartGesture.DRAG;
-
-        mMatrix.set(mSavedMatrix);
-
-        OnChartGestureListener l = mChart.getOnChartGestureListener();
 
         float dX, dY;
 
@@ -319,11 +315,19 @@ public class BarLineChartTouchListener extends ChartTouchListener<BarLineChartBa
             dY = event.getY() - mTouchStartPoint.y;
         }
 
-        MPPointD point = mChart.getTransformer(YAxis.AxisDependency.LEFT).getValuesByTouchPoint(mTouchStartPoint.x, mTouchStartPoint.y);
-        // 如果向右滑，而且手指不在有效区域内
-        if (dX < 0 && point.x > mChart.getRealCount()) {
+        // 如果向右滑，而且最后的坐标不在有效区域内
+        XAxis xAxis = mChart.getXAxis();
+        float lastX = xAxis.mEntries[xAxis.mEntryCount - 1];
+        if(dX < 0 && lastX > mChart.getRealCount() - 1) {
             return;
         }
+
+        mLastGesture = ChartGesture.DRAG;
+
+        mMatrix.set(mSavedMatrix);
+
+        OnChartGestureListener l = mChart.getOnChartGestureListener();
+
         mMatrix.postTranslate(dX, dY);
 
         if (l != null)
@@ -396,12 +400,14 @@ public class BarLineChartTouchListener extends ChartTouchListener<BarLineChartBa
                         mMatrix.set(mSavedMatrix);
                         // 这里是自己改的
                         MPPointD point = mChart.getTransformer(YAxis.AxisDependency.LEFT).getValuesByTouchPoint(mTouchPointCenter.x, mTouchPointCenter.y);
-                        if (mChart.getRealCount() > 0 && point.x > mChart.getRealCount()) {
+                        // 手指的点不在图表的有效区域内，放大第一个
+                        if (point.x > mChart.getRealCount()) {
                             mMatrix.postScale(scaleX, 1f, 0, t.y);
                         } else {
                             // 这里是原来的
                             mMatrix.postScale(scaleX, 1f, t.x, t.y);
                         }
+                        MPPointD.recycleInstance(point);
 
                         if (l != null)
                             l.onChartScale(event, scaleX, 1f);
