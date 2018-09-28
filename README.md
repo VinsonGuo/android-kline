@@ -30,12 +30,12 @@ android-kline是Android平台的金融图表库，包括**分时图**和**K线�
         }
    }
    dependencies {
-        compile com.github.VinsonGuo:android-kline:2.0.0-alpha'
+        compile 'com.github.VinsonGuo:android-kline:2.0.0-alpha'
    }
 ```
 
 
-##快速开始
+## 快速开始
 ```java
 mTimeLineView = new TimeLineView(getContext());  //初始化分时图
 mTimeLineView.setDateFormat("HH:mm");  // 设置x轴时间的格式
