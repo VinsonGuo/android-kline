@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.guoziwei.klinelib.chart.KLineView
+    <com.vinsonguo.klinelib.chart.KLineView
         android:id="@+id/kline"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

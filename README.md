@@ -1,6 +1,6 @@
 # android-kline
 
-**基于MPAndroidChart的专业K线图**
+**基于MPAndroidChart的K线图**
 
 ## 简介
 
@@ -15,17 +15,8 @@ android-kline是Android平台的金融图表库，包括**分时图**和**K线�
 
 ![demo](art/new_chart.gif)
 
-也可以[点击这里下载](https://github.com/gzw19931217/android-kline/raw/master/art/app-debug.apk)
+也可以[点击这里下载](https://github.com/VinsonGuo/android-kline/raw/master/art/app-debug.apk)
 
-## What's new
-
-- 增加了MACD、KDJ指标的显示和切换
-- 增加了五日的分时图
-- 优化图表的缩放，可以进行放大和缩小操作（之前只支持在初始状态下的放大操作）
-- 拼接图表的缩放功能（之前如果一个手指在K线图，另一个手指在交易量图的时候，图表是不可以缩放的）
-- 全屏模式的示例
-- 分时图增加涨跌幅的坐标，并且涨跌幅为0%时竖直居中显示
-- K线图增加最大/最小值的显示
 
 ## 配置
 
@@ -39,7 +30,7 @@ android-kline是Android平台的金融图表库，包括**分时图**和**K线�
         }
    }
    dependencies {
-        compile com.github.gzw19931217:android-kline:1.0.2'
+        compile com.github.VinsonGuo:android-kline:2.0.0-alpha'
    }
 ```
 
@@ -56,7 +47,7 @@ mTimeLineView.initData(hisData);  // 初始化图表数据
 **xml**
 
 ```xml
-    <com.guoziwei.klinelib.chart.KLineView
+    <com.vinsonguo.klinelib.chart.KLineView
         android:id="@+id/kline"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
@@ -64,7 +55,7 @@ mTimeLineView.initData(hisData);  // 初始化图表数据
 
 
 ```xml
-    <com.guoziwei.klinelib.chart.TimeLineView
+    <com.vinsonguo.klinelib.chart.TimeLineView
         android:id="@+id/timeline"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
@@ -105,20 +96,16 @@ mTimeLineView.initData(hisData);  // 初始化图表数据
 
 **个性化**：如果需要配置颜色，可以到colors.xml中重写颜色的值。
 
-## 反馈
-
-欢迎各位提issues和PRs！
 
 **联系方式**
 
-_qq群: 629878453_ 
+_qq群: 494309361_ 
 
-_email: gzw19931217@qq.com_
 
 
 ## License
 
-   Copyright gzw19931217 <gzw19931217@qq.com>
+   Copyright VinsonGuo
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
