@@ -99,7 +99,7 @@ mTimeLineView.initData(hisData);  // 初始化图表数据
 
 ## 其他
 
-_承接项目外包、Bug修复、模拟面试等业务，详情请了解[淘宝店铺](https://shop502917064.taobao.com)_ 
+_承接项目外包、Bug修复、模拟面试等业务，详情请了解[淘宝店铺](https://m.tb.cn/h.f28Javb?sm=1030a1)_ 
 
 
 
