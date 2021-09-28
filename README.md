@@ -97,12 +97,6 @@ mTimeLineView.initData(hisData);  // 初始化图表数据
 **个性化**：如果需要配置颜色，可以到colors.xml中重写颜色的值。
 
 
-## 其他
-
-_承接项目外包、Bug修复、模拟面试等业务，详情请了解[人月神话](https://shop502917064.taobao.com)的淘宝店铺_ 
-
-
-
 ## License
 
    Copyright VinsonGuo
